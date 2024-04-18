@@ -32,6 +32,8 @@ router.get('/katakana/list', katakanaController.getKatakanaList);
 
 router.get('/radicals', radicalsController.getRadicals);
 
+router.get('/radicals/list', radicalsController.getRadicalsList);
+
 //about routes
 
 router.get('/about', aboutController.getAbout);

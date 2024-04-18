@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+  table.radicals-table
+    thead
+      tr
+        th Radical
+        th Romaji
+        th Meaning
+    tbody
+      each character in radicals
+        tr
+          td= character.Radical
+          td= character.Romaji
+          td= character.Meaning
