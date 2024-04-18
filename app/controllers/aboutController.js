@@ -12,3 +12,7 @@ exports.getAbout = async (req, res) => {
     res.status(500).send('Server Error');
   }
 };
+
+exports.getHistory = (req, res) => {
+  res.render('about/history', { message: req.flash('error') });
+};

@@ -6,10 +6,6 @@ const katakanaController = require('../controllers/katakanaController');
 const radicalsController = require('../controllers/radicalsController');
 const aboutController = require('../controllers/aboutController');
 
-
-
-
-
 router.get('/', userController.getIndex);
 
 router.get('/signup', userController.getSignup);
@@ -26,7 +22,12 @@ router.get('/katakana', katakanaController.getKatakana);
 
 router.get('/radicals', radicalsController.getRadicals);
 
+//about routes
+
 router.get('/about', aboutController.getAbout);
+
+router.get('/about/history', aboutController.getHistory);
+
 
 
 
