@@ -1,0 +1,17 @@
+extends ../layout
+
+block content
+  table.katakana-table
+    thead
+      tr
+        th Katakana
+        th Romaji
+        th Dakuten
+        th Handakuten
+    tbody
+      each character in katakana
+        tr
+          td= character.Katakana
+          td= character.Romaji
+          td= character.Dakuten
+          td= character.Handakuten

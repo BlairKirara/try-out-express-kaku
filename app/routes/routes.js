@@ -16,9 +16,19 @@ router.get('/logout', userController.logOut);
 
 router.post('/login', userController.logIn);
 
+//hiragana routes
+
 router.get('/hiragana', hiraganaController.getHiragana);
 
+router.get('/hiragana/list', hiraganaController.getHiraganaList);
+
+//katakana routes
+
 router.get('/katakana', katakanaController.getKatakana);
+
+router.get('/katakana/list', katakanaController.getKatakanaList);
+
+//radicals routes
 
 router.get('/radicals', radicalsController.getRadicals);
 
