@@ -1,12 +1,16 @@
 doctype html
 html
   head
-    title='App'
+    title='Kaku Learner'
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     .container
+      if message && message.length > 0
+        ul
+          each msg in message
+            li= msg 
       .header
         .logo
           .circle

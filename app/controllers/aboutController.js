@@ -13,6 +13,11 @@ exports.getAbout = async (req, res) => {
   }
 };
 
-exports.getHistory = (req, res) => {
-  res.render('about/history', { message: req.flash('error') });
+exports.getHistory = async (req, res) => {
+  try {
+    res.render('about/history', { user: req.user });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
 };

@@ -63,7 +63,7 @@ exports.getHiraganaList = async (req, res) => {
       { Hiragana: "を", Romaji: 'wo', Dakuten: "-", Handakuten: "-" },
       { Hiragana: "ん", Romaji: 'n', Dakuten: "-", Handakuten: "-" }
     ];
-    res.render('hiragana/hiragana_list', { hiragana: hiraganaData });
+    res.render('hiragana/hiragana_list', { user: req.user, hiragana: hiraganaData });
   } catch (err) {
     console.error(err);
     res.status(500).send('Server Error');

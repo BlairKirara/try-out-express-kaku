@@ -19,6 +19,12 @@ exports.getSignup = (req, res) => {
 
 exports.postSignup = async (req, res, next) => {
   try {
+    // Check if required fields are empty
+    if (!req.body.username || !req.body.password || !req.body.confirmPassword) {
+      req.flash('error', 'Please fill in all fields');
+      return res.render('user/signup', { message: req.flash('error') });
+    }
+
     const existingUser = await User.findOne({
       where: { username: req.body.username },
     });
@@ -43,6 +49,7 @@ exports.postSignup = async (req, res, next) => {
   }
 };
 
+
 exports.logIn = (req, res, next) => {
   passport.authenticate('local', (err, user, info) => {
     if (err) {
@@ -50,7 +57,7 @@ exports.logIn = (req, res, next) => {
     }
     if (!user) {
       req.flash('error', 'Invalid username or password');
-      return res.redirect('/');
+      return res.render('', { message: req.flash('error') });
     }
     req.logIn(user, (err) => {
       if (err) {

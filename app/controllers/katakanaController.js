@@ -63,7 +63,7 @@ exports.getKatakanaList = async (req, res) => {
       { Katakana: "ヲ", Romaji: 'wo', Dakuten: "-", Handakuten: "-" },
       { Katakana: "ン", Romaji: 'n', Dakuten: "-", Handakuten: "-" }
     ];
-    res.render('katakana/katakana_list', { katakana: katakanaData });
+    res.render('katakana/katakana_list', { user: req.user, katakana: katakanaData });
   } catch (err) {
     console.error(err);
     res.status(500).send('Server Error');
