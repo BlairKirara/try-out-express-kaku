@@ -1,0 +1,17 @@
+extends ../layout
+
+block content
+    .quiz
+    h2 How can you read these hiragana characters?
+    .middle-quiz
+        #question
+        input(type='text', id='answer', placeholder='Type your answer')
+    .quiz-results
+        #questionNumber
+        #result
+        button#submit_answer(onclick='checkAnswer()') Submit
+    .go_back
+        #go_back_to
+        #go_back_front.go
+        #go_back_hiragana.go
+
