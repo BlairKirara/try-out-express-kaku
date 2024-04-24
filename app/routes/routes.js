@@ -22,11 +22,15 @@ router.get('/hiragana', hiraganaController.getHiragana);
 
 router.get('/hiragana/list', hiraganaController.getHiraganaList);
 
+router.get('/hiragana/quiz_lvl', hiraganaController.getHiraganaQuizLvl);
+
 //katakana routes
 
 router.get('/katakana', katakanaController.getKatakana);
 
 router.get('/katakana/list', katakanaController.getKatakanaList);
+
+router.get('/katakana/quiz_lvl', katakanaController.getKatakanaQuizLvl);
 
 //radicals routes
 

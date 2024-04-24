@@ -7,8 +7,13 @@ block content
 
   h2 Go to the quiz!
   p Description...
-  a.go_next(href='katakana_quiz.html') Quiz
-
+  if user 
+    a.go_next(href='katakana/quiz_lvl') Quiz
+  else 
+    a.go_next(href='/') Log in to take the quiz!
   h2 Turn your favorite song lyrics into flashcards!
   p Description...
-  a.go_next(href='katakana_converter.html') Converter
+  if user 
+    a.go_next(href='katakana_converter.html') Converter
+  else 
+    a.go_next(href='/') Log in to use the converter!

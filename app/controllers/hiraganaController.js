@@ -69,3 +69,12 @@ exports.getHiraganaList = async (req, res) => {
     res.status(500).send('Server Error');
   }
 };
+
+exports.getHiraganaQuizLvl = async (req, res) => {
+  try {
+    res.render('hiragana/hiragana_quiz_lvl', { user: req.user });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
+};

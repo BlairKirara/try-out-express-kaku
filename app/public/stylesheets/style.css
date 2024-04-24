@@ -200,3 +200,7 @@ button:hover {
     box-sizing: border-box;
     margin: 10px;
 }
+
+.rowspan_list {
+    background-color: #f2f2f2;   
+}
