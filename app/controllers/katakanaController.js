@@ -120,3 +120,12 @@ exports.getKatakanaQuizLvl = async (req, res) => {
     res.status(500).send('Server Error');
   }
 };
+
+exports.getKatakanaQuiz = async (req, res) => {
+  try {
+    res.render('katakana/katakana_quiz', { user: req.user });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
+};
