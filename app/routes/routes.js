@@ -34,6 +34,12 @@ router.get('/katakana/quiz_lvl', katakanaController.getKatakanaQuizLvl);
 
 router.get('/katakana/quiz', katakanaController.getKatakanaQuiz);
 
+router.get('/katakana/dakuten_quiz', katakanaController.getDakutenQuiz);
+
+router.get('/katakana/combinations_quiz', katakanaController.getCombinationsQuiz);
+
+router.get('/katakana/final_test', katakanaController.getFinalQuiz);
+
 //radicals routes
 
 router.get('/radicals', radicalsController.getRadicals);

@@ -129,3 +129,30 @@ exports.getKatakanaQuiz = async (req, res) => {
     res.status(500).send('Server Error');
   }
 };
+
+exports.getDakutenQuiz = async (req, res) => {
+  try {
+    res.render('katakana/dakuten_quiz', { user: req.user });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
+};
+
+exports.getCombinationsQuiz = async (req, res) => {
+  try {
+    res.render('katakana/combinations_quiz', { user: req.user });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
+};
+
+exports.getFinalQuiz = async (req, res) => {
+  try {
+    res.render('katakana/final_katakana_test', { user: req.user });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
+};
