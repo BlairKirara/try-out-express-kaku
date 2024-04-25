@@ -16,63 +16,135 @@ exports.getHiragana = async (req, res) => {
 exports.getHiraganaList = async (req, res) => {
   try {
     const hiraganaData = [
-      { Hiragana: "あ", Romaji: 'a', Dakuten: "-", Handakuten: "-" },
-      { Hiragana: "い", Romaji: 'i', Dakuten: "-", Handakuten: "-"  },
-      { Hiragana: "う", Romaji: 'u', Dakuten: "-", Handakuten: "-"  },
-      { Hiragana: "え", Romaji: 'e', Dakuten: "-", Handakuten: "-"  },
-      { Hiragana: "お", Romaji: 'o', Dakuten: "-", Handakuten: "-"  },
-      { Hiragana: "か", Romaji: 'ka', Dakuten: "が (ga)", Handakuten: "-" },
-      { Hiragana: "き", Romaji: 'ki', Dakuten: "ぎ (gi)", Handakuten: "-"  },
-      { Hiragana: "く", Romaji: 'ku', Dakuten: "ぐ (gu)", Handakuten: "-"  },
-      { Hiragana: "け", Romaji: 'ke', Dakuten: "げ (ge)", Handakuten: "-"  },
-      { Hiragana: "こ", Romaji: 'ko', Dakuten: "ご (go)", Handakuten: "-"  },
-      { Hiragana: "さ", Romaji: 'sa', Dakuten: "ざ (za)", Handakuten: "-" },
-      { Hiragana: "し", Romaji: 'shi', Dakuten: "じ (ji)", Handakuten: "-"  },
-      { Hiragana: "す", Romaji: 'su', Dakuten: "ず (zu)", Handakuten: "-"  },
-      { Hiragana: "せ", Romaji: 'se', Dakuten: "ぜ (ze)", Handakuten: "-"  },
-      { Hiragana: "そ", Romaji: 'so', Dakuten: "ぞ (zo)", Handakuten: "-"  },
-      { Hiragana: "た", Romaji: 'ta', Dakuten: "だ (da)", Handakuten: "-" },
-      { Hiragana: "ち", Romaji: 'chi', Dakuten: "ぢ (ji)", Handakuten: "-"  },
-      { Hiragana: "つ", Romaji: 'tsu', Dakuten: "づ (zu)", Handakuten: "-"  },
-      { Hiragana: "て", Romaji: 'te', Dakuten: "で (de)", Handakuten: "-"  },
-      { Hiragana: "と", Romaji: 'to', Dakuten: "ど (do)", Handakuten: "-"  },
-      { Hiragana: "な", Romaji: 'na', Dakuten: "-", Handakuten: "-" },
-      { Hiragana: "に", Romaji: 'ni', Dakuten: "-", Handakuten: "-"  },
-      { Hiragana: "ぬ", Romaji: 'nu', Dakuten: "-", Handakuten: "-"  },
-      { Hiragana: "ね", Romaji: 'ne', Dakuten: "-", Handakuten: "-"  },
-      { Hiragana: "の", Romaji: 'no', Dakuten: "-", Handakuten: "-"  },
-      { Hiragana: "は", Romaji: 'ha', Dakuten: "ば (ba)", Handakuten: "ぱ (pa)" },
-      { Hiragana: "ひ", Romaji: 'hi', Dakuten: "び (bi)", Handakuten: "ぴ (pi)"  },
-      { Hiragana: "ふ", Romaji: 'fu', Dakuten: "ぶ (bu)", Handakuten: "ぷ (pu)"  },
-      { Hiragana: "へ", Romaji: 'he', Dakuten: "べ (be)", Handakuten: "ぺ (pe)"  },
-      { Hiragana: "ほ", Romaji: 'ho', Dakuten: "ぼ (bo)", Handakuten: "ぽ (po)"  },
-      { Hiragana: "ま", Romaji: 'ma', Dakuten: "-", Handakuten: "-" },
-      { Hiragana: "み", Romaji: 'mi', Dakuten: "-", Handakuten: "-"  },
-      { Hiragana: "む", Romaji: 'mu', Dakuten: "-", Handakuten: "-"  },
-      { Hiragana: "め", Romaji: 'me', Dakuten: "-", Handakuten: "-"  },
-      { Hiragana: "も", Romaji: 'mo', Dakuten: "-", Handakuten: "-"  },
-      { Hiragana: "や", Romaji: 'ya', Dakuten: "-", Handakuten: "-" },
-      { Hiragana: "ゆ", Romaji: 'yu', Dakuten: "-", Handakuten: "-" },
-      { Hiragana: "よ", Romaji: 'yo', Dakuten: "-", Handakuten: "-" },
-      { Hiragana: "ら", Romaji: 'ra', Dakuten: "-", Handakuten: "-" },
-      { Hiragana: "り", Romaji: 'ri', Dakuten: "-", Handakuten: "-" },
-      { Hiragana: "る", Romaji: 'ru', Dakuten: "-", Handakuten: "-" },
-      { Hiragana: "れ", Romaji: 're', Dakuten: "-", Handakuten: "-" },
-      { Hiragana: "ろ", Romaji: 'ro', Dakuten: "-", Handakuten: "-" },
-      { Hiragana: "わ", Romaji: 'wa', Dakuten: "-", Handakuten: "-" },
-      { Hiragana: "を", Romaji: 'wo', Dakuten: "-", Handakuten: "-" },
-      { Hiragana: "ん", Romaji: 'n', Dakuten: "-", Handakuten: "-" }
+      { Hiragana: "あ", Romaji: 'a' },
+      { Hiragana: "い", Romaji: 'i' },
+      { Hiragana: "う", Romaji: 'u' },
+      { Hiragana: "え", Romaji: 'e' },
+      { Hiragana: "お", Romaji: 'o' },
+      { Hiragana: "か", Romaji: 'ka' },
+      { Hiragana: "き", Romaji: 'ki' },
+      { Hiragana: "く", Romaji: 'ku' },
+      { Hiragana: "け", Romaji: 'ke' },
+      { Hiragana: "こ", Romaji: 'ko' },
+      { Hiragana: "さ", Romaji: 'sa' },
+      { Hiragana: "し", Romaji: 'shi' },
+      { Hiragana: "す", Romaji: 'su' },
+      { Hiragana: "せ", Romaji: 'se' },
+      { Hiragana: "そ", Romaji: 'so' },
+      { Hiragana: "た", Romaji: 'ta' },
+      { Hiragana: "ち", Romaji: 'chi' },
+      { Hiragana: "つ", Romaji: 'tsu' },
+      { Hiragana: "て", Romaji: 'te' },
+      { Hiragana: "と", Romaji: 'to' },
+      { Hiragana: "な", Romaji: 'na' },
+      { Hiragana: "に", Romaji: 'ni' },
+      { Hiragana: "ぬ", Romaji: 'nu' },
+      { Hiragana: "ね", Romaji: 'ne' },
+      { Hiragana: "の", Romaji: 'no' },
+      { Hiragana: "は", Romaji: 'ha' },
+      { Hiragana: "ひ", Romaji: 'hi' },
+      { Hiragana: "ふ", Romaji: 'fu' },
+      { Hiragana: "へ", Romaji: 'he' },
+      { Hiragana: "ほ", Romaji: 'ho' },
+      { Hiragana: "ま", Romaji: 'ma' },
+      { Hiragana: "み", Romaji: 'mi' },
+      { Hiragana: "む", Romaji: 'mu' },
+      { Hiragana: "め", Romaji: 'me' },
+      { Hiragana: "も", Romaji: 'mo' },
+      { Hiragana: "や", Romaji: 'ya' },
+      { Hiragana: "ゆ", Romaji: 'yu' },
+      { Hiragana: "よ", Romaji: 'yo' },
+      { Hiragana: "ら", Romaji: 'ra' },
+      { Hiragana: "り", Romaji: 'ri' },
+      { Hiragana: "る", Romaji: 'ru' },
+      { Hiragana: "れ", Romaji: 're' },
+      { Hiragana: "ろ", Romaji: 'ro' },
+      { Hiragana: "わ", Romaji: 'wa' },
+      { Hiragana: "を", Romaji: 'wo' },
+      { Hiragana: "ん", Romaji: 'n' }
     ];
-    res.render('hiragana/hiragana_list', { user: req.user, hiragana: hiraganaData });
+    const hiraganaDakuten = [
+      { Hiragana: "が", Romaji: 'ga'},
+      { Hiragana: "ぎ", Romaji: 'gi'},
+      { Hiragana: "ぐ", Romaji: 'gu'},
+      { Hiragana: "げ", Romaji: 'ge'},
+      { Hiragana: "ご", Romaji: 'go'},
+      { Hiragana: "ざ", Romaji: 'za'},
+      { Hiragana: "じ", Romaji: 'ji'},
+      { Hiragana: "ず", Romaji: 'zu'},
+      { Hiragana: "ぜ", Romaji: 'ze'},
+      { Hiragana: "ぞ", Romaji: 'zo'},
+      { Hiragana: "だ", Romaji: 'da'},
+      { Hiragana: "ぢ", Romaji: 'ji'},
+      { Hiragana: "づ", Romaji: 'zu'}, 
+      { Hiragana: "で", Romaji: 'de'},
+      { Hiragana: "ど", Romaji: 'do'},
+      { Hiragana: "ば", Romaji: 'ba'},
+      { Hiragana: "び", Romaji: 'bi'},
+      { Hiragana: "ぶ", Romaji: 'bu'},
+      { Hiragana: "べ", Romaji: 'be'},
+      { Hiragana: "ぼ", Romaji: 'bo'},
+      { Hiragana: "ぱ", Romaji: 'pa'},
+      { Hiragana: "ぴ", Romaji: 'pi'},
+      { Hiragana: "ぷ", Romaji: 'pu'},
+      { Hiragana: "ぺ", Romaji: 'pe'},
+      { Hiragana: "ぽ", Romaji: 'po'}
+    ];
+    const hiraganaCombinationsData = [
+      { Hiragana: "きゃ", Romaji: 'kya'},
+      { Hiragana: "きゅ", Romaji: 'kyu'},
+      { Hiragana: "きょ", Romaji: 'kyo'},
+      { Hiragana: "ぎゃ", Romaji: 'gya'},
+      { Hiragana: "ぎゅ", Romaji: 'gyu'},
+      { Hiragana: "ぎょ", Romaji: 'gyo'},
+      { Hiragana: "しゃ", Romaji: 'sha'},
+      { Hiragana: "しゅ", Romaji: 'shu'},
+      { Hiragana: "しょ", Romaji: 'sho'},
+      { Hiragana: "じゃ", Romaji: 'ja'},
+      { Hiragana: "じゅ", Romaji: 'ju'},
+      { Hiragana: "じょ", Romaji: 'jo'},
+      { Hiragana: "ちゃ", Romaji: 'cha'},
+      { Hiragana: "ちゅ", Romaji: 'chu'},
+      { Hiragana: "ちょ", Romaji: 'cho'},
+      { Hiragana: "にゃ", Romaji: 'nya'},
+      { Hiragana: "にゅ", Romaji: 'nyu'},
+      { Hiragana: "にょ", Romaji: 'nyo'},
+      { Hiragana: "ひゃ", Romaji: 'hya'},
+      { Hiragana: "ひゅ", Romaji: 'hyu'},
+      { Hiragana: "ひょ", Romaji: 'hyo'},
+      { Hiragana: "びゃ", Romaji: 'bya'},
+      { Hiragana: "びゅ", Romaji: 'byu'},
+      { Hiragana: "びょ", Romaji: 'byo'},
+      { Hiragana: "ぴゃ", Romaji: 'pya'},
+      { Hiragana: "ぴゅ", Romaji: 'pyu'},
+      { Hiragana: "ぴょ", Romaji: 'pyo'},
+      { Hiragana: "みゃ", Romaji: 'mya'},
+      { Hiragana: "みゅ", Romaji: 'myu'},
+      { Hiragana: "みょ", Romaji: 'myo'},
+      { Hiragana: "りゃ", Romaji: 'rya'},
+      { Hiragana: "りゅ", Romaji: 'ryu'},
+      { Hiragana: "りょ", Romaji: 'ryo'}
+    ];    
+    res.render('hiragana/hiragana_list', { user: req.user, hiragana: hiraganaData, hiragana_dakuten: hiraganaDakuten, hiragana_combinations: hiraganaCombinationsData });
   } catch (err) {
     console.error(err);
     res.status(500).send('Server Error');
   }
 };
 
+
 exports.getHiraganaQuizLvl = async (req, res) => {
   try {
     res.render('hiragana/hiragana_quiz_lvl', { user: req.user });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
+};
+
+exports.getHiraganaQuiz = async (req, res) => {
+  try {
+    res.render('hiragana/hiragana_quiz', { user: req.user });
   } catch (err) {
     console.error(err);
     res.status(500).send('Server Error');

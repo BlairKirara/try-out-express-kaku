@@ -38,7 +38,7 @@ exports.get_scores = async (req, res) => {
         order: [['score', 'DESC']] // Sort scores in descending order
       });
   
-      res.render('user_scores', { scores: userScores });
+      res.render('user_scores', { scores: userScores, user: req.user });
     } catch (error) {
       console.error('Error fetching user scores:', error);
       res.status(500).json({ success: false, message: 'Server Error' });

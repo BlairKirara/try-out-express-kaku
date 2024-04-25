@@ -85,6 +85,7 @@ let dakuten = [
     }
     
     function showScore() {
+        const lvl = 'dakuten';
         document.getElementById("question").innerText = "Quiz finished! Your score: " + correctCount + " out of 15";
         document.getElementById("question").style.fontSize = "30px"
         document.getElementById("go_back_to").innerText = "Go back to:";
@@ -94,6 +95,26 @@ let dakuten = [
         document.getElementById("answer").style.display = "none";
         document.getElementById("result").style.display = "none";
         document.getElementById("questionNumber").innerText = ""; 
+
+        const scoreData = {
+            score: correctCount,
+            lvl: lvl,
+        };
+
+    const xhr = new XMLHttpRequest();
+      xhr.open('POST', '/score', true);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          console.log('Score posted successfully');
+        } else {
+          console.error('Error posting score:', xhr.statusText);
+        }
+      };
+      xhr.onerror = function () {
+        console.error('Network error while posting score');
+      };
+      xhr.send(JSON.stringify(scoreData));
     }
     
     displayQuestion();

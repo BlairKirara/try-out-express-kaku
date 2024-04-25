@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  h1 Your Scores
+  h1 Your High Scores
   | &nbsp;
   if scores.length === 0
     p No scores available.
@@ -12,7 +12,11 @@ block content
           th Level
           th Score
       tbody
+        - var highestScores = {};
         each score in scores
+          - if (!highestScores[score.lvl] || highestScores[score.lvl].score < score.score)
+            - highestScores[score.lvl] = score;
+        each level in Object.values(highestScores)
           tr
-            td= score.lvl
-            td= score.score
+            td= level.lvl
+            td= level.score

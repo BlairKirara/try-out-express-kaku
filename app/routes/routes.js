@@ -32,6 +32,8 @@ router.get('/hiragana/list', hiraganaController.getHiraganaList);
 
 router.get('/hiragana/quiz_lvl', hiraganaController.getHiraganaQuizLvl);
 
+router.get('/hiragana/quiz', hiraganaController.getHiraganaQuiz);
+
 //katakana routes
 
 router.get('/katakana', katakanaController.getKatakana);
