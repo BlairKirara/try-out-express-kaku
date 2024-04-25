@@ -7,14 +7,14 @@ dotenv.config();
 
 exports.save_score = async (req, res) => {
   try {
-    // Assuming you have access to the user's ID through authentication
     const userId = req.user.id;
-    const { score } = req.body; // Assuming the score is sent in the request body
+    const { score } = req.body; 
+    const { lvl } = req.body;
 
     // Save the score to the database
     const quizScore = await QuizScore.create({
       userId: userId,
-      lvl: 'katakana', // Assuming this is for the katakana quiz, you can adjust accordingly
+      lvl: lvl,
       score: score,
     });
 
@@ -26,3 +26,21 @@ exports.save_score = async (req, res) => {
     res.status(500).json({ success: false, message: 'Server Error' });
   }
 };
+
+exports.get_scores = async (req, res) => {
+    try {
+      // Assuming you have access to the user's ID through authentication
+      const userId = req.user.id;
+  
+      // Fetch scores for the logged-in user
+      const userScores = await QuizScore.findAll({
+        where: { userId },
+        order: [['score', 'DESC']] // Sort scores in descending order
+      });
+  
+      res.render('user_scores', { scores: userScores });
+    } catch (error) {
+      console.error('Error fetching user scores:', error);
+      res.status(500).json({ success: false, message: 'Server Error' });
+    }
+  };

@@ -22,6 +22,8 @@ router.post('/login', userController.logIn);
 // router.post("/score", scoreController.score_create_post);
 router.post('/score', scoreController.save_score);
 
+router.get('/scores', scoreController.get_scores);
+
 //hiragana routes
 
 router.get('/hiragana', hiraganaController.getHiragana);

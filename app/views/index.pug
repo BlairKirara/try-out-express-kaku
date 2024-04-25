@@ -3,6 +3,7 @@ extends layout
 block content
     if user
       h1 WELCOME BACK #{user.username.toUpperCase()}
+      a(href='/scores') Scores
     else
       h2 Log In or Sing Up
       form(action='/login' method='POST')
