@@ -1,27 +1,35 @@
-const Sequelize = require('sequelize');
+'use strict';
+const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../db');
+const User = require('./user');
 
-const QuizScore = sequelize.define(
-    'userId',
-    {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        refrences: {
-            model: User,
-            key: id
-        }
+class QuizScore extends Model {}
+
+QuizScore.init(
+  {
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: User,
+        key: 'id',
+      },
     },
-    'lvl',
-    {
-        type: Sequelize.STRING
+    lvl: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
-    'score',
-    {
-        type: Sequelize.INTEGER
+    score: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
-    {
-        timestamps: false,
-    }
+  },
+  {
+    sequelize,
+    timestamps: false,
+    modelName: 'QuizScore',
+    tableName: 'quiz_scores',
+  }
 );
 
 module.exports = QuizScore;

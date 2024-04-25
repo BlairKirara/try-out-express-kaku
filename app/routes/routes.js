@@ -7,7 +7,6 @@ const radicalsController = require('../controllers/radicalsController');
 const aboutController = require('../controllers/aboutController');
 const scoreController = require('../controllers/scoreController');
 
-
 router.get('/', userController.getIndex);
 
 router.get('/signup', userController.getSignup);
@@ -20,7 +19,8 @@ router.post('/login', userController.logIn);
 
 //score routes
 
-router.post("/score/create", scoreController.score_create_post);
+// router.post("/score", scoreController.score_create_post);
+router.post('/score', scoreController.save_score);
 
 //hiragana routes
 
@@ -42,7 +42,10 @@ router.get('/katakana/quiz', katakanaController.getKatakanaQuiz);
 
 router.get('/katakana/dakuten_quiz', katakanaController.getDakutenQuiz);
 
-router.get('/katakana/combinations_quiz', katakanaController.getCombinationsQuiz);
+router.get(
+  '/katakana/combinations_quiz',
+  katakanaController.getCombinationsQuiz
+);
 
 router.get('/katakana/final_test', katakanaController.getFinalQuiz);
 
@@ -57,8 +60,5 @@ router.get('/radicals/list', radicalsController.getRadicalsList);
 router.get('/about', aboutController.getAbout);
 
 router.get('/about/history', aboutController.getHistory);
-
-
-
 
 module.exports = router;
