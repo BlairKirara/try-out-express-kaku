@@ -5,6 +5,8 @@ const hiraganaController = require('../controllers/hiraganaController');
 const katakanaController = require('../controllers/katakanaController');
 const radicalsController = require('../controllers/radicalsController');
 const aboutController = require('../controllers/aboutController');
+const scoreController = require('../controllers/scoreController');
+
 
 router.get('/', userController.getIndex);
 
@@ -15,6 +17,10 @@ router.post('/signup', userController.postSignup);
 router.get('/logout', userController.logOut);
 
 router.post('/login', userController.logIn);
+
+//score routes
+
+router.post("/score/create", scoreController.score_create_post);
 
 //hiragana routes
 
