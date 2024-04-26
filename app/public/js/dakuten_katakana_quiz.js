@@ -29,6 +29,7 @@ let dakuten = [
     let randomCharacter;
     let questionCount = 0;
     let correctCount = 0;
+    let number_of_questions = 15;
     
     function getRandomCharacter() {
         randomCharacter = [];
@@ -85,7 +86,7 @@ let dakuten = [
     }
     
     function showScore() {
-        const lvl = 'dakuten';
+        const lvl = 'Katakana Dakuten';
         document.getElementById("question").innerText = "Quiz finished! Your score: " + correctCount + " out of 15";
         document.getElementById("question").style.fontSize = "30px"
         document.getElementById("go_back_to").innerText = "Go back to:";
@@ -96,25 +97,27 @@ let dakuten = [
         document.getElementById("result").style.display = "none";
         document.getElementById("questionNumber").innerText = ""; 
 
-        const scoreData = {
-            score: correctCount,
-            lvl: lvl,
-        };
+        const percentage = ((correctCount / number_of_questions) * 100).toFixed(2);
 
-    const xhr = new XMLHttpRequest();
-      xhr.open('POST', '/score', true);
-      xhr.setRequestHeader('Content-Type', 'application/json');
-      xhr.onload = function () {
-        if (xhr.status === 200) {
-          console.log('Score posted successfully');
-        } else {
-          console.error('Error posting score:', xhr.statusText);
-        }
-      };
-      xhr.onerror = function () {
-        console.error('Network error while posting score');
-      };
-      xhr.send(JSON.stringify(scoreData));
+        const scoreData = {
+            score: percentage,
+            lvl: lvl,
+          };
+
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', '/score', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+            console.log('Score posted successfully');
+            } else {
+            console.error('Error posting score:', xhr.statusText);
+            }
+        };
+        xhr.onerror = function () {
+            console.error('Network error while posting score');
+        };
+        xhr.send(JSON.stringify(scoreData));
     }
     
     displayQuestion();

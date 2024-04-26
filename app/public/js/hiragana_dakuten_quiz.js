@@ -1,62 +1,41 @@
-let katakana = [
-    { Katakana: 'ア', Romaji: 'a' },
-    { Katakana: 'イ', Romaji: 'i' },
-    { Katakana: 'ウ', Romaji: 'u' },
-    { Katakana: 'エ', Romaji: 'e' },
-    { Katakana: 'オ', Romaji: 'o' },
-    { Katakana: 'カ', Romaji: 'ka' },
-    { Katakana: 'キ', Romaji: 'ki' },
-    { Katakana: 'ク', Romaji: 'ku' },
-    { Katakana: 'ケ', Romaji: 'ke' },
-    { Katakana: 'コ', Romaji: 'ko' },
-    { Katakana: 'サ', Romaji: 'sa' },
-    { Katakana: 'シ', Romaji: 'shi' },
-    { Katakana: 'ス', Romaji: 'su' },
-    { Katakana: 'セ', Romaji: 'se' },
-    { Katakana: 'ソ', Romaji: 'so' },
-    { Katakana: 'タ', Romaji: 'ta' },
-    { Katakana: 'チ', Romaji: 'chi' },
-    { Katakana: 'ツ', Romaji: 'tsu' },
-    { Katakana: 'テ', Romaji: 'te' },
-    { Katakana: 'ト', Romaji: 'to' },
-    { Katakana: 'ナ', Romaji: 'na' },
-    { Katakana: 'ニ', Romaji: 'ni' },
-    { Katakana: 'ヌ', Romaji: 'nu' },
-    { Katakana: 'ネ', Romaji: 'ne' },
-    { Katakana: 'ノ', Romaji: 'no' },
-    { Katakana: 'ハ', Romaji: 'ha' },
-    { Katakana: 'ヒ', Romaji: 'hi' },
-    { Katakana: 'フ', Romaji: 'fu' },
-    { Katakana: 'ヘ', Romaji: 'he' },
-    { Katakana: 'ホ', Romaji: 'ho' },
-    { Katakana: 'マ', Romaji: 'ma' },
-    { Katakana: 'ミ', Romaji: 'mi' },
-    { Katakana: 'ム', Romaji: 'mu' },
-    { Katakana: 'メ', Romaji: 'me' },
-    { Katakana: 'モ', Romaji: 'mo' },
-    { Katakana: 'ヤ', Romaji: 'ya' },
-    { Katakana: 'ユ', Romaji: 'yu' },
-    { Katakana: 'ヨ', Romaji: 'yo' },
-    { Katakana: 'ラ', Romaji: 'ra' },
-    { Katakana: 'リ', Romaji: 'ri' },
-    { Katakana: 'ル', Romaji: 'ru' },
-    { Katakana: 'レ', Romaji: 're' },
-    { Katakana: 'ロ', Romaji: 'ro' },
-    { Katakana: 'ワ', Romaji: 'wa' },
-    { Katakana: 'ヲ', Romaji: 'wo' },
-    { Katakana: 'ン', Romaji: 'n' },
+let hiragana = [
+    { Hiragana: "が", Romaji: 'ga'},
+    { Hiragana: "ぎ", Romaji: 'gi'},
+    { Hiragana: "ぐ", Romaji: 'gu'},
+    { Hiragana: "げ", Romaji: 'ge'},
+    { Hiragana: "ご", Romaji: 'go'},
+    { Hiragana: "ざ", Romaji: 'za'},
+    { Hiragana: "じ", Romaji: 'ji'},
+    { Hiragana: "ず", Romaji: 'zu'},
+    { Hiragana: "ぜ", Romaji: 'ze'},
+    { Hiragana: "ぞ", Romaji: 'zo'},
+    { Hiragana: "だ", Romaji: 'da'},
+    { Hiragana: "ぢ", Romaji: 'ji'},
+    { Hiragana: "づ", Romaji: 'zu'}, 
+    { Hiragana: "で", Romaji: 'de'},
+    { Hiragana: "ど", Romaji: 'do'},
+    { Hiragana: "ば", Romaji: 'ba'},
+    { Hiragana: "び", Romaji: 'bi'},
+    { Hiragana: "ぶ", Romaji: 'bu'},
+    { Hiragana: "べ", Romaji: 'be'},
+    { Hiragana: "ぼ", Romaji: 'bo'},
+    { Hiragana: "ぱ", Romaji: 'pa'},
+    { Hiragana: "ぴ", Romaji: 'pi'},
+    { Hiragana: "ぷ", Romaji: 'pu'},
+    { Hiragana: "ぺ", Romaji: 'pe'},
+    { Hiragana: "ぽ", Romaji: 'po'}
   ];
   
   let randomCharacter;
   let questionCount = 0;
   let correctCount = 0;
-  let number_of_questions = 20;
+  let number_of_questions = 15;
   
   function getRandomCharacter() {
     randomCharacter = [];
     while (randomCharacter.length < 3) {
-      let index = Math.floor(Math.random() * katakana.length);
-      let kata = katakana[index];
+      let index = Math.floor(Math.random() * hiragana.length);
+      let kata = hiragana[index];
       if (!randomCharacter.includes(kata)) {
         randomCharacter.push(kata);
       }
@@ -65,16 +44,16 @@ let katakana = [
   
   function displayQuestion() {
     questionCount++;
-    if (questionCount <= 20) {
+    if (questionCount <= number_of_questions) {
       getRandomCharacter();
       let question = '';
       randomCharacter.forEach((kata) => {
-        question += kata.Katakana;
+        question += kata.Hiragana;
       });
       document.getElementById('question').innerText = question;
       document.getElementById('answer').value = '';
       document.getElementById('questionNumber').innerText =
-        'Question ' + questionCount + ' of 20';
+        'Question ' + questionCount + ' of ' + number_of_questions;
     } else {
       showScore();
     }
@@ -109,26 +88,27 @@ let katakana = [
   
   function showScore() {
       // Display the score
-      const lvl = 'Katakana';
+      const lvl = 'Hiragana Dakuten';
       document.getElementById('question').innerText =
-        'Quiz finished! Your score: ' + correctCount + ' out of 20';
+        'Quiz finished! Your score: ' + correctCount + ' out of ' + number_of_questions;
       document.getElementById('question').style.fontSize = '30px';
       document.getElementById('go_back_to').innerText = 'Go back to:';
       document.getElementById('go_back_front').innerHTML =
         "<a href='/'>Front Page</a>";
       document.getElementById('go_back_katakana').innerHTML =
-        "<a href='/katakana/list'>Katakana List</a>";
+        "<a href='/hiragana/list'>Hiragana List</a>";
       document.getElementById('submit_answer').style.display = 'none';
       document.getElementById('answer').style.display = 'none';
       document.getElementById('result').style.display = 'none';
       document.getElementById('questionNumber').innerText = '';
-    
-      const percentage = ((correctCount / number_of_questions) * 100).toFixed(2);
 
+      const percentage = ((correctCount / number_of_questions) * 100).toFixed(2);
+    
+      // Send the score to the server
       const scoreData = {
-          score: percentage,
-          lvl: lvl,
-        };
+        score: percentage,
+        lvl: lvl,
+      };
     
       // Send an AJAX request to the server
       const xhr = new XMLHttpRequest();

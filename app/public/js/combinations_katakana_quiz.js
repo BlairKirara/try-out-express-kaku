@@ -37,6 +37,7 @@ let combinations = [
     let randomCharacter;
     let questionCount = 0;
     let correctCount = 0;
+    let number_of_questions = 15;
     
     function getRandomCharacter() {
         randomCharacter = [];
@@ -93,7 +94,7 @@ let combinations = [
     }
     
     function showScore() {
-        const lvl = "combinations";
+        const lvl = "Katakana Combinations";
         document.getElementById("question").innerText = "Quiz finished! Your score: " + correctCount + " out of 15";
         document.getElementById("question").style.fontSize = "30px"
         document.getElementById("go_back_to").innerText = "Go back to:";
@@ -104,10 +105,12 @@ let combinations = [
         document.getElementById("result").style.display = "none";
         document.getElementById("questionNumber").innerText = ""; 
 
+        const percentage = ((correctCount / number_of_questions) * 100).toFixed(2);
+
         const scoreData = {
-            score: correctCount,
+            score: percentage,
             lvl: lvl,
-        };
+          };
 
         const xhr = new XMLHttpRequest();
         xhr.open('POST', '/score', true);

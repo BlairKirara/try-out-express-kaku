@@ -77,3 +77,12 @@ exports.getRadicalsList = async (req, res) => {
     res.status(500).send('Server Error');
   }
 };
+
+exports.getRadicalsQuiz = async (req, res) => {
+  try {
+    res.render('radicals/radicals_quiz', { user: req.user });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
+};

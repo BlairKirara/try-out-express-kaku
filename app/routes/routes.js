@@ -34,6 +34,14 @@ router.get('/hiragana/quiz_lvl', hiraganaController.getHiraganaQuizLvl);
 
 router.get('/hiragana/quiz', hiraganaController.getHiraganaQuiz);
 
+router.get('/hiragana/dakuten_quiz', hiraganaController.getHiraganaDakutenQuiz);
+
+router.get('/hiragana/combinations_quiz', hiraganaController.getHiraganaCombinationsQuiz);
+
+router.get('/hiragana/final_test', hiraganaController.getHiraganaFinalTest);
+
+router.get('/hiragana/converter', hiraganaController.getHiraganaConverter);
+
 //katakana routes
 
 router.get('/katakana', katakanaController.getKatakana);
@@ -58,6 +66,8 @@ router.get('/katakana/final_test', katakanaController.getFinalQuiz);
 router.get('/radicals', radicalsController.getRadicals);
 
 router.get('/radicals/list', radicalsController.getRadicalsList);
+
+router.get('/radicals/quiz', radicalsController.getRadicalsQuiz);
 
 //about routes
 

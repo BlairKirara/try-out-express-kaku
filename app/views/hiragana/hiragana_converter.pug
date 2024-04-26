@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+  .container
+    h1 Romaji to Hiragana Converter
+
+    // Form for input
+    form(action="#" method="post")
+      label(for="input") Enter Romaji text:
+      textarea(id="input" name="input" placeholder="Enter Romaji text here" rows="4" cols="50")
+      button(type="button" onclick="convertRomajiToHiragana()") Convert
+
+    // Output section
+    div
+      h2 Result:
+      p#output
+
+    script(src="../js/hiragana_converter.js")

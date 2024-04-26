@@ -150,3 +150,39 @@ exports.getHiraganaQuiz = async (req, res) => {
     res.status(500).send('Server Error');
   }
 };
+
+exports.getHiraganaDakutenQuiz = async (req, res) => {
+  try {
+    res.render('hiragana/hiragana_dakuten_quiz', { user: req.user });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
+};
+
+exports.getHiraganaCombinationsQuiz = async (req, res) => {
+  try {
+    res.render('hiragana/hiragana_combinations_quiz', { user: req.user });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
+};
+
+exports.getHiraganaFinalTest = async (req, res) => {
+  try {
+    res.render('hiragana/final_hiragana_test', { user: req.user });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
+};
+
+exports.getHiraganaConverter = async (req, res) => {
+  try {
+    res.render('hiragana/hiragana_converter', { user: req.user });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
+};

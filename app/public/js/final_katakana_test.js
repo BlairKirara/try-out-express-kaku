@@ -88,6 +88,7 @@ let katakana = [
     let randomCharacter;
     let questionCount = 0;
     let correctCount = 0;
+    let number_of_questions = 25;
     
     function getRandomCharacter() {
         randomCharacter = [];
@@ -144,7 +145,7 @@ let katakana = [
     }
     
     function showScore() {
-        const lvl = 'final';
+        const lvl = 'Katakana Final Test';
         document.getElementById("question").innerText = "Quiz finished! Your score: " + correctCount + " out of 25";
         document.getElementById("question").style.fontSize = "30px"
         document.getElementById("go_back_to").innerText = "Go back to:";
@@ -155,10 +156,12 @@ let katakana = [
         document.getElementById("result").style.display = "none";
         document.getElementById("questionNumber").innerText = ""; 
 
+        const percentage = ((correctCount / number_of_questions) * 100).toFixed(2);
+
         const scoreData = {
-            score: correctCount,
+            score: percentage,
             lvl: lvl,
-        };
+          };
 
         const xhr = new XMLHttpRequest();
       xhr.open('POST', '/score', true);
