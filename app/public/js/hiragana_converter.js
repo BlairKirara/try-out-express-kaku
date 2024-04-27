@@ -27,11 +27,11 @@ const romajiToHiragana = {
     'pya': 'ぴゃ', 'pyu': 'ぴゅ', 'pyo': 'ぴょ'
 };
 
+let flashcards = [];
+
 function convertRomajiToHiragana() {
     const inputText = document.getElementById("input").value;
-    // Splitting text by non-letter characters
     let words = inputText.split(/[^a-zA-Z]+/).filter(Boolean);
-    let flashcards = [];
 
     for (let word of words) {
         let romaji = word.toLowerCase();
@@ -62,6 +62,7 @@ function convertRomajiToHiragana() {
         }
 
         flashcards.push({ romaji: romaji, hiragana: hiragana });
+
     }
 
     let outputText = "";
@@ -70,7 +71,28 @@ function convertRomajiToHiragana() {
     }
 
     document.getElementById("output").innerText = outputText;
+    document.getElementById("output-section").style.display = "block";
 }
+
+function saveYourSet(){
+    const setName = document.getElementById("set").value;
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', '/set', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+        console.log('Name posted successfully');
+        } else {
+        console.error('Error posting name:', xhr.statusText);
+        }
+    };
+    xhr.onerror = function () {
+        console.error('Network error while posting name');
+    };
+    xhr.send(JSON.stringify(setName));
+}
+
 
 
 

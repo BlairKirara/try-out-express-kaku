@@ -10,9 +10,13 @@ block content
       textarea(id="input" name="input" placeholder="Enter Romaji text here" rows="4" cols="50")
       button(type="button" onclick="convertRomajiToHiragana()") Convert
 
-    // Output section
-    div
+    div#output-section(style="display: none;")
       h2 Result:
       p#output
+      form(action="/set" method="post")
+        label(for='name') Provide the name of your set:
+        input(class='set', type='text', placeholder='your name', name='set', id='set')
+        button(onclick='saveYourSet()') Save
+
 
     script(src="../js/hiragana_converter.js")
