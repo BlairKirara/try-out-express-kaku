@@ -5,7 +5,7 @@ block content
     h1 Romaji to Hiragana Converter
 
     // Form for input
-    form(action="#" method="post")
+    form(action="" method="post")
       label(for="input") Enter Romaji text:
       textarea(id="input" name="input" placeholder="Enter Romaji text here" rows="4" cols="50")
       button(type="button" onclick="convertRomajiToHiragana()") Convert
@@ -13,9 +13,9 @@ block content
     div#output-section(style="display: none;")
       h2 Result:
       p#output
-      form(action="/set" method="post")
+      form(action="set" method="post")
         label(for='name') Provide the name of your set:
-        input(class='set', type='text', placeholder='your name', name='set', id='set')
+        input(class='set', type='text', placeholder='your name', name='name', id='name')
         button(onclick='saveYourSet()') Save
 
 

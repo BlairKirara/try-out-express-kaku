@@ -37,13 +37,16 @@ router.get('/hiragana/quiz', hiraganaController.getHiraganaQuiz);
 
 router.get('/hiragana/dakuten_quiz', hiraganaController.getHiraganaDakutenQuiz);
 
-router.get('/hiragana/combinations_quiz', hiraganaController.getHiraganaCombinationsQuiz);
+router.get(
+  '/hiragana/combinations_quiz',
+  hiraganaController.getHiraganaCombinationsQuiz
+);
 
 router.get('/hiragana/final_test', hiraganaController.getHiraganaFinalTest);
 
 router.get('/hiragana/converter', hiraganaController.getHiraganaConverter);
 
-router.post('/set', setController.save_set);
+router.post('/hiragana/set', setController.save_set);
 
 //katakana routes
 
