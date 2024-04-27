@@ -1,22 +1,26 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('hiragana_sets', {
+    await queryInterface.createTable('katakana_sets', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      setId: {
+      userId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'set_lists',
+          model: 'users',
           key: 'id',
         },
       },
-      hiragana: {
+      set: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      katakana: {
         type: Sequelize.STRING,
         allowNull: false,
       },
@@ -27,6 +31,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('hiragana_sets');
+    await queryInterface.dropTable('katakana_sets');
   },
 };

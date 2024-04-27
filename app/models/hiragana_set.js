@@ -1,27 +1,38 @@
-const Sequelize = require('sequelize');
+const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../db');
+const User = require('./user');
 
-const HiraganaSet = sequelize.define(
-    'setId',
-    {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        refrences: {
-            model: SetList,
-            key: id
-        }
+class HiraganaSet extends Model {}
+
+HiraganaSet.init(
+  {
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: User,
+        key: 'id',
+      },
     },
-    'hiragana',
-    {
-        type: Sequelize.STRING
+    set: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
-    'romaji',
-    {
-        type: Sequelize.STRING
+    hiragana: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
-    {
-        timestamps: false,
-    }
+    romaji: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+  },
+  {
+    sequelize,
+    timestamps: false,
+    modelName: 'HiraganaSet',
+    tableName: 'hiragana_sets',
+  }
 );
 
 module.exports = HiraganaSet;

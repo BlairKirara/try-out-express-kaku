@@ -1,27 +1,38 @@
-const Sequelize = require('sequelize');
+const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../db');
+const User = require('./user');
 
-const KatakanaSet = sequelize.define(
-    'setId',
-    {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        refrences: {
-            model: SetList,
-            key: id
-        }
+class KatakanaSet extends Model {}
+
+KatakanaSet.init(
+  {
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: User,
+        key: 'id',
+      },
     },
-    'katakana',
-    {
-        type: Sequelize.STRING
+    set: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
-    'romaji',
-    {
-        type: Sequelize.STRING
+    katakana: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
-    {
-        timestamps: false,
-    }
+    romaji: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+  },
+  {
+    sequelize,
+    timestamps: false,
+    modelName: 'KatakanaSet',
+    tableName: 'katakana_sets',
+  }
 );
 
 module.exports = KatakanaSet;
