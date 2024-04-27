@@ -1,22 +1,18 @@
 const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../db');
-const User = require('./user');
+const SetList = require('./set_list');
 
 class HiraganaSet extends Model {}
 
 HiraganaSet.init(
   {
-    userId: {
+    setId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: User,
+        model: SetList,
         key: 'id',
       },
-    },
-    set: {
-      type: DataTypes.STRING,
-      allowNull: false,
     },
     hiragana: {
       type: DataTypes.STRING,

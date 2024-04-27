@@ -1,24 +1,20 @@
 const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../db');
-const SetList = require('./set_list');
+const User = require('./user');
 
-class KatakanaSet extends Model {}
+class SetList extends Model {}
 
-KatakanaSet.init(
+SetList.init(
   {
-    setId: {
+    userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: SetList,
+        model: User,
         key: 'id',
       },
     },
-    katakana: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    romaji: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -26,9 +22,9 @@ KatakanaSet.init(
   {
     sequelize,
     timestamps: false,
-    modelName: 'KatakanaSet',
-    tableName: 'katakana_sets',
+    modelName: 'SetList',
+    tableName: 'set_lists',
   }
 );
 
-module.exports = KatakanaSet;
+module.exports = SetList;
