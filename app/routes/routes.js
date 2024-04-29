@@ -7,6 +7,7 @@ const radicalsController = require('../controllers/radicalsController');
 const aboutController = require('../controllers/aboutController');
 const scoreController = require('../controllers/scoreController');
 const setController = require('../controllers/setController');
+const hiraganaSetController = require('../controllers/hiraganaSetController');
 
 router.get('/', userController.getIndex);
 
@@ -47,6 +48,8 @@ router.get('/hiragana/final_test', hiraganaController.getHiraganaFinalTest);
 router.get('/hiragana/converter', hiraganaController.getHiraganaConverter);
 
 router.post('/hiragana/set', setController.save_set);
+
+router.post('/hiragana/set_data', hiraganaSetController.save_set_data);
 
 //katakana routes
 

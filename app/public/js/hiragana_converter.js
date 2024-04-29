@@ -91,6 +91,29 @@ function saveYourSet(){
         console.error('Network error while posting name');
     };
     xhr.send(JSON.stringify(setName));
+
+    for (let flashcard of flashcards) {
+        const setData = {
+            name: setName,
+            hiragana: flashcard.hiragana,
+            romaji: flashcard.romaji,
+          };
+
+          const xhr = new XMLHttpRequest();
+          xhr.open('POST', '/set_data', true);
+          xhr.setRequestHeader('Content-Type', 'application/json');
+          xhr.onload = function () {
+              if (xhr.status === 200) {
+              console.log('Set data posted successfully');
+              } else {
+              console.error('Error posting set data:', xhr.statusText);
+              }
+          };
+          xhr.onerror = function () {
+              console.error('Network error while posting set data');
+          };
+          xhr.send(JSON.stringify(setData));
+    }
 }
 
 
