@@ -37,25 +37,30 @@ exports.save_set = async (req, res) => {
 
 exports.delete_set = async (req, res) => {
   try {
-    const setId = req.params.setId; // Assuming you pass set ID as a route parameter
+    const setId = req.params.setId;
 
-    // Delete the set from SetList table
-    await SetList.destroy({
-      where: { id: setId }
+    const flashcards = await HiraganaSet.findAll({
+      where: { setId: setId },
     });
 
-    // Delete associated flashcards from HiraganaSet table
-    await HiraganaSet.destroy({
-      where: { setId: setId }
+    for (let flashcard of flashcards) {
+      await flashcard.destroy();
+    }
+
+    const set = await SetList.findOne({
+      where: { id: setId },
     });
-    
-    res.status(200).json({ success: true, message: 'Set and associated flashcards deleted successfully' });
+    await set.destroy();
+
+    res.status(200).json({
+      success: true,
+      message: 'Set and associated flashcards deleted successfully',
+    });
   } catch (error) {
     console.error('Error deleting set:', error);
     res.status(500).json({ success: false, message: 'Server Error' });
   }
 };
-
 
 exports.get_sets= async (req, res) => {
   try {
@@ -73,4 +78,6 @@ exports.get_sets= async (req, res) => {
     res.status(500).json({ success: false, message: 'Server Error' });
   }
 };
+
+
 
