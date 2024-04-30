@@ -131,6 +131,9 @@ const romajiToHiragana = {
         } else if (romaji[i] === romaji[i + 1]) {
           hiragana += 'っ';
           i++;
+        } else if (/[a-zA-Z]/.test(char)) {
+          hiragana += char;
+          i++;
         } else {
           i++;
           continue;
@@ -147,6 +150,8 @@ const romajiToHiragana = {
   
     document.getElementById('output').innerText = outputText;
     document.getElementById('output-section').style.display = 'block';
+
+    document.getElementById('converter-box').style.display = 'none';
   }
   
   function saveYourSet() {
@@ -157,7 +162,7 @@ const romajiToHiragana = {
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onload = function () {
       if (xhr.status === 200) {
-        console.log('Name posted successfully');
+        document.getElementById('output-section').innerHTML = "<p>Set saved successfully</p>";
       } else {
         console.error('Error posting name:', xhr.statusText);
       }
@@ -167,3 +172,4 @@ const romajiToHiragana = {
     };
     xhr.send(JSON.stringify({ name: setName, flashcards: flashcards }));
   }
+  

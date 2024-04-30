@@ -7,7 +7,7 @@ const radicalsController = require('../controllers/radicalsController');
 const aboutController = require('../controllers/aboutController');
 const scoreController = require('../controllers/scoreController');
 const setController = require('../controllers/setController');
-const hiraganaSetController = require('../controllers/hiraganaSetController');
+const katakanaSetController = require('../controllers/katakanaSetController');
 
 router.get('/', userController.getIndex);
 
@@ -25,6 +25,8 @@ router.post('/login', userController.logIn);
 router.post('/score', scoreController.save_score);
 
 router.get('/scores', scoreController.get_scores);
+
+router.get('/user_sets', setController.get_sets);
 
 //hiragana routes
 
@@ -49,7 +51,7 @@ router.get('/hiragana/converter', hiraganaController.getHiraganaConverter);
 
 router.post('/hiragana/set', setController.save_set);
 
-router.post('/hiragana/set_data', hiraganaSetController.save_set_data);
+// router.post('/hiragana/set_data', hiraganaSetController.save_set_data);
 
 //katakana routes
 
@@ -69,6 +71,10 @@ router.get(
 );
 
 router.get('/katakana/final_test', katakanaController.getFinalQuiz);
+
+router.get('/katakana/converter', katakanaController.getKatakanaConverter);
+
+router.post('/katakana/set', katakanaSetController.save_set);
 
 //radicals routes
 

@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h1 Your Sets
+  | &nbsp;
+  if sets.length === 0
+    p No sets available.
+  else
+    table
+      thead
+        tr
+          th Set Name
+          th Actions
+      tbody
+        each set in sets
+          tr
+            td= set.name
+            td
+              button(onclick="practiceSet('" + set._id + "')") Practice
+              | &nbsp;
+              button(onclick="deleteSet('" + set._id + "')") Delete
+

@@ -2,7 +2,7 @@ const passport = require('passport');
 const User = require('../models/user');
 const dotenv = require('dotenv');
 const SetList = require('../models/set_list');
-const HiraganaSet = require('../models/hiragana_set');
+const KatakanaSet = require('../models/katakana_set');
 
 dotenv.config();
 
@@ -21,9 +21,9 @@ exports.save_set = async (req, res) => {
     });
 
     for (let flashcard of flashcards) {
-      await HiraganaSet.create({
+      await KatakanaSet.create({
         setId: setList.id,
-        hiragana: flashcard.hiragana,
+        katakana: flashcard.katakana,
         romaji: flashcard.romaji,
       });
     }
@@ -31,23 +31,6 @@ exports.save_set = async (req, res) => {
     res.status(200).json({ success: true, message: 'Set saved successfully' });
   } catch (error) {
     console.error('Error saving set:', error);
-    res.status(500).json({ success: false, message: 'Server Error' });
-  }
-};
-
-exports.get_sets= async (req, res) => {
-  try {
-    // Assuming you have access to the user's ID through authentication
-    const userId = req.user.id;
-
-    // Fetch scores for the logged-in user
-    const userSets = await SetList.findAll({
-      where: { userId },
-    });
-
-    res.render('user_sets', { sets: userSets, user: req.user });
-  } catch (error) {
-    console.error('Error fetching user scores:', error);
     res.status(500).json({ success: false, message: 'Server Error' });
   }
 };
