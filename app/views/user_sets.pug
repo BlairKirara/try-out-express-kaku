@@ -16,7 +16,8 @@ block content
           tr
             td= set.name
             td
-              button(onclick="practiceSet('" + set._id + "')") Practice
+              button(onclick=`practiceSet('${set.id}')`) Practice
               | &nbsp;
-              button(onclick="deleteSet('" + set._id + "')") Delete
+              button(onclick=`deleteSet('${set.id}')`) Delete
 
+  script(src="../js/hiragana_converter.js")

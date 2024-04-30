@@ -28,6 +28,8 @@ router.get('/scores', scoreController.get_scores);
 
 router.get('/user_sets', setController.get_sets);
 
+router.delete('/user_sets/:setId', setController.delete_set);
+
 //hiragana routes
 
 router.get('/hiragana', hiraganaController.getHiragana);

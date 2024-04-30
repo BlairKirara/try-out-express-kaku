@@ -173,3 +173,24 @@ const romajiToHiragana = {
     xhr.send(JSON.stringify({ name: setName, flashcards: flashcards }));
   }
   
+
+  function deleteSet(setId) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('DELETE', `/user_sets/${setId}`, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        // Optionally handle success response
+        console.log('Set deleted successfully');
+        // Reload the page to reflect the changes
+        location.reload(); // This will refresh the page
+      } else {
+        console.error('Error deleting set:', xhr.statusText);
+      }
+    };
+    xhr.onerror = function () {
+      console.error('Network error while deleting set');
+    };
+    xhr.send();
+  }
+  
