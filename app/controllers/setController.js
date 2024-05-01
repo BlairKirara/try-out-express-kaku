@@ -79,7 +79,7 @@ exports.get_sets = async (req, res) => {
 
     const sets = filteredSets.filter((set) => set);
 
-    res.render('hiragana_sets', { sets, user: req.user });
+    res.render('hiragana/hiragana_sets', { sets, user: req.user });
   } catch (error) {
     console.error('Error fetching user sets:', error);
     res.status(500).json({ success: false, message: 'Server Error' });
@@ -97,7 +97,7 @@ exports.practiceSet = async (req, res) => {
       return res.status(404).send('Set not found');
     }
 
-    res.render('practice_hiragana_set', { set, user: req.user });
+    res.render('hiragana/practice_hiragana_set', { set, user: req.user });
   } catch (error) {
     console.error('Error practicing set:', error);
     res.status(500).json({ success: false, message: 'Server Error' });
@@ -114,7 +114,7 @@ exports.editSet = async (req, res) => {
       return res.status(404).send('Set not found');
     }
 
-    res.render('edit_hiragana_set', { set, user: req.user });
+    res.render('hiragana/edit_hiragana_set', { set, user: req.user });
   } catch (error) {
     console.error('Error editing set:', error);
     res.status(500).json({ success: false, message: 'Server Error' });
@@ -170,7 +170,7 @@ exports.editFlashcard = async (req, res) => {
       return res.status(404).send('Flashcard not found');
     }
 
-    res.render('edit_hiragana_flashcard', { flashcard, user: req.user });
+    res.render('hiragana/edit_hiragana_flashcard', { flashcard, user: req.user });
   } catch (error) {
     console.error('Error editing flashcard:', error);
     res.status(500).json({ success: false, message: 'Server Error' });

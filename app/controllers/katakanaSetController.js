@@ -52,7 +52,7 @@ exports.get_katakana_sets = async (req, res) => {
 
     const katakanaSets = filteredSets.filter((set) => set);
 
-    res.render('katakana_sets', { sets: katakanaSets, user: req.user });
+    res.render('katakana/katakana_sets', { sets: katakanaSets, user: req.user });
   } catch (error) {
     console.error('Error fetching user katakana sets:', error);
     res.status(500).json({ success: false, message: 'Server Error' });
@@ -96,7 +96,7 @@ exports.editKatakanaSet = async (req, res) => {
       return res.status(404).send('Set not found');
     }
 
-    res.render('edit_katakana_set', { set, user: req.user });
+    res.render('katakana/edit_katakana_set', { set, user: req.user });
   } catch (error) {
     console.error('Error editing set:', error);
     res.status(500).json({ success: false, message: 'Server Error' });
@@ -152,7 +152,7 @@ exports.editKatakanaFlashcard = async (req, res) => {
       return res.status(404).send('Flashcard not found');
     }
 
-    res.render('edit_katakana_flashcard', { flashcard, user: req.user });
+    res.render('katakana/edit_katakana_flashcard', { flashcard, user: req.user });
   } catch (error) {
     console.error('Error editing flashcard:', error);
     res.status(500).json({ success: false, message: 'Server Error' });
@@ -191,7 +191,7 @@ exports.practiceKatakanaSet = async (req, res) => {
       return res.status(404).send('Set not found');
     }
 
-    res.render('practice_katakana_set', { set, user: req.user });
+    res.render('katakana/practice_katakana_set', { set, user: req.user });
   } catch (error) {
     console.error('Error practicing set:', error);
     res.status(500).json({ success: false, message: 'Server Error' });

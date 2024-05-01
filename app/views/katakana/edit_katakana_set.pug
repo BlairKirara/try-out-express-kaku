@@ -1,4 +1,4 @@
-extends layout
+extends ../layout
 
 block content
   h1 Edit Set
@@ -10,16 +10,16 @@ block content
       thead
         tr
           th Romaji
-          th Hiragana
+          th Katakana
           th Actions
       tbody
         each flashcard in set
           tr
             td= flashcard.romaji
-            td= flashcard.hiragana
+            td= flashcard.katakana
             td
-              button(onclick=`deleteFlashcard('${flashcard.id}')`) Delete
+              button(onclick=`deleteKatakanaFlashcard('${flashcard.id}')`) Delete
               | &nbsp;
-              button(onclick=`editFlashcard('${flashcard.id}')`) Edit
+              button(onclick=`editKatakanaFlashcard('${flashcard.id}')`) Edit
 
-    script(src="../js/hiragana_converter.js")
+    script(src="../js/katakana_converter.js")

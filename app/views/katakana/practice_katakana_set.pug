@@ -1,15 +1,15 @@
-extends layout
+extends ../layout
 
 block content
   h1 Practice Set
   #flashcard-container
-    p#hiragana-reading
+    p#katakana-reading
     p#romaji-reading(style="display: none;")
     button#reveal-romaji-button Reveal Romaji
     button#next-flashcard-button Next Flashcard
     button#go-back-button(type="button") Go back to the flashcard sets list
 
-  script(src="../js/flashcard.js")
+  script(src="../js/katakana_flashcard.js")
   script.
     document.addEventListener('DOMContentLoaded', () => {
       const flashcards = !{JSON.stringify(set)};
@@ -19,6 +19,6 @@ block content
       document.getElementById('next-flashcard-button').addEventListener('click', flashcardFunctions.nextFlashcard);
       
       document.getElementById('go-back-button').addEventListener('click', () => {
-        window.location.href = "/hiragana_sets"; 
+        window.location.href = "/katakana_sets"; 
       });
     });
