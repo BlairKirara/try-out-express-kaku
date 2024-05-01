@@ -198,3 +198,6 @@ const romajiToHiragana = {
     window.location.href = `/practice/${setId}`;
   }
   
+  function editSet(setId) {
+    window.location.href = `/edit/${setId}`;
+  }

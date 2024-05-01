@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1 Edit Set
+  | &nbsp;
+  if set.length === 0
+    p No flashcards available for this set.
+  else
+    table
+      thead
+        tr
+          th Romaji
+          th Hiragana
+      tbody
+        each flashcard in set
+          tr
+            td= flashcard.romaji
+            td= flashcard.hiragana

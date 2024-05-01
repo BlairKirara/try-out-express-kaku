@@ -32,6 +32,8 @@ router.delete('/user_sets/:setId', setController.delete_set);
 
 router.get('/practice/:setId', setController.practiceSet);
 
+router.get('/edit/:setId', setController.editSet);
+
 //hiragana routes
 
 router.get('/hiragana', hiraganaController.getHiragana);
