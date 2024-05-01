@@ -66,12 +66,10 @@ exports.get_sets = async (req, res) => {
   try {
     const userId = req.user.id;
 
-    // Fetch sets from SetList where userId matches
     const userSets = await SetList.findAll({
       where: { userId },
     });
 
-    // Filter sets to include only those whose setId exists in hiragana_sets
     const filteredSets = await Promise.all(userSets.map(async (set) => {
       const count = await HiraganaSet.count({ where: { setId: set.id } });
       if (count > 0) {
@@ -79,7 +77,6 @@ exports.get_sets = async (req, res) => {
       }
     }));
 
-    // Remove undefined entries from the filtered sets
     const sets = filteredSets.filter((set) => set);
 
     res.render('hiragana_sets', { sets, user: req.user });
@@ -94,14 +91,13 @@ exports.practiceSet = async (req, res) => {
   try {
     const { setId } = req.params;
 
-    // Fetch the set and its associated flashcards
     const set = await HiraganaSet.findAll({ where: { setId } });
 
     if (!set) {
       return res.status(404).send('Set not found');
     }
 
-    res.render('practice_set', { set });
+    res.render('practice_hiragana_set', { set, user: req.user });
   } catch (error) {
     console.error('Error practicing set:', error);
     res.status(500).json({ success: false, message: 'Server Error' });
@@ -112,14 +108,13 @@ exports.editSet = async (req, res) => {
   try {
     const { setId } = req.params;
 
-    // Fetch the set and its associated flashcards
     const set = await HiraganaSet.findAll({ where: { setId } });
 
     if (!set) {
       return res.status(404).send('Set not found');
     }
 
-    res.render('edit_set', { set });
+    res.render('edit_hiragana_set', { set, user: req.user });
   } catch (error) {
     console.error('Error editing set:', error);
     res.status(500).json({ success: false, message: 'Server Error' });
@@ -130,7 +125,6 @@ exports.delete_flashcard = async (req, res) => {
   try {
     const { flashcardId } = req.params;
 
-    // Find the flashcard by ID and delete it
     const flashcard = await HiraganaSet.findByPk(flashcardId);
     if (!flashcard) {
       return res.status(404).json({ success: false, message: 'Flashcard not found' });
@@ -149,17 +143,14 @@ exports.update_flashcard = async (req, res) => {
     const { flashcardId } = req.params;
     const { romaji, hiragana } = req.body;
 
-    // Find the flashcard by ID and update its data
     const flashcard = await HiraganaSet.findByPk(flashcardId);
     if (!flashcard) {
       return res.status(404).json({ success: false, message: 'Flashcard not found' });
     }
 
-    // Update the flashcard's data
     flashcard.romaji = romaji;
     flashcard.hiragana = hiragana;
 
-    // Save the updated flashcard
     await flashcard.save();
 
     res.status(200).json({ success: true, message: 'Flashcard updated successfully' });
@@ -173,14 +164,13 @@ exports.editFlashcard = async (req, res) => {
   try {
     const { flashcardId } = req.params;
 
-    // Fetch the flashcard by ID
     const flashcard = await HiraganaSet.findByPk(flashcardId);
 
     if (!flashcard) {
       return res.status(404).send('Flashcard not found');
     }
 
-    res.render('edit_flashcard', { flashcard });
+    res.render('edit_hiragana_flashcard', { flashcard, user: req.user });
   } catch (error) {
     console.error('Error editing flashcard:', error);
     res.status(500).json({ success: false, message: 'Server Error' });
@@ -192,20 +182,17 @@ exports.updateFlashcard = async (req, res) => {
     const { flashcardId } = req.params;
     const { romaji, hiragana } = req.body;
 
-    // Find the flashcard by ID and update its data
     const flashcard = await HiraganaSet.findByPk(flashcardId);
     if (!flashcard) {
       return res.status(404).json({ success: false, message: 'Flashcard not found' });
     }
 
-    // Update the flashcard's data
     flashcard.romaji = romaji;
     flashcard.hiragana = hiragana;
 
-    // Save the updated flashcard
     await flashcard.save();
 
-    res.redirect('/hiragana_sets'); // Redirect to the main page or wherever you want
+    res.redirect('/hiragana_sets'); 
   } catch (error) {
     console.error('Error updating flashcard:', error);
     res.status(500).json({ success: false, message: 'Server Error' });

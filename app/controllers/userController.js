@@ -19,7 +19,7 @@ exports.getSignup = (req, res) => {
 
 exports.postSignup = async (req, res, next) => {
   try {
-    // Check if required fields are empty
+
     if (!req.body.username || !req.body.password || !req.body.confirmPassword) {
       req.flash('error', 'Please fill in all fields');
       return res.render('user/signup', { message: req.flash('error') });

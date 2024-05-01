@@ -75,7 +75,7 @@ router.delete('/flashcard/delete/:flashcardId', ensureAuthenticated, setControll
 
 router.put('/flashcard/update/:flashcardId', ensureAuthenticated, setController.update_flashcard);
 
-router.get('/edit_flashcard/:flashcardId', ensureAuthenticated, setController.editFlashcard);
+router.get('/edit_hiragana_flashcard/:flashcardId', ensureAuthenticated, setController.editFlashcard);
 
 router.post('/flashcard/update/:flashcardId', ensureAuthenticated, setController.updateFlashcard);
 

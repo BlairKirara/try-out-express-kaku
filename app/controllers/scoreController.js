@@ -11,7 +11,6 @@ exports.save_score = async (req, res) => {
     const { score } = req.body; 
     const { lvl } = req.body;
 
-    // Save the score to the database
     const quizScore = await QuizScore.create({
       userId: userId,
       lvl: lvl,
@@ -29,13 +28,12 @@ exports.save_score = async (req, res) => {
 
 exports.get_scores = async (req, res) => {
     try {
-      // Assuming you have access to the user's ID through authentication
+
       const userId = req.user.id;
   
-      // Fetch scores for the logged-in user
       const userScores = await QuizScore.findAll({
         where: { userId },
-        order: [['score', 'DESC']] // Sort scores in descending order
+        order: [['score', 'DESC']] 
       });
   
       res.render('user_scores', { scores: userScores, user: req.user });
@@ -50,11 +48,9 @@ exports.resetQuizScores = async (req, res) => {
     try {
       const { userId, level } = req.params;
   
-      // Delete all scores associated with the given user ID and level
       await QuizScore.destroy({ where: { userId, lvl: level } });
   
-      // Redirect to the same page after resetting scores
-      res.redirect('/scores'); // Update with your actual route
+      res.redirect('/scores'); 
     } catch (error) {
       console.error('Error resetting quiz scores:', error);
       res.status(500).json({ success: false, message: 'Server Error' });

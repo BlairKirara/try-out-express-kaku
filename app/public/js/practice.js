@@ -1,6 +1,6 @@
 function displayFlashcards(flashcards) {
     const flashcardsContainer = document.getElementById('flashcards-container');
-    flashcardsContainer.innerHTML = ''; // Clear previous content
+    flashcardsContainer.innerHTML = ''; 
   
     flashcards.forEach(flashcard => {
       const cardElement = document.createElement('div');

@@ -156,6 +156,7 @@ tbody tr:hover {
 button {
     background-color: rgb(120, 192, 214);
     padding: 10px 10px;
+    margin: 2px;
     border-radius: 10px;
     border-style: none;
     font-size: 19px;

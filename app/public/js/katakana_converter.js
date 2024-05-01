@@ -108,51 +108,64 @@ const romajiToKatakana = {
   function convertRomajiToKatakana() {
     const inputText = document.getElementById('input').value;
     let words = inputText.split(/[^a-zA-Z]+/).filter(Boolean);
-  
+
     for (let word of words) {
-      let romaji = word.toLowerCase();
-      let katakana = '';
-  
-      let i = 0;
-      while (i < word.length) {
-        let char = romaji[i];
-        let nextTwoChars = romaji.substring(i, i + 2);
-        let nextThreeChars = romaji.substring(i, i + 3);
-  
-        if (romajiToKatakana[nextThreeChars]) {
-          katakana += romajiToKatakana[nextThreeChars];
-          i += 3;
-        } else if (romajiToKatakana[nextTwoChars]) {
-          katakana += romajiToKatakana[nextTwoChars];
-          i += 2;
-        } else if (romajiToKatakana[char]) {
-          katakana += romajiToKatakana[char];
-          i++;
-        } else if (romaji[i] === romaji[i + 1]) {
-          katakana += 'っ';
-          i++;
-        } else if (/[a-zA-Z]/.test(char)) {
-          katakana += char;
-          i++;
-        } else {
-          i++;
-          continue;
+        let romaji = word.toLowerCase();
+        let katakana = '';
+
+        let i = 0;
+        while (i < word.length) {
+            let char = romaji[i];
+            let nextTwoChars = romaji.substring(i, i + 2);
+            let nextThreeChars = romaji.substring(i, i + 3);
+
+            if (romajiToKatakana[nextThreeChars]) {
+                katakana += romajiToKatakana[nextThreeChars];
+                i += 3;
+            } else if (romajiToKatakana[nextTwoChars]) {
+                katakana += romajiToKatakana[nextTwoChars];
+                i += 2;
+            } else if (romajiToKatakana[char]) {
+                katakana += romajiToKatakana[char];
+                i++;
+            } else if (romaji[i] === romaji[i + 1]) {
+                katakana += 'っ';
+                i++;
+            } else if (/[a-zA-Z]/.test(char)) {
+                katakana += char;
+                i++;
+            } else {
+                i++;
+                continue;
+            }
         }
-      }
-  
-      flashcards.push({ romaji: romaji, katakana: katakana });
+
+        // Check if the flashcard already exists
+        let exists = false;
+        for (let flashcard of flashcards) {
+            if (flashcard.romaji === romaji) {
+                exists = true;
+                break;
+            }
+        }
+
+        // Add flashcard only if it doesn't already exist
+        if (!exists) {
+            flashcards.push({ romaji: romaji, katakana: katakana });
+        }
     }
-  
+
     let outputText = '';
     for (let flashcard of flashcards) {
-      outputText += `${flashcard.romaji}: ${flashcard.katakana}\n`;
+        outputText += `${flashcard.romaji}: ${flashcard.katakana}\n`;
     }
-  
+
     document.getElementById('output').innerText = outputText;
     document.getElementById('output-section').style.display = 'block';
 
     document.getElementById('converter-box').style.display = 'none';
-  }
+}
+
   
   function saveYourSet() {
     const setName = document.getElementById('set').value;
@@ -179,10 +192,8 @@ const romajiToKatakana = {
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onload = function () {
       if (xhr.status === 200) {
-        // Optionally handle success response
         console.log('Set deleted successfully');
-        // Reload the page to reflect the changes
-        location.reload(); // This will refresh the page
+        location.reload(); 
       } else {
         console.error('Error deleting set:', xhr.statusText);
       }
@@ -203,10 +214,8 @@ const romajiToKatakana = {
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onload = function () {
       if (xhr.status === 200) {
-        // Optionally handle success response
         console.log('Flashcard deleted successfully');
-        // Reload the page to reflect the changes
-        location.reload(); // This will refresh the page
+        location.reload(); 
       } else {
         console.error('Error deleting flashcard:', xhr.statusText);
       }

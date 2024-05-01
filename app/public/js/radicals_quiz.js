@@ -110,7 +110,6 @@ const radicalsData = [
   }
   
   function showScore() {
-    // Display the score
     const lvl = 'Radicals';
     document.getElementById('question').innerText = 'Quiz finished! Your score: ' + correctCount + ' out of ' + number_of_questions;
     document.getElementById('question').style.fontSize = '30px';
@@ -130,7 +129,6 @@ const radicalsData = [
         lvl: lvl,
       };
     
-      // Send an AJAX request to the server
       const xhr = new XMLHttpRequest();
       xhr.open('POST', '/score', true);
       xhr.setRequestHeader('Content-Type', 'application/json');

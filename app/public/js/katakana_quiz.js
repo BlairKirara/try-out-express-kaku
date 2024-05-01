@@ -108,7 +108,6 @@ let katakana = [
   }
   
   function showScore() {
-      // Display the score
       const lvl = 'Katakana';
       document.getElementById('question').innerText =
         'Quiz finished! Your score: ' + correctCount + ' out of 20';
@@ -130,7 +129,6 @@ let katakana = [
           lvl: lvl,
         };
     
-      // Send an AJAX request to the server
       const xhr = new XMLHttpRequest();
       xhr.open('POST', '/score', true);
       xhr.setRequestHeader('Content-Type', 'application/json');

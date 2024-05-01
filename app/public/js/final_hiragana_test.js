@@ -166,7 +166,6 @@ let hiragana = [
   }
   
   function showScore() {
-      // Display the score
       const lvl = 'Hiragana Final Test';
       document.getElementById('question').innerText =
         'Quiz finished! Your score: ' + correctCount + ' out of ' + number_of_questions;
@@ -183,13 +182,11 @@ let hiragana = [
 
       const percentage = ((correctCount / number_of_questions) * 100).toFixed(2);
     
-      // Send the score to the server
       const scoreData = {
         score: percentage,
         lvl: lvl,
       };
     
-      // Send an AJAX request to the server
       const xhr = new XMLHttpRequest();
       xhr.open('POST', '/score', true);
       xhr.setRequestHeader('Content-Type', 'application/json');

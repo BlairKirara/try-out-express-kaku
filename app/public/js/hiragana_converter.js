@@ -180,10 +180,8 @@ const romajiToHiragana = {
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onload = function () {
       if (xhr.status === 200) {
-        // Optionally handle success response
         console.log('Set deleted successfully');
-        // Reload the page to reflect the changes
-        location.reload(); // This will refresh the page
+        location.reload(); 
       } else {
         console.error('Error deleting set:', xhr.statusText);
       }
@@ -208,10 +206,8 @@ const romajiToHiragana = {
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onload = function () {
       if (xhr.status === 200) {
-        // Optionally handle success response
         console.log('Flashcard deleted successfully');
-        // Reload the page to reflect the changes
-        location.reload(); // This will refresh the page
+        location.reload(); 
       } else {
         console.error('Error deleting flashcard:', xhr.statusText);
       }
@@ -223,7 +219,7 @@ const romajiToHiragana = {
   }
 
   function editFlashcard(flashcardId) {
-    window.location.href = `/edit_flashcard/${flashcardId}`;
+    window.location.href = `/edit_hiragana_flashcard/${flashcardId}`;
   }
 
   function resetQuiz(userId, level) {
@@ -232,10 +228,8 @@ const romajiToHiragana = {
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onload = function () {
       if (xhr.status === 200) {
-        // Optionally handle success response
         console.log('Quiz scores reset successfully');
-        // Reload the page to reflect the changes
-        location.reload(); // This will refresh the page
+        location.reload(); 
       } else {
         console.error('Error resetting quiz scores:', xhr.statusText);
       }

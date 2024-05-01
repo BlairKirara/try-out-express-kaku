@@ -7,7 +7,6 @@ const shuffleArray = (array) => {
   };
   
   const initializeFlashcards = (set) => {
-    // Shuffle the flashcards array
     const shuffledFlashcards = shuffleArray(set);
     let currentFlashcardIndex = 0;
   
@@ -21,15 +20,13 @@ const shuffleArray = (array) => {
       if (currentFlashcardIndex < shuffledFlashcards.length) {
         document.getElementById('hiragana-reading').innerText = shuffledFlashcards[currentFlashcardIndex].hiragana;
         document.getElementById('romaji-reading').style.display = 'none';
-        document.getElementById('romaji-reading').innerText = ''; // Clear romaji text
+        document.getElementById('romaji-reading').innerText = ''; 
       } else {
-        // Display message when all flashcards are reviewed
         document.getElementById('flashcard-container').innerHTML = '<p>All flashcards revised!</p>';
-        return; // Stop further execution
+        return; 
       }
     }
   
-    // Initialize with the first flashcard
     document.getElementById('hiragana-reading').innerText = shuffledFlashcards[0].hiragana;
   
     return {
