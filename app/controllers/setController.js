@@ -62,22 +62,33 @@ exports.delete_set = async (req, res) => {
   }
 };
 
-exports.get_sets= async (req, res) => {
+exports.get_sets = async (req, res) => {
   try {
-    // Assuming you have access to the user's ID through authentication
     const userId = req.user.id;
 
-    // Fetch scores for the logged-in user
+    // Fetch sets from SetList where userId matches
     const userSets = await SetList.findAll({
       where: { userId },
     });
 
-    res.render('user_sets', { sets: userSets, user: req.user });
+    // Filter sets to include only those whose setId exists in hiragana_sets
+    const filteredSets = await Promise.all(userSets.map(async (set) => {
+      const count = await HiraganaSet.count({ where: { setId: set.id } });
+      if (count > 0) {
+        return set;
+      }
+    }));
+
+    // Remove undefined entries from the filtered sets
+    const sets = filteredSets.filter((set) => set);
+
+    res.render('hiragana_sets', { sets, user: req.user });
   } catch (error) {
-    console.error('Error fetching user scores:', error);
+    console.error('Error fetching user sets:', error);
     res.status(500).json({ success: false, message: 'Server Error' });
   }
 };
+
 
 exports.practiceSet = async (req, res) => {
   try {
@@ -114,3 +125,90 @@ exports.editSet = async (req, res) => {
     res.status(500).json({ success: false, message: 'Server Error' });
   }
 };
+
+exports.delete_flashcard = async (req, res) => {
+  try {
+    const { flashcardId } = req.params;
+
+    // Find the flashcard by ID and delete it
+    const flashcard = await HiraganaSet.findByPk(flashcardId);
+    if (!flashcard) {
+      return res.status(404).json({ success: false, message: 'Flashcard not found' });
+    }
+    await flashcard.destroy();
+
+    res.status(200).json({ success: true, message: 'Flashcard deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting flashcard:', error);
+    res.status(500).json({ success: false, message: 'Server Error' });
+  }
+};
+
+exports.update_flashcard = async (req, res) => {
+  try {
+    const { flashcardId } = req.params;
+    const { romaji, hiragana } = req.body;
+
+    // Find the flashcard by ID and update its data
+    const flashcard = await HiraganaSet.findByPk(flashcardId);
+    if (!flashcard) {
+      return res.status(404).json({ success: false, message: 'Flashcard not found' });
+    }
+
+    // Update the flashcard's data
+    flashcard.romaji = romaji;
+    flashcard.hiragana = hiragana;
+
+    // Save the updated flashcard
+    await flashcard.save();
+
+    res.status(200).json({ success: true, message: 'Flashcard updated successfully' });
+  } catch (error) {
+    console.error('Error updating flashcard:', error);
+    res.status(500).json({ success: false, message: 'Server Error' });
+  }
+};
+
+exports.editFlashcard = async (req, res) => {
+  try {
+    const { flashcardId } = req.params;
+
+    // Fetch the flashcard by ID
+    const flashcard = await HiraganaSet.findByPk(flashcardId);
+
+    if (!flashcard) {
+      return res.status(404).send('Flashcard not found');
+    }
+
+    res.render('edit_flashcard', { flashcard });
+  } catch (error) {
+    console.error('Error editing flashcard:', error);
+    res.status(500).json({ success: false, message: 'Server Error' });
+  }
+};
+
+exports.updateFlashcard = async (req, res) => {
+  try {
+    const { flashcardId } = req.params;
+    const { romaji, hiragana } = req.body;
+
+    // Find the flashcard by ID and update its data
+    const flashcard = await HiraganaSet.findByPk(flashcardId);
+    if (!flashcard) {
+      return res.status(404).json({ success: false, message: 'Flashcard not found' });
+    }
+
+    // Update the flashcard's data
+    flashcard.romaji = romaji;
+    flashcard.hiragana = hiragana;
+
+    // Save the updated flashcard
+    await flashcard.save();
+
+    res.redirect('/hiragana_sets'); // Redirect to the main page or wherever you want
+  } catch (error) {
+    console.error('Error updating flashcard:', error);
+    res.status(500).json({ success: false, message: 'Server Error' });
+  }
+};
+

@@ -44,3 +44,20 @@ exports.get_scores = async (req, res) => {
       res.status(500).json({ success: false, message: 'Server Error' });
     }
   };
+
+
+  exports.resetQuizScores = async (req, res) => {
+    try {
+      const { userId, level } = req.params;
+  
+      // Delete all scores associated with the given user ID and level
+      await QuizScore.destroy({ where: { userId, lvl: level } });
+  
+      // Redirect to the same page after resetting scores
+      res.redirect('/scores'); // Update with your actual route
+    } catch (error) {
+      console.error('Error resetting quiz scores:', error);
+      res.status(500).json({ success: false, message: 'Server Error' });
+    }
+  };
+  

@@ -176,7 +176,7 @@ const romajiToHiragana = {
 
   function deleteSet(setId) {
     const xhr = new XMLHttpRequest();
-    xhr.open('DELETE', `/user_sets/${setId}`, true);
+    xhr.open('DELETE', `/hiragana_sets/${setId}`, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onload = function () {
       if (xhr.status === 200) {
@@ -201,3 +201,48 @@ const romajiToHiragana = {
   function editSet(setId) {
     window.location.href = `/edit/${setId}`;
   }
+
+  function deleteFlashcard(flashcardId) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('DELETE', `/flashcard/delete/${flashcardId}`, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        // Optionally handle success response
+        console.log('Flashcard deleted successfully');
+        // Reload the page to reflect the changes
+        location.reload(); // This will refresh the page
+      } else {
+        console.error('Error deleting flashcard:', xhr.statusText);
+      }
+    };
+    xhr.onerror = function () {
+      console.error('Network error while deleting flashcard');
+    };
+    xhr.send();
+  }
+
+  function editFlashcard(flashcardId) {
+    window.location.href = `/edit_flashcard/${flashcardId}`;
+  }
+
+  function resetQuiz(userId, level) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', `/quiz_scores/reset/${userId}/${level}`, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        // Optionally handle success response
+        console.log('Quiz scores reset successfully');
+        // Reload the page to reflect the changes
+        location.reload(); // This will refresh the page
+      } else {
+        console.error('Error resetting quiz scores:', xhr.statusText);
+      }
+    };
+    xhr.onerror = function () {
+      console.error('Network error while resetting quiz scores');
+    };
+    xhr.send();
+  }
+  

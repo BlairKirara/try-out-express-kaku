@@ -11,6 +11,7 @@ block content
         tr
           th Level
           th Score
+          th Actions
       tbody
         - var highestScores = {};
         each score in scores
@@ -20,3 +21,7 @@ block content
           tr
             td= level.lvl
             td= level.score + '%'
+            td
+              button(onclick=`resetQuiz('${level.userId}', '${level.lvl}')`) Reset Progress
+
+  script(src="../js/hiragana_converter.js")

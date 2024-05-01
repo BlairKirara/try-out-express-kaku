@@ -11,8 +11,15 @@ block content
         tr
           th Romaji
           th Hiragana
+          th Actions
       tbody
         each flashcard in set
           tr
             td= flashcard.romaji
             td= flashcard.hiragana
+            td
+              button(onclick=`deleteFlashcard('${flashcard.id}')`) Delete
+              | &nbsp;
+              button(onclick=`editFlashcard('${flashcard.id}')`) Edit
+
+    script(src="../js/hiragana_converter.js")

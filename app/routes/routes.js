@@ -26,13 +26,19 @@ router.post('/score', scoreController.save_score);
 
 router.get('/scores', scoreController.get_scores);
 
-router.get('/user_sets', setController.get_sets);
-
-router.delete('/user_sets/:setId', setController.delete_set);
-
 router.get('/practice/:setId', setController.practiceSet);
 
 router.get('/edit/:setId', setController.editSet);
+
+router.delete('/flashcard/delete/:flashcardId', setController.delete_flashcard);
+
+router.put('/flashcard/update/:flashcardId', setController.update_flashcard);
+
+router.get('/edit_flashcard/:flashcardId', setController.editFlashcard);
+
+router.post('/flashcard/update/:flashcardId', setController.updateFlashcard);
+
+router.post('/quiz_scores/reset/:userId/:level', scoreController.resetQuizScores);
 
 //hiragana routes
 
@@ -56,6 +62,10 @@ router.get('/hiragana/final_test', hiraganaController.getHiraganaFinalTest);
 router.get('/hiragana/converter', hiraganaController.getHiraganaConverter);
 
 router.post('/hiragana/set', setController.save_set);
+
+router.get('/hiragana_sets', setController.get_sets);
+
+router.delete('/hiragana_sets/:setId', setController.delete_set);
 
 // router.post('/hiragana/set_data', hiraganaSetController.save_set_data);
 
@@ -81,6 +91,8 @@ router.get('/katakana/final_test', katakanaController.getFinalQuiz);
 router.get('/katakana/converter', katakanaController.getKatakanaConverter);
 
 router.post('/katakana/set', katakanaSetController.save_set);
+
+router.get('/katakana_sets', katakanaSetController.get_katakana_sets);
 
 //radicals routes
 

@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  h1 Your Katakana Sets
+  | &nbsp;
+  if sets.length === 0
+    p No Katakana sets available.
+  else
+    table
+      thead
+        tr
+          th Set Name
+          th Actions
+      tbody
+        each set in sets
+          tr
+            td= set.name
+            td
+              button(onclick=`practiceKatakanaSet('${set.id}')`) Practice
+              | &nbsp;
+              button(onclick=`deleteKatakanaSet('${set.id}')`) Delete
+              | &nbsp;
+              button(onclick=`editKatakanaSet('${set.id}')`) Edit
+
+  script(src="../js/katakana_converter.js")
