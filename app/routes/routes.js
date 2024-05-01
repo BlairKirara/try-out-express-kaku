@@ -9,36 +9,41 @@ const scoreController = require('../controllers/scoreController');
 const setController = require('../controllers/setController');
 const katakanaSetController = require('../controllers/katakanaSetController');
 
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  } else {
+    res.redirect('/');
+  }
+}
+
+function ensureNotAuthenticated(req, res, next) {
+  if (!req.isAuthenticated()) {
+    return next(); 
+  } else {
+    res.redirect('/');
+  }
+}
+
 router.get('/', userController.getIndex);
 
-router.get('/signup', userController.getSignup);
+router.get('/signup', ensureNotAuthenticated, userController.getSignup);
 
-router.post('/signup', userController.postSignup);
+router.post('/signup', ensureNotAuthenticated, userController.postSignup);
 
 router.get('/logout', userController.logOut);
 
 router.post('/login', userController.logIn);
 
-//score routes
+//score and flashcard routes
 
-// router.post("/score", scoreController.score_create_post);
-router.post('/score', scoreController.save_score);
+router.post('/score', ensureAuthenticated, scoreController.save_score);
 
-router.get('/scores', scoreController.get_scores);
+router.get('/scores', ensureAuthenticated, scoreController.get_scores);
 
-router.get('/practice/:setId', setController.practiceSet);
+router.get('/practice/:setId', ensureAuthenticated, setController.practiceSet);
 
-router.get('/edit/:setId', setController.editSet);
-
-router.delete('/flashcard/delete/:flashcardId', setController.delete_flashcard);
-
-router.put('/flashcard/update/:flashcardId', setController.update_flashcard);
-
-router.get('/edit_flashcard/:flashcardId', setController.editFlashcard);
-
-router.post('/flashcard/update/:flashcardId', setController.updateFlashcard);
-
-router.post('/quiz_scores/reset/:userId/:level', scoreController.resetQuizScores);
+router.post('/quiz_scores/reset/:userId/:level', ensureAuthenticated, scoreController.resetQuizScores);
 
 //hiragana routes
 
@@ -46,28 +51,33 @@ router.get('/hiragana', hiraganaController.getHiragana);
 
 router.get('/hiragana/list', hiraganaController.getHiraganaList);
 
-router.get('/hiragana/quiz_lvl', hiraganaController.getHiraganaQuizLvl);
+router.get('/hiragana/quiz_lvl', ensureAuthenticated, hiraganaController.getHiraganaQuizLvl);
 
-router.get('/hiragana/quiz', hiraganaController.getHiraganaQuiz);
+router.get('/hiragana/quiz', ensureAuthenticated, hiraganaController.getHiraganaQuiz);
 
-router.get('/hiragana/dakuten_quiz', hiraganaController.getHiraganaDakutenQuiz);
+router.get('/hiragana/dakuten_quiz', ensureAuthenticated, hiraganaController.getHiraganaDakutenQuiz);
 
-router.get(
-  '/hiragana/combinations_quiz',
-  hiraganaController.getHiraganaCombinationsQuiz
-);
+router.get('/hiragana/combinations_quiz', ensureAuthenticated, hiraganaController.getHiraganaCombinationsQuiz);
 
-router.get('/hiragana/final_test', hiraganaController.getHiraganaFinalTest);
+router.get('/hiragana/final_test', ensureAuthenticated, hiraganaController.getHiraganaFinalTest);
 
-router.get('/hiragana/converter', hiraganaController.getHiraganaConverter);
+router.get('/hiragana/converter', ensureAuthenticated, hiraganaController.getHiraganaConverter);
 
-router.post('/hiragana/set', setController.save_set);
+router.post('/hiragana/set', ensureAuthenticated, setController.save_set);
 
-router.get('/hiragana_sets', setController.get_sets);
+router.get('/hiragana_sets', ensureAuthenticated, setController.get_sets);
 
-router.delete('/hiragana_sets/:setId', setController.delete_set);
+router.delete('/hiragana_sets/:setId', ensureAuthenticated, setController.delete_set);
 
-// router.post('/hiragana/set_data', hiraganaSetController.save_set_data);
+router.get('/edit/:setId', ensureAuthenticated, setController.editSet);
+
+router.delete('/flashcard/delete/:flashcardId', ensureAuthenticated, setController.delete_flashcard);
+
+router.put('/flashcard/update/:flashcardId', ensureAuthenticated, setController.update_flashcard);
+
+router.get('/edit_flashcard/:flashcardId', ensureAuthenticated, setController.editFlashcard);
+
+router.post('/flashcard/update/:flashcardId', ensureAuthenticated, setController.updateFlashcard);
 
 //katakana routes
 
@@ -75,24 +85,35 @@ router.get('/katakana', katakanaController.getKatakana);
 
 router.get('/katakana/list', katakanaController.getKatakanaList);
 
-router.get('/katakana/quiz_lvl', katakanaController.getKatakanaQuizLvl);
+router.get('/katakana/quiz_lvl', ensureAuthenticated, katakanaController.getKatakanaQuizLvl);
 
-router.get('/katakana/quiz', katakanaController.getKatakanaQuiz);
+router.get('/katakana/quiz', ensureAuthenticated, katakanaController.getKatakanaQuiz);
 
-router.get('/katakana/dakuten_quiz', katakanaController.getDakutenQuiz);
+router.get('/katakana/dakuten_quiz', ensureAuthenticated, katakanaController.getDakutenQuiz);
 
-router.get(
-  '/katakana/combinations_quiz',
-  katakanaController.getCombinationsQuiz
-);
+router.get('/katakana/combinations_quiz', ensureAuthenticated, katakanaController.getCombinationsQuiz);
 
-router.get('/katakana/final_test', katakanaController.getFinalQuiz);
+router.get('/katakana/final_test', ensureAuthenticated, katakanaController.getFinalQuiz);
 
-router.get('/katakana/converter', katakanaController.getKatakanaConverter);
+router.get('/katakana/converter', ensureAuthenticated, katakanaController.getKatakanaConverter);
 
-router.post('/katakana/set', katakanaSetController.save_set);
+router.post('/katakana/set', ensureAuthenticated, katakanaSetController.save_set);
 
-router.get('/katakana_sets', katakanaSetController.get_katakana_sets);
+router.get('/katakana_sets', ensureAuthenticated, katakanaSetController.get_katakana_sets);
+
+router.delete('/katakana_sets/:setId', ensureAuthenticated, katakanaSetController.delete_katakana_set);
+
+router.get('/edit_katakana_set/:setId', ensureAuthenticated, katakanaSetController.editKatakanaSet);
+
+router.delete('/katakana_flashcard/delete/:flashcardId', ensureAuthenticated, katakanaSetController.delete_katakana_flashcard);
+
+router.put('/katakana_flashcard/update/:flashcardId', ensureAuthenticated, katakanaSetController.update_katakana_flashcard);
+
+router.get('/edit_katakana_flashcard/:flashcardId', ensureAuthenticated, katakanaSetController.editKatakanaFlashcard);
+
+router.post('/katakana_flashcard/update/:flashcardId', ensureAuthenticated, katakanaSetController.updateKatakanaFlashcard);
+
+router.get('/katakana_practice/:setId', ensureAuthenticated, katakanaSetController.practiceKatakanaSet);
 
 //radicals routes
 
@@ -100,7 +121,7 @@ router.get('/radicals', radicalsController.getRadicals);
 
 router.get('/radicals/list', radicalsController.getRadicalsList);
 
-router.get('/radicals/quiz', radicalsController.getRadicalsQuiz);
+router.get('/radicals/quiz', ensureAuthenticated, radicalsController.getRadicalsQuiz);
 
 //about routes
 

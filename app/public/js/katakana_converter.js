@@ -172,4 +172,56 @@ const romajiToKatakana = {
     };
     xhr.send(JSON.stringify({ name: setName, flashcards: flashcards }));
   }
+
+  function deleteKatakanaSet(setId) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('DELETE', `/katakana_sets/${setId}`, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        // Optionally handle success response
+        console.log('Set deleted successfully');
+        // Reload the page to reflect the changes
+        location.reload(); // This will refresh the page
+      } else {
+        console.error('Error deleting set:', xhr.statusText);
+      }
+    };
+    xhr.onerror = function () {
+      console.error('Network error while deleting set');
+    };
+    xhr.send();
+  }
+
+  function editKatakanaSet(setId) {
+    window.location.href = `/edit_katakana_set/${setId}`;
+  }
+
+  function deleteKatakanaFlashcard(flashcardId) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('DELETE', `/katakana_flashcard/delete/${flashcardId}`, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        // Optionally handle success response
+        console.log('Flashcard deleted successfully');
+        // Reload the page to reflect the changes
+        location.reload(); // This will refresh the page
+      } else {
+        console.error('Error deleting flashcard:', xhr.statusText);
+      }
+    };
+    xhr.onerror = function () {
+      console.error('Network error while deleting flashcard');
+    };
+    xhr.send();
+  }
+
+  function editKatakanaFlashcard(flashcardId) {
+    window.location.href = `/edit_katakana_flashcard/${flashcardId}`;
+  }
+
+  function practiceKatakanaSet(setId) {
+    window.location.href = `/katakana_practice/${setId}`;
+  }
   

@@ -46,7 +46,7 @@ exports.get_scores = async (req, res) => {
   };
 
 
-  exports.resetQuizScores = async (req, res) => {
+exports.resetQuizScores = async (req, res) => {
     try {
       const { userId, level } = req.params;
   
