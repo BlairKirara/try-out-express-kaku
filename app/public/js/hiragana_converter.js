@@ -194,5 +194,7 @@ const romajiToHiragana = {
     xhr.send();
   }
 
-
+  function practiceSet(setId) {
+    window.location.href = `/practice/${setId}`;
+  }
   

@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1 Practice Set
+  // Container for flashcard and buttons
+  #flashcard-container
+    // Display area for hiragana reading
+    p#hiragana-reading
+    // Display area for romaji reading (initially hidden)
+    p#romaji-reading(style="display: none;")
+    // Button to reveal romaji reading
+    button#reveal-romaji-button Reveal Romaji
+    // Button to navigate to the next flashcard
+    button#next-flashcard-button Next Flashcard
+
+  // Include the flashcard script
+  script(src="../js/flashcard.js")
+  script.
+    document.addEventListener('DOMContentLoaded', () => {
+      const flashcards = !{JSON.stringify(set)};
+      const flashcardFunctions = initializeFlashcards(flashcards);
+
+      // Attach event listeners to buttons
+      document.getElementById('reveal-romaji-button').addEventListener('click', flashcardFunctions.revealRomaji);
+      document.getElementById('next-flashcard-button').addEventListener('click', flashcardFunctions.nextFlashcard);
+    });

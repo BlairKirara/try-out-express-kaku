@@ -79,5 +79,20 @@ exports.get_sets= async (req, res) => {
   }
 };
 
+exports.practiceSet = async (req, res) => {
+  try {
+    const { setId } = req.params;
 
+    // Fetch the set and its associated flashcards
+    const set = await HiraganaSet.findAll({ where: { setId } });
 
+    if (!set) {
+      return res.status(404).send('Set not found');
+    }
+
+    res.render('practice_set', { set });
+  } catch (error) {
+    console.error('Error practicing set:', error);
+    res.status(500).json({ success: false, message: 'Server Error' });
+  }
+};
