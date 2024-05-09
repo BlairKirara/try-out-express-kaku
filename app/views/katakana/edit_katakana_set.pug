@@ -18,8 +18,8 @@ block content
             td= flashcard.romaji
             td= flashcard.katakana
             td
-              button(onclick=`deleteKatakanaFlashcard('${flashcard.id}')`) Delete
+              button.go_next(onclick=`deleteKatakanaFlashcard('${flashcard.id}')`) Delete
               | &nbsp;
-              button(onclick=`editKatakanaFlashcard('${flashcard.id}')`) Edit
+              button.go_next(onclick=`editKatakanaFlashcard('${flashcard.id}')`) Edit
 
     script(src="../js/katakana_converter.js")

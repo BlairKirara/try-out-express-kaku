@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  h1 Your High Scores
+  h2 Your High Scores
   | &nbsp;
   if scores.length === 0
     p No scores available.
@@ -22,6 +22,6 @@ block content
             td= level.lvl
             td= level.score + '%'
             td
-              button(onclick=`resetQuiz('${level.userId}', '${level.lvl}')`) Reset Progress
+              button.go_next(onclick=`resetQuiz('${level.userId}', '${level.lvl}')`) Reset Progress
 
   script(src="../js/hiragana_converter.js")

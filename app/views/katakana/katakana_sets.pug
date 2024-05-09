@@ -16,10 +16,10 @@ block content
           tr
             td= set.name
             td
-              button(onclick=`practiceKatakanaSet('${set.id}')`) Practice
+              button.go_next(onclick=`practiceKatakanaSet('${set.id}')`) Practice
               | &nbsp;
-              button(onclick=`deleteKatakanaSet('${set.id}')`) Delete
+              button.go_next(onclick=`deleteKatakanaSet('${set.id}')`) Delete
               | &nbsp;
-              button(onclick=`editKatakanaSet('${set.id}')`) Edit
+              button.go_next(onclick=`editKatakanaSet('${set.id}')`) Edit
 
   script(src="../js/katakana_converter.js")

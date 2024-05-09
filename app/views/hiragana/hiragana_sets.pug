@@ -16,10 +16,10 @@ block content
           tr
             td= set.name
             td
-              button(onclick=`practiceSet('${set.id}')`) Practice
+              button.go_next(onclick=`practiceSet('${set.id}')`) Practice
               | &nbsp;
-              button(onclick=`deleteSet('${set.id}')`) Delete
+              button.go_next(onclick=`deleteSet('${set.id}')`) Delete
               | &nbsp;
-              button(onclick=`editSet('${set.id}')`) Edit
+              button.go_next(onclick=`editSet('${set.id}')`) Edit
 
   script(src="../js/hiragana_converter.js")

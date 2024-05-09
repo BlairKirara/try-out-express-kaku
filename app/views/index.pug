@@ -2,12 +2,12 @@ extends layout
 
 block content
     if user
-      h1 It's nice to see you again #{user.username} !
-      a.go_next(href='/scores') See your quiz scores!
+      h2 It's nice to see you again #{user.username} !
+      a.go_next_profile(href='/scores') See your quiz scores!
       | &nbsp;
-      a.go_next(href='/hiragana_sets') See your hiragana flashcard sets!
+      a.go_next_profile(href='/hiragana_sets') See your hiragana flashcard sets!
       | &nbsp;
-      a.go_next(href='/katakana_sets') See your katakana flashcard sets!
+      a.go_next_profile(href='/katakana_sets') See your katakana flashcard sets!
     else
       h2 Log In or Sing Up
       form(action='/login' method='POST')
@@ -18,6 +18,6 @@ block content
           label(for='password') Password
           input(class='submition_form', name='password' placeholder='password' type='password')
         div
-          button(type='submit') Log In 
+          button.go_next(type='submit') Log In 
           | &nbsp;
-          button(type='button', onclick="window.location.href='/signup'") Sign Up
+          button.go_next(type='button', onclick="window.location.href='/signup'") Sign Up

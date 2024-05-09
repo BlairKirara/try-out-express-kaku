@@ -2,7 +2,7 @@ extends ../layout
 
 block content
   
-  h1 Romaji to Hiragana Converter
+  h2 Romaji to Hiragana Converter
   
   #converter-box
     p To use the converter, provide lyrics of your favorite song in romaji (written using Latin alphabet/romanized). You can find romanized lyrics on many sitess on the internet, or just write them yourself.
@@ -10,7 +10,7 @@ block content
     p Many Japanese songs have English words in them. Note that the converter doesn't convert English words so if some Latin letters are left in the output that's probably the reason. If you don't like that, you can always delete the unwanted flashcards on your profile.
     form(action="" method="post")
       textarea(class="submition_form" id="input" name="input" placeholder="Enter Romaji text here" rows="4" cols="50")
-      button(type="button" onclick="convertRomajiToHiragana()") Convert
+      button.go_next(type="button" onclick="convertRomajiToHiragana()") Convert
 
   div#output-section(style="display: none;")
     h2 Result:
@@ -18,7 +18,7 @@ block content
     form(action="" method="post")
       label(for='name') Provide the name of your set:
       input(class='submition_form', type='text', placeholder='your name', name='set', id='set')
-      button(type="button" onclick='saveYourSet()') Save
+      button.go_next(type="button" onclick='saveYourSet()') Save
 
 
     script(src="../js/hiragana_converter.js")

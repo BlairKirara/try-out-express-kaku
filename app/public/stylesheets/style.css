@@ -13,6 +13,27 @@ body {
     min-height: 100vh;
 }
 
+/* middle of each page */
+
+.content {
+    display: flex;
+    max-width: 1000px;
+    text-align: left;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(255, 255, 255);
+    padding: 50px;    
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.middle-of-the-page {
+    padding: 10px;
+    padding-top: 0;
+}
+
+
 /* navigation bar css */
 
 header {
@@ -119,22 +140,23 @@ img.origami2 {
         flex-direction: column;
         background-color: white;
         text-align: center;
+        border-radius: 2px;
     }
 
     .header-links {
         flex-direction: column;
-        text-align: center;
-        padding: 0;
+        text-align: right;
+        padding: 5px;
     }
 
     .header-links li {
         margin: 16px 0px;
+        text-decoration: underline red;
     }
 
     .nav-bar.active {
         right: 0;
-        height: 100%;
-        width: 300px;
+        width: 200px;
         margin-left: auto;
     }
 
@@ -143,10 +165,21 @@ img.origami2 {
         flex-wrap: nowrap;
     }
 
-    .footer {
-        display: none;
+    p {
+        background-color: rgba(255, 255, 255, 0.5);
+        padding: 20px;
     }
 
+    .middle-of-the-page {
+        padding: 0;
+        margin: 0;
+    }
+
+    .content {
+        background-color: #f3f3f1;
+        margin: 0;
+        padding: 20px;
+    }
 }
 
 /* footer css */
@@ -191,35 +224,26 @@ h1 {
     padding: 0;
 }
 
-/* middle of each page */
-
-.content {
-    display: flex;
-    max-width: 1000px;
-    text-align: left;
-    flex-direction: column;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: rgb(255, 255, 255);
-    padding: 20px;    
-    margin-bottom: 50px;
-    margin-top: 50px;
+h2 {
+    text-decoration: underline red;
 }
-
-.middle-of-the-page {
-    padding: 10px;
-    padding-top: 0;
-}
-
-
 
 /* button view */
 
 .go_next {
     align-self: flex-end;
     padding: 5px 10px;
-    background-color: rgb(120, 192, 214);
+    background-color: rgb(161, 212, 228);
     border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.go_next_profile {
+    justify-content: center;
+    padding: 5px 10px;
+    background-color: rgb(161, 212, 228);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 button {
@@ -258,12 +282,16 @@ table {
 
 th {
     background: rgb(120, 192, 214);
-    font-size: 25px;
+    font-size: 20px;
     padding: 10px;
 }
 
 tr:nth-child(even){
     background-color: #f2f2f2;
+}
+
+tr:nth-child(odd){
+    background-color: #ffffff;
 }
 
 td {

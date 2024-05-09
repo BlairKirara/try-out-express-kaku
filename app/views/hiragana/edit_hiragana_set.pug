@@ -18,8 +18,8 @@ block content
             td= flashcard.romaji
             td= flashcard.hiragana
             td
-              button(onclick=`deleteFlashcard('${flashcard.id}')`) Delete
+              button.go_next(onclick=`deleteFlashcard('${flashcard.id}')`) Delete
               | &nbsp;
-              button(onclick=`editFlashcard('${flashcard.id}')`) Edit
+              button.go_next(onclick=`editFlashcard('${flashcard.id}')`) Edit
 
     script(src="../js/hiragana_converter.js")
