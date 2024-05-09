@@ -1,0 +1,45 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+    font-size: 15px;
+    color: #e5e7EB;
+    text-align: center;
+    padding: 0px;
+    width: 100%;
+}
+
+/* navigation bar css */
+
+header {
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+.header-links {
+    display: flex;
+    gap: 5px;
+}
+
+.header-links li {
+    display: inline-block;
+    padding: 0px 20px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.header-links li a:hover {
+    color: rgb(120, 192, 214);
+}

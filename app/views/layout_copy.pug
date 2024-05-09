@@ -11,44 +11,42 @@ html
         ul
           each msg in message
             li= msg 
-      header   
-        .logo 
-            .circle 
-            h1 
-                a(href='/about') KakuLearn          
-        nav.nav-bar       
-            ul.header-links
-                li
-                    a(href='/about') About
-                li
-                    a(href='/hiragana') Hiragana
-                li
-                    a(href='/katakana') Katakana
-                li
-                    a(href='/radicals') Radicals
-                li.stick |         
-                if user
-                    li
-                        a(href='/') Profile
-                    li
-                        a(href='/logout') Log Out
-                else
-                    li
-                        a(href='/') Log In
-                    li
-                        a(href='/signup') Sign Up
-        .hamburger-menu
-            span.bar 
-            span.bar 
-            span.bar 
+      nav
+        .logo
+          .circle
+          h1
+            a(href='/about') KakuLearn
+        .header-links
+          ul.header-links
+            li.header-link
+              a(href='/about') About
+            li.header-link
+              a(href='/hiragana') Hiragana
+            li.header-link
+              a(href='/katakana') Katakana
+            li.header-link
+              a(href='/radicals') Radicals
+          ul.header-links
+            if user
+              li.header-link
+                a(href='/') Profile
+              li.header-link | 
+              li.header-link 
+                a(href='/logout') Log Out
+            else
+              li.header-link
+                a(href='/') Log In
+              li.header-link | 
+              li.header-link
+                a(href='/signup') Sign Up
+      .origami
+        img(src='/images/origami.png', width='250px')
+        img(src='/images/origami.png', width='250px')
 
-      .middle-of-the-page  
-        img.origami1(src='/images/origami.png')
-        img.origami2(src='/images/origami.png')
-        .content
-            block content
+      .content
+        block content
 
-      div.footer
+      .footer
         svg#wave(style='transform:rotate(0deg); transition: 0.3s', viewBox='0 0 1440 190', version='1.1', xmlns='http://www.w3.org/2000/svg')
           defs
             linearGradient#sw-gradient-0(x1='0', x2='0', y1='1', y2='0')
@@ -60,4 +58,3 @@ html
               stop(stop-color='rgba(255, 255, 255, 1)', offset='0%')
               stop(stop-color='rgba(173.569, 243.966, 255, 1)', offset='100%')
           path(style='transform:translate(0, 50px); opacity:0.9', fill='url(#sw-gradient-1)', d='M0,171L20,164.7C40,158,80,146,120,120.3C160,95,200,57,240,63.3C280,70,320,120,360,117.2C400,114,440,57,480,44.3C520,32,560,63,600,91.8C640,120,680,146,720,129.8C760,114,800,57,840,44.3C880,32,920,63,960,79.2C1000,95,1040,95,1080,107.7C1120,120,1160,146,1200,145.7C1240,146,1280,120,1320,101.3C1360,82,1400,70,1440,69.7C1480,70,1520,82,1560,91.8C1600,101,1640,108,1680,107.7C1720,108,1760,101,1800,85.5C1840,70,1880,44,1920,47.5C1960,51,2000,82,2040,101.3C2080,120,2120,127,2160,133C2200,139,2240,146,2280,152C2320,158,2360,165,2400,167.8C2440,171,2480,171,2520,161.5C2560,152,2600,133,2640,114C2680,95,2720,76,2760,85.5C2800,95,2840,133,2860,152L2880,171L2880,190L2860,190C2840,190,2800,190,2760,190C2720,190,2680,190,2640,190C2600,190,2560,190,2520,190C2480,190,2440,190,2400,190C2360,190,2320,190,2280,190C2240,190,2200,190,2160,190C2120,190,2080,190,2040,190C2000,190,1960,190,1920,190C1880,190,1840,190,1800,190C1760,190,1720,190,1680,190C1640,190,1600,190,1560,190C1520,190,1480,190,1440,190C1400,190,1360,190,1320,190C1280,190,1240,190,1200,190C1160,190,1120,190,1080,190C1040,190,1000,190,960,190C920,190,880,190,840,190C800,190,760,190,720,190C680,190,640,190,600,190C560,190,520,190,480,190C440,190,400,190,360,190C320,190,280,190,240,190C200,190,160,190,120,190C80,190,40,190,20,190L0,190Z')
-    script(src='../js/hamburger.js')
