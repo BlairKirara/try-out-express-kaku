@@ -167,24 +167,35 @@ const romajiToKatakana = {
 }
 
   
-  function saveYourSet() {
-    const setName = document.getElementById('set').value;
-  
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', '/katakana/set', true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.onload = function () {
-      if (xhr.status === 200) {
-        document.getElementById('output-section').innerHTML = "<p>Set saved successfully</p>";
-      } else {
-        console.error('Error posting name:', xhr.statusText);
-      }
-    };
-    xhr.onerror = function () {
-      console.error('Network error while posting name');
-    };
-    xhr.send(JSON.stringify({ name: setName, flashcards: flashcards }));
-  }
+function saveYourSet() {
+  const setName = document.getElementById('set').value;
+
+  const xhr = new XMLHttpRequest();
+  xhr.open('POST', '/katakana/set', true);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.onload = function () {
+    if (xhr.status === 200) {
+      const outputSection = document.getElementById('output-section');
+      outputSection.innerHTML = "<p>Set saved successfully</p>";
+      
+      const seeSetsButton = document.createElement('button');
+      seeSetsButton.innerText = 'See katakana sets';
+      seeSetsButton.type = 'button';
+      seeSetsButton.addEventListener('click', () => {
+        window.location.href = "/katakana_sets";
+      });
+      
+      outputSection.appendChild(seeSetsButton);
+    } else {
+      console.error('Error posting name:', xhr.statusText);
+    }
+  };
+  xhr.onerror = function () {
+    console.error('Network error while posting name');
+  };
+  xhr.send(JSON.stringify({ name: setName, flashcards: flashcards }));
+}
+
 
   function deleteKatakanaSet(setId) {
     const xhr = new XMLHttpRequest();

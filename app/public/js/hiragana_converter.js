@@ -173,7 +173,17 @@ const romajiToHiragana = {
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onload = function () {
       if (xhr.status === 200) {
-        document.getElementById('output-section').innerHTML = "<p>Set saved successfully</p>";
+        const outputSection = document.getElementById('output-section');
+        outputSection.innerHTML = "<p>Set saved successfully</p>";
+        
+        const seeSetsButton = document.createElement('button');
+        seeSetsButton.innerText = 'See hiragana sets';
+        seeSetsButton.type = 'button';
+        seeSetsButton.addEventListener('click', () => {
+          window.location.href = "/hiragana_sets";
+        });
+        
+        outputSection.appendChild(seeSetsButton);
       } else {
         console.error('Error posting name:', xhr.statusText);
       }
@@ -183,6 +193,7 @@ const romajiToHiragana = {
     };
     xhr.send(JSON.stringify({ name: setName, flashcards: flashcards }));
   }
+  
   
 
   function deleteSet(setId) {
