@@ -139,8 +139,19 @@ const romajiToHiragana = {
           continue;
         }
       }
-  
-      flashcards.push({ romaji: romaji, hiragana: hiragana });
+        // Check if the flashcard already exists
+        let exists = false;
+        for (let flashcard of flashcards) {
+            if (flashcard.romaji === romaji) {
+                exists = true;
+                break;
+            }
+        }
+
+        // Add flashcard only if it doesn't already exist
+        if (!exists) {
+            flashcards.push({ romaji: romaji, hiragana: hiragana });
+        }
     }
   
     let outputText = '';

@@ -5,6 +5,9 @@ block content
     h1 Romaji to Hiragana Converter
     
     #converter-box
+      p To use the converter, provide lyrics of your favorite song in romaji (written using Latin alphabet/romanized). You can find romanized lyrics on many sitess on the internet, or just write them yourself.
+      p After you convert the lyrics, you'll have access to flashcards consisting of words from the lyrics and their hiragana readings. If something's not right, you can also edit these flashcards on your profile.
+      p Many Japanese songs have English words in them. Note that the converter doesn't convert English words so if some Latin letters are left in the output that's probably the reason. If you don't like that, you can always delete the unwanted flashcards on your profile.
       form(action="" method="post")
         textarea(id="input" name="input" placeholder="Enter Romaji text here" rows="4" cols="50")
         button(type="button" onclick="convertRomajiToHiragana()") Convert
