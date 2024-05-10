@@ -35,6 +35,11 @@ exports.postSignup = async (req, res, next) => {
       req.flash('error', 'Passwords do not match!');
       return res.render('user/signup', { message: req.flash('error') });
     }
+    const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$/;
+    if (!passwordRegex.test(req.body.password)) {
+      req.flash('error', 'Password must be at least 6 characters long and contain at least one letter and one number!');
+      return res.render('user/signup', { message: req.flash('error') });
+    }
 
     await User.create({
       username: req.body.username,
