@@ -1,12 +1,12 @@
 extends ../layout
 
 block content
-  h1 Edit Flashcard
+  h2 Edit Flashcard
   form(action=`/katakana_flashcard/update/${flashcard.id}`, method="POST")
     label(for="romaji") Romaji:
-    input(type="text", id="romaji", name="romaji", value=flashcard.romaji)
+    input(class="submition_form" type="text", id="romaji", name="romaji", value=flashcard.romaji)
     br
     label(for="katakana") Katakana:
-    input(type="text", id="katakana", name="katakana", value=flashcard.katakana)
+    input(class="submition_form" type="text", id="katakana", name="katakana", value=flashcard.katakana)
     br
     button.go_next(type="submit") Save

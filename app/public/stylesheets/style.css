@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
 }
 
 /* flexbox to store my page */
@@ -125,6 +126,29 @@ img.origami2 {
     img.origami2 {
         display: none;
     }
+
+        p {
+        background-color: rgba(255, 255, 255, 0.5);
+        padding: 20px;
+    }
+
+    .middle-of-the-page {
+        padding: 0;
+        margin: 0;
+    }
+
+    .content {
+        background-color: #f3f3f1;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .quiz {
+        background-color: rgba(255, 255, 255, 0.5);
+        padding: 20px;
+        text-align: center;
+    }
+
 }
 
 @media(max-width: 850px) {
@@ -226,6 +250,7 @@ h1 {
 
 h2 {
     text-decoration: underline red;
+    font-size: 25px;
 }
 
 /* button view */
@@ -235,30 +260,29 @@ h2 {
     padding: 5px 10px;
     background-color: rgb(161, 212, 228);
     border-radius: 10px;
+    margin: 2px;
+    border-style: none;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    font-size: 20px;
+}
+
+.go_next:hover {
+    background-color: aqua;
 }
 
 .go_next_profile {
-    justify-content: center;
     padding: 5px 10px;
     background-color: rgb(161, 212, 228);
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-button {
-    background-color: rgb(120, 192, 214);
-    padding: 10px 10px;
-    margin: 2px;
-    border-radius: 10px;
-    border-style: none;
-    font-size: 19px;
-    font-weight: 700;
-    color: rgb(0, 0, 0);
+.go_next_profile:hover {
+    background-color: aqua;
 }
 
-button:hover {
-    background-color: aqua;
+.profile_center {
+    text-align: center;
 }
 
 .go_back {
@@ -317,15 +341,16 @@ tbody tr:hover {
 
 .middle-quiz {
     display: flex;
+    flex-direction: column;
+    text-align: center;
     align-items: center;
-    gap: 50px;
-    font-size: 50px;
+    gap: 20px;
+    font-size: 45px;
     margin-bottom: 10px;
 }
 
 #answer {
     padding: 15px 10px;
-    font-size: 17px;
 }
 
 .quiz-results {
