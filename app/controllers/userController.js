@@ -19,9 +19,8 @@ exports.getSignup = (req, res) => {
 
 exports.postSignup = async (req, res, next) => {
   try {
-
     if (!req.body.username || !req.body.password || !req.body.confirmPassword) {
-      req.flash('error', 'Please fill in all fields');
+      req.flash('error', 'Please fill in all fields!');
       return res.render('user/signup', { message: req.flash('error') });
     }
 
@@ -29,11 +28,11 @@ exports.postSignup = async (req, res, next) => {
       where: { username: req.body.username },
     });
     if (existingUser) {
-      req.flash('error', 'User already exists');
+      req.flash('error', 'User already exists!');
       return res.render('user/signup', { message: req.flash('error') });
     }
     if (req.body.password !== req.body.confirmPassword) {
-      req.flash('error', 'Passwords do not match');
+      req.flash('error', 'Passwords do not match!');
       return res.render('user/signup', { message: req.flash('error') });
     }
 
@@ -43,12 +42,12 @@ exports.postSignup = async (req, res, next) => {
     });
 
     req.flash('success', 'You are now registered and can log in');
-    res.redirect('/');
+
+    return res.render('user/signup', { successMessage: req.flash('success') });
   } catch (err) {
     return next(err);
   }
 };
-
 
 exports.logIn = (req, res, next) => {
   passport.authenticate('local', (err, user, info) => {
@@ -56,7 +55,7 @@ exports.logIn = (req, res, next) => {
       return next(err);
     }
     if (!user) {
-      req.flash('error', 'Invalid username or password');
+      req.flash('error', 'Invalid username or password!');
       return res.render('', { message: req.flash('error') });
     }
     req.logIn(user, (err) => {

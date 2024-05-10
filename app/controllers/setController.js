@@ -131,6 +131,7 @@ exports.delete_flashcard = async (req, res) => {
     }
     await flashcard.destroy();
 
+    req.flash('success', 'Flashcard deleted successfully');
     res.status(200).json({ success: true, message: 'Flashcard deleted successfully' });
   } catch (error) {
     console.error('Error deleting flashcard:', error);

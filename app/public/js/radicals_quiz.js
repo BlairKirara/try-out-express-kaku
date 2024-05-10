@@ -241,12 +241,10 @@ const radicalsData = [
       let question = randomRadical.Radical;
       document.getElementById('question').innerText = question;
   
-      // Create an array of all meanings
       let meanings = [getRandomMeaning(), getRandomMeaning(), randomRadical.Meaning];
-      // Shuffle the meanings array
+
       meanings = shuffle(meanings);
   
-      // Assign shuffled meanings to answer elements
       document.getElementById('answer1').innerText = meanings[0];
       document.getElementById('answer2').innerText = meanings[1];
       document.getElementById('answer3').innerText = meanings[2];

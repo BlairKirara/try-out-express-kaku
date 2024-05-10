@@ -7,10 +7,6 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     .container
-      if message && message.length > 0
-        ul
-          each msg in message
-            li= msg 
       header   
         .logo 
             .circle 
@@ -46,6 +42,15 @@ html
         img.origami1(src='/images/origami.png')
         img.origami2(src='/images/origami.png')
         .content
+            #output-section-success
+            if successMessage && successMessage.length > 0
+              ul
+                each msg in successMessage
+                  li.output-success= msg
+            if message && message.length > 0
+              ul
+                each msg in message
+                  li.output-error= msg             
             block content
 
       div.footer

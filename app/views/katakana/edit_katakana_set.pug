@@ -14,11 +14,11 @@ block content
           th Actions
       tbody
         each flashcard in set
-          tr
+          tr(id=`row-${flashcard.id}`)
             td= flashcard.romaji
             td= flashcard.katakana
             td
-              button.go_next(onclick=`deleteKatakanaFlashcard('${flashcard.id}')`) Delete
+              button.go_next(onclick=`deleteKatakanaFlashcard('${flashcard.id}', document.getElementById('row-${flashcard.id}'))`) Delete
               | &nbsp;
               button.go_next(onclick=`editKatakanaFlashcard('${flashcard.id}')`) Edit
 

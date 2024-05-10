@@ -139,7 +139,6 @@ const romajiToHiragana = {
           continue;
         }
       }
-        // Check if the flashcard already exists
         let exists = false;
         for (let flashcard of flashcards) {
             if (flashcard.romaji === romaji) {
@@ -148,7 +147,6 @@ const romajiToHiragana = {
             }
         }
 
-        // Add flashcard only if it doesn't already exist
         if (!exists) {
             flashcards.push({ romaji: romaji, hiragana: hiragana });
         }
@@ -179,6 +177,7 @@ const romajiToHiragana = {
         const seeSetsButton = document.createElement('button');
         seeSetsButton.innerText = 'See hiragana sets';
         seeSetsButton.type = 'button';
+        seeSetsButton.classList.add('go_next');
         seeSetsButton.addEventListener('click', () => {
           window.location.href = "/hiragana_sets";
         });
@@ -192,18 +191,18 @@ const romajiToHiragana = {
       console.error('Network error while posting name');
     };
     xhr.send(JSON.stringify({ name: setName, flashcards: flashcards }));
-  }
-  
-  
+  } 
 
-  function deleteSet(setId) {
+  function deleteSet(setId, row) {
     const xhr = new XMLHttpRequest();
     xhr.open('DELETE', `/hiragana_sets/${setId}`, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onload = function () {
       if (xhr.status === 200) {
         console.log('Set deleted successfully');
-        location.reload(); 
+        row.remove();
+        const outputSection = document.getElementById('output-section-success');
+        outputSection.innerHTML = "<p>Set deleted successfully!</p>";
       } else {
         console.error('Error deleting set:', xhr.statusText);
       }
@@ -213,7 +212,8 @@ const romajiToHiragana = {
     };
     xhr.send();
   }
-
+  
+  
   function practiceSet(setId) {
     window.location.href = `/practice/${setId}`;
   }
@@ -222,14 +222,16 @@ const romajiToHiragana = {
     window.location.href = `/edit/${setId}`;
   }
 
-  function deleteFlashcard(flashcardId) {
+  function deleteFlashcard(flashcardId, row) {
     const xhr = new XMLHttpRequest();
     xhr.open('DELETE', `/flashcard/delete/${flashcardId}`, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onload = function () {
       if (xhr.status === 200) {
         console.log('Flashcard deleted successfully');
-        location.reload(); 
+        row.remove();
+        const outputSection = document.getElementById('output-section-success');
+        outputSection.innerHTML = "<p>Flashcard deleted successfully!</p>";
       } else {
         console.error('Error deleting flashcard:', xhr.statusText);
       }
@@ -239,6 +241,8 @@ const romajiToHiragana = {
     };
     xhr.send();
   }
+  
+  
 
   function editFlashcard(flashcardId) {
     window.location.href = `/edit_hiragana_flashcard/${flashcardId}`;

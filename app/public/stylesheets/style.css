@@ -82,7 +82,7 @@ header {
 
 img.origami1 {
     float: left;
-    position: -webkit-sticky; /* Safari */
+    position: -webkit-sticky;
     position: sticky;
     top: 0;
     max-width: 250px;
@@ -91,7 +91,7 @@ img.origami1 {
 
 img.origami2 {
     float: right;
-    position: -webkit-sticky; /* Safari */
+    position: -webkit-sticky;
     position: sticky;
     top: 0;
     max-width: 250px;
@@ -114,9 +114,9 @@ img.origami2 {
 }
 
 @media(max-width: 1115px) {
-    /* Adjust header layout for smaller screens */
+
     header {
-        flex-direction: column; /* Stack items vertically */
+        flex-direction: column; 
     }
 
     img.origami1 {
@@ -376,4 +376,41 @@ tbody tr:hover {
     margin: 10px;
 }
 
+/* messages */
+
+#output-section-success {
+    background-color: rgba(162, 214, 120, 0.5);
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    min-width: 250px; 
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .output-error {
+    background-color: rgba(214, 120, 133, 0.5);
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    min-width: 250px; 
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    padding: 5px;
+  }
+
+  .output-success {
+    background-color: rgba(181, 214, 120, 0.5);
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    min-width: 250px; 
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    padding: 5px;
+  }
+  
+  
 

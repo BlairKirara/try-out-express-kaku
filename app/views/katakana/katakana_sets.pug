@@ -13,12 +13,12 @@ block content
           th Actions
       tbody
         each set in sets
-          tr
+          tr(id=`row-${set.id}`)
             td= set.name
             td
               button.go_next(onclick=`practiceKatakanaSet('${set.id}')`) Practice
               | &nbsp;
-              button.go_next(onclick=`deleteKatakanaSet('${set.id}')`) Delete
+              button.go_next(onclick=`deleteKatakanaSet('${set.id}', document.getElementById('row-${set.id}'))`) Delete
               | &nbsp;
               button.go_next(onclick=`editKatakanaSet('${set.id}')`) Edit
 
