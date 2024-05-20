@@ -44,7 +44,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 15px;
-    box-shadow: 0px 5px 5px grey;
+    /* box-shadow: 0px 5px 5px grey; */
 }
 
 .header-links {
@@ -153,7 +153,7 @@ img.origami2 {
 
 }
 
-@media(max-width: 850px) {
+@media(max-width: 900px) {
     .hamburger-menu {
         display: block;
     }
