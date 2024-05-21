@@ -129,6 +129,8 @@ router.get('/radicals/quiz_medium', ensureAuthenticated, radicalsController.getM
 
 router.get('/radicals/quiz_hard', ensureAuthenticated, radicalsController.getHardRadicalsQuiz);
 
+router.get('/radicals/final_test', ensureAuthenticated, radicalsController.getFinalRadicalsQuiz);
+
 //about routes
 
 router.get('/about', aboutController.getAbout);

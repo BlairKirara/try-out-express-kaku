@@ -380,3 +380,12 @@ exports.getHardRadicalsQuiz = async (req, res) => {
     res.status(500).send('Server Error');
   }
 };
+
+exports.getFinalRadicalsQuiz = async (req, res) => {
+  try {
+    res.render('radicals/final_radicals_test', { user: req.user });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
+};
