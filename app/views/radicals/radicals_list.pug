@@ -1,15 +1,15 @@
 extends ../layout
 
 block content
-  table.radicals-table
+  table.radicals-table.radicals-font
     thead
       tr
         th Radical
-        th Romaji
+        th Reading
         th Meaning
     tbody
       each character in radicals
         tr
           td= character.Radical
-          td= character.Romaji
+          td= character.Reading
           td= character.Meaning
