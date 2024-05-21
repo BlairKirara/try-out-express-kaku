@@ -116,12 +116,13 @@ const radicalsData = [
       let question = randomRadical.Radical;
       document.getElementById('question').innerText = question;
   
-      let correctMeaning = randomRadical.Meaning;
+      let correctMeaning = randomRadical.Meaning + ' (' + randomRadical.Reading + ')';
       let meanings = [];
   
       // Ensure unique meanings
       while (meanings.length < 2) {
-        let randomMeaning = getRandomMeaning();
+        let randomRadicalMeaning = getRandomMeaning();
+        let randomMeaning = randomRadicalMeaning.Meaning + ' (' + randomRadicalMeaning.Reading + ')';
         if (!meanings.includes(randomMeaning) && randomMeaning !== correctMeaning) {
           meanings.push(randomMeaning);
         }
@@ -140,10 +141,8 @@ const radicalsData = [
     }
   }
   
-  
   function getRandomMeaning() {
-    let meanings = radicalsData.map(radical => radical.Meaning);
-    meanings = meanings.filter(meaning => meaning !== randomRadical.Meaning);
+    let meanings = radicalsData.filter(radical => radical.Meaning !== randomRadical.Meaning);
     return meanings[Math.floor(Math.random() * meanings.length)];
   }
   
@@ -155,7 +154,7 @@ const radicalsData = [
       document.getElementById('result').style.fontWeight = '700';
       return;
     }
-    let correctAnswer = randomRadical.Meaning;
+    let correctAnswer = randomRadical.Meaning + ' (' + randomRadical.Reading + ')';
     let result = userInput === correctAnswer;
     let resultDiv = document.getElementById('result');
     if (result) {
@@ -183,29 +182,30 @@ const radicalsData = [
     document.getElementById('answer3').style.display = 'none';
     document.getElementById('result').style.display = 'none';
     document.getElementById('questionNumber').innerText = '';
-
+  
     const percentage = ((correctCount / number_of_questions) * 100).toFixed(2);
-
+  
     const scoreData = {
-        score: percentage,
-        lvl: lvl,
-      };
-    
-      const xhr = new XMLHttpRequest();
-      xhr.open('POST', '/score', true);
-      xhr.setRequestHeader('Content-Type', 'application/json');
-      xhr.onload = function () {
-        if (xhr.status === 200) {
-          console.log('Score posted successfully');
-        } else {
-          console.error('Error posting score:', xhr.statusText);
-        }
-      };
-      xhr.onerror = function () {
-        console.error('Network error while posting score');
-      };
-      xhr.send(JSON.stringify(scoreData));
+      score: percentage,
+      lvl: lvl,
+    };
+  
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', '/score', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        console.log('Score posted successfully');
+      } else {
+        console.error('Error posting score:', xhr.statusText);
+      }
+    };
+    xhr.onerror = function () {
+      console.error('Network error while posting score');
+    };
+    xhr.send(JSON.stringify(scoreData));
   }
   
   displayQuestion();
+  
   

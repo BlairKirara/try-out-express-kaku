@@ -121,11 +121,13 @@ router.get('/radicals', radicalsController.getRadicals);
 
 router.get('/radicals/list', radicalsController.getRadicalsList);
 
-router.get('/radicals/quiz', ensureAuthenticated, radicalsController.getRadicalsQuiz);
-
 router.get('/radicals/quiz_lvl', ensureAuthenticated, radicalsController.getRadicalsQuizLvl);
 
 router.get('/radicals/quiz_easy', ensureAuthenticated, radicalsController.getEasyRadicalsQuiz);
+
+router.get('/radicals/quiz_medium', ensureAuthenticated, radicalsController.getMediumRadicalsQuiz);
+
+router.get('/radicals/quiz_hard', ensureAuthenticated, radicalsController.getHardRadicalsQuiz);
 
 //about routes
 
