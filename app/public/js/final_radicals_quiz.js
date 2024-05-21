@@ -15,7 +15,7 @@ const radicalsData = [
     { Radical: "⼉", Reading: "ひとあし", Meaning: "human legs" },
     { Radical: "⼊", Reading: "いる", Meaning: "to enter" },
     { Radical: "⼋", Reading: "はち", Meaning: "eight" },
-    { Radical: "", Reading: "はちがしら", Meaning: "eight" },
+    { Radical: "", Reading: "はちがしら", Meaning: "eight" },
     { Radical: "⼌", Reading: "けいがまえ", Meaning: "to enclose" },
     { Radical: "⼍", Reading: "わかんむり", Meaning: "cover, crown" },
     { Radical: "⼎", Reading: "にすい", Meaning: "ice" },
@@ -323,12 +323,20 @@ const radicalsData = [
   ];
   
   let randomRadical;
+  let randomRadicals = [];
   let questionCount = 0;
   let correctCount = 0;
   let number_of_questions = 50;
   
   function getRandomRadical() {
-    randomRadical = radicalsData[Math.floor(Math.random() * radicalsData.length)];
+    let unique = false;
+    while (!unique) {
+      randomRadical = radicalsData[Math.floor(Math.random() * radicalsData.length)];
+      if (!randomRadicals.includes(randomRadical)) {
+        unique = true;
+      }
+    }
+    randomRadicals.push(randomRadical);
   }
   
   function shuffle(array) {
@@ -349,7 +357,6 @@ const radicalsData = [
       let correctMeaning = randomRadical.Meaning + ' (' + randomRadical.Reading + ')';
       let meanings = [];
   
-      // Ensure unique meanings
       while (meanings.length < 2) {
         let randomRadicalMeaning = getRandomMeaning();
         let randomMeaning = randomRadicalMeaning.Meaning + ' (' + randomRadicalMeaning.Reading + ')';

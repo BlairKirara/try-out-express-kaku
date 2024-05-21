@@ -99,12 +99,20 @@ const radicalsData = [
   ];
   
   let randomRadical;
+  let randomRadicals = [];
   let questionCount = 0;
   let correctCount = 0;
   let number_of_questions = 25;
   
   function getRandomRadical() {
-    randomRadical = radicalsData[Math.floor(Math.random() * radicalsData.length)];
+    let unique = false;
+    while (!unique) {
+      randomRadical = radicalsData[Math.floor(Math.random() * radicalsData.length)];
+      if (!randomRadicals.includes(randomRadical)) {
+        unique = true;
+      }
+    }
+    randomRadicals.push(randomRadical);
   }
   
   function shuffle(array) {
@@ -125,7 +133,6 @@ const radicalsData = [
       let correctMeaning = randomRadical.Meaning + ' (' + randomRadical.Reading + ')';
       let meanings = [];
   
-      // Ensure unique meanings
       while (meanings.length < 2) {
         let randomRadicalMeaning = getRandomMeaning();
         let randomMeaning = randomRadicalMeaning.Meaning + ' (' + randomRadicalMeaning.Reading + ')';
