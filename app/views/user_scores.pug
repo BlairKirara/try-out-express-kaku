@@ -18,10 +18,10 @@ block content
           - if (!highestScores[score.lvl] || highestScores[score.lvl].score < score.score)
             - highestScores[score.lvl] = score;
         each level in Object.values(highestScores)
-          tr
+          tr(id=`row-${level.userId}-${level.lvl}`)
             td= level.lvl
             td= level.score + '%'
             td
-              button.go_next(onclick=`resetQuiz('${level.userId}', '${level.lvl}')`) Reset Progress
+              button.go_next(onclick=`resetQuiz('${level.userId}', '${level.lvl}', 'row-${level.userId}-${level.lvl}')`) Reset Progress
 
   script(src="../js/hiragana_converter.js")

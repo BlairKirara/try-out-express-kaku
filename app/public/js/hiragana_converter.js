@@ -248,14 +248,20 @@ const romajiToHiragana = {
     window.location.href = `/edit_hiragana_flashcard/${flashcardId}`;
   }
 
-  function resetQuiz(userId, level) {
+  function resetQuiz(userId, level, rowId) {
     const xhr = new XMLHttpRequest();
     xhr.open('POST', `/quiz_scores/reset/${userId}/${level}`, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onload = function () {
       if (xhr.status === 200) {
-        console.log('Quiz scores reset successfully');
-        location.reload(); 
+        console.log('Quiz score reset successfully');
+        document.getElementById(rowId).remove();
+        const outputSection = document.getElementById('output-section-success');
+        outputSection.innerHTML = "<p>Quiz score reset successfully!</p>";
+        
+        if (document.querySelectorAll('table tbody tr').length === 0) {
+          document.querySelector('table').style.display = 'none';
+        }
       } else {
         console.error('Error resetting quiz scores:', xhr.statusText);
       }
@@ -265,4 +271,5 @@ const romajiToHiragana = {
     };
     xhr.send();
   }
-  
+
+    

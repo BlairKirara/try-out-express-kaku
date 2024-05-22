@@ -79,6 +79,10 @@ let hiragana = [
     randomCharacter.forEach((kata) => {
       correctReading += kata.Romaji;
     });
+    let answer = '';
+    randomCharacter.forEach((kata) => {
+      answer += kata.Hiragana;
+    });
     let result = userInput === correctReading;
     let resultDiv = document.getElementById('result');
     if (result) {
@@ -86,10 +90,19 @@ let hiragana = [
       resultDiv.style.color = 'green';
       resultDiv.style.fontWeight = '700';
       correctCount++;
+      document.getElementById('correct_answer_display').style.display = 'none';
     } else {
       resultDiv.innerText = 'Incorrect!';
       resultDiv.style.color = 'red';
       resultDiv.style.fontWeight = '700';
+      let correctAnswerText = document.createElement('p');
+      correctAnswerText.innerText = 'Correct answer to last question: ' + answer + ' -> ' + correctReading;
+      correctAnswerText.style.color = 'green'; 
+      correctAnswerText.style.fontWeight = '700';
+      let correctAnswerDisplay = document.getElementById('correct_answer_display');
+      correctAnswerDisplay.innerHTML = ''; 
+      correctAnswerDisplay.appendChild(correctAnswerText);
+      correctAnswerDisplay.style.display = 'block'; 
     }
     displayQuestion();
   }

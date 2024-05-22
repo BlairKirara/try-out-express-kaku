@@ -59,31 +59,44 @@ let dakuten = [
     }
     
     function checkAnswer() {
-        let userInput = document.getElementById("answer").value.trim();
-        if (userInput === "") {
-            document.getElementById("result").innerText = "Please provide an answer";
-            document.getElementById("result").style.color = "red";
-            document.getElementById("result").style.fontWeight = "700";
-            return;
+        let userInput = document.getElementById('answer').value.trim();
+        if (userInput === '') {
+          document.getElementById('result').innerText = 'Please provide an answer';
+          document.getElementById('result').style.color = 'red';
+          document.getElementById('result').style.fontWeight = '700';
+          return;
         }
-        let correctReading = "";
-        randomCharacter.forEach(kata => {
-            correctReading += kata.Romaji;
+        let correctReading = '';
+        randomCharacter.forEach((kata) => {
+          correctReading += kata.Romaji;
+        });
+        let answer = '';
+        randomCharacter.forEach((kata) => {
+          answer += kata.Katakana;
         });
         let result = userInput === correctReading;
-        let resultDiv = document.getElementById("result");
+        let resultDiv = document.getElementById('result');
         if (result) {
-            resultDiv.innerText = "Correct!";
-            resultDiv.style.color = "green";
-            resultDiv.style.fontWeight = "700";
-            correctCount++;
+          resultDiv.innerText = 'Correct!';
+          resultDiv.style.color = 'green';
+          resultDiv.style.fontWeight = '700';
+          correctCount++;
+          document.getElementById('correct_answer_display').style.display = 'none';
         } else {
-            resultDiv.innerText = "Incorrect!";
-            resultDiv.style.color = "red";
-            resultDiv.style.fontWeight = "700";
+          resultDiv.innerText = 'Incorrect!';
+          resultDiv.style.color = 'red';
+          resultDiv.style.fontWeight = '700';
+          let correctAnswerText = document.createElement('p');
+          correctAnswerText.innerText = 'Correct answer to last question: ' + answer + ' -> ' + correctReading;
+          correctAnswerText.style.color = 'green'; 
+          correctAnswerText.style.fontWeight = '700';
+          let correctAnswerDisplay = document.getElementById('correct_answer_display');
+          correctAnswerDisplay.innerHTML = ''; 
+          correctAnswerDisplay.appendChild(correctAnswerText);
+          correctAnswerDisplay.style.display = 'block'; 
         }
         displayQuestion();
-    }
+      }
     
     function showScore() {
         const lvl = 'Katakana Dakuten';

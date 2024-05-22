@@ -170,16 +170,25 @@ const radicalsData = [
       resultDiv.style.color = 'green';
       resultDiv.style.fontWeight = '700';
       correctCount++;
+      document.getElementById('correct_answer_display').style.display = 'none';
     } else {
       resultDiv.innerText = 'Incorrect!';
       resultDiv.style.color = 'red';
       resultDiv.style.fontWeight = '700';
+      let correctAnswerText = document.createElement('p');
+      correctAnswerText.innerText = 'Correct answer to last question: ' + randomRadical.Radical + " -> " +correctAnswer;
+      correctAnswerText.style.color = 'green'; 
+      correctAnswerText.style.fontWeight = '700';
+      let correctAnswerDisplay = document.getElementById('correct_answer_display');
+      correctAnswerDisplay.innerHTML = ''; 
+      correctAnswerDisplay.appendChild(correctAnswerText);
+      correctAnswerDisplay.style.display = 'block'; 
     }
     displayQuestion();
   }
   
   function showScore() {
-    const lvl = 'Radicals';
+    const lvl = 'Radicals with 1-3 strokes';
     document.getElementById('question').innerText = 'Quiz finished! Your score: ' + correctCount + ' out of ' + number_of_questions;
     document.getElementById('question').style.fontSize = '30px';
     document.getElementById('go_back_to').innerText = 'Go back to:';

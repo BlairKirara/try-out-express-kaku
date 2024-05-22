@@ -215,6 +215,18 @@ img.origami2 {
         margin: 0;
         padding: 20px;
     }
+
+    .hamburger-menu span.bar.change:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    
+    .hamburger-menu span.bar.change:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .hamburger-menu span.bar.change:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
 }
 
 /* footer css */
@@ -265,6 +277,10 @@ h2 {
 }
 
 /* button view */
+
+.correct-answer-display {
+    display: none;
+}
 
 .go_next {
     align-self: flex-end;
@@ -369,6 +385,10 @@ tbody tr:hover {
     align-items: center;
     font-size: 19px;
     gap: 20px;
+}
+
+.correct-answer {
+    font-size: 19px;
 }
 
 .result {
