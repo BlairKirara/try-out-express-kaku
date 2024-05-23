@@ -1,0 +1,12 @@
+extends ../layout
+
+block title 
+    title='KakuLearn | Profile'
+
+block content
+    h1.profile_center It's nice to see you again #{user.username}!
+    a.go_next_profile.profile_center(href='/scores') See your quiz scores!
+    | &nbsp;
+    a.go_next_profile.profile_center(href='/hiragana_sets') See your hiragana flashcard sets!
+    | &nbsp;
+    a.go_next_profile.profile_center(href='/katakana_sets') See your katakana flashcard sets!

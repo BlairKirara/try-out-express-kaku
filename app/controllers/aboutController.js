@@ -4,14 +4,15 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-exports.getAbout = async (req, res) => {
+exports.getIndex = async (req, res) => {
   try {
-    res.render('about', { user: req.user });
+    res.render('index', { user: req.user });
   } catch (err) {
     console.error(err);
     res.status(500).send('Server Error');
   }
 };
+
 
 exports.getHistory = async (req, res) => {
   try {

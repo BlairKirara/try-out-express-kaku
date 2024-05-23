@@ -4,9 +4,18 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-exports.getIndex = async (req, res) => {
+exports.getLogin = async (req, res) => {
   try {
-    res.render('index', { user: req.user });
+    res.render('user/login', { user: req.user });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
+};
+
+exports.getProfile = async (req, res) => {
+  try {
+    res.render('user/profile', { user: req.user });
   } catch (err) {
     console.error(err);
     res.status(500).send('Server Error');
@@ -67,7 +76,7 @@ exports.logIn = (req, res, next) => {
       if (err) {
         return next(err);
       }
-      return res.redirect('/');
+      return res.redirect('/profile');
     });
   })(req, res, next);
 };

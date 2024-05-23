@@ -25,13 +25,17 @@ function ensureNotAuthenticated(req, res, next) {
   }
 }
 
-router.get('/', userController.getIndex);
+router.get('/', aboutController.getIndex);
+
+router.get('/profile', userController.getProfile);
 
 router.get('/signup', ensureNotAuthenticated, userController.getSignup);
 
 router.post('/signup', ensureNotAuthenticated, userController.postSignup);
 
 router.get('/logout', userController.logOut);
+
+router.get('/login', userController.getLogin);
 
 router.post('/login', userController.logIn);
 
@@ -133,8 +137,8 @@ router.get('/radicals/final_test', ensureAuthenticated, radicalsController.getFi
 
 //about routes
 
-router.get('/about', aboutController.getAbout);
 
-router.get('/about/history', aboutController.getHistory);
+
+router.get('/history', aboutController.getHistory);
 
 module.exports = router;

@@ -1,28 +1,13 @@
 extends layout
 
 block title 
-  if user
-    title='KakuLearn | Profile'
-  else 
-    title='KakuLearn | Log In'
+  title='Kaku Learn | Home'
 block content
-    if user
-      h1.profile_center It's nice to see you again #{user.username}!
-      a.go_next_profile.profile_center(href='/scores') See your quiz scores!
-      | &nbsp;
-      a.go_next_profile.profile_center(href='/hiragana_sets') See your hiragana flashcard sets!
-      | &nbsp;
-      a.go_next_profile.profile_center(href='/katakana_sets') See your katakana flashcard sets!
-    else
-      h1 Log In or Sing Up
-      form(action='/login' method='POST')
-        div
-          label(for='username') Username
-          input(class='submition_form', name='username' placeholder='username' type='text')
-        div
-          label(for='password') Password
-          input(class='submition_form', name='password' placeholder='password' type='password')
-        div
-          button.go_next(type='submit') Log In 
-          | &nbsp;
-          button.go_next(type='button', onclick="window.location.href='/signup'") Sign Up
+  h1 What is KakuLearn?
+  p KakuLearn is an app dedicated to beginners who are just starting out on their journey of learning Japanese. On this site you can learn about hiragana, katakana, radicals and their history.
+  p The name of the website has a Japanese word "kaku" in it, which translates to "to write". That's because this website focuses on teaching you the basics of the writing system. 
+  p Click on one of the links on the navigation panel at the top of the site or read a short history note found below this text to start. Good luck! Or how they say it in Japanese - がんばって (ganbatte)!
+
+  h2 Interested in the origins of the Japanese writing system?
+  p Click the button below to read a short history note on how the Japanese writing system came to be the way it is today.
+  a.go_next(href='/history') History
