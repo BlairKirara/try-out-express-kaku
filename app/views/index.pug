@@ -1,15 +1,20 @@
 extends layout
 
+block title 
+  if user
+    title='KakuLearn | Profile'
+  else 
+    title='KakuLearn | Log In'
 block content
     if user
-      h2.profile_center It's nice to see you again #{user.username}!
+      h1.profile_center It's nice to see you again #{user.username}!
       a.go_next_profile.profile_center(href='/scores') See your quiz scores!
       | &nbsp;
       a.go_next_profile.profile_center(href='/hiragana_sets') See your hiragana flashcard sets!
       | &nbsp;
       a.go_next_profile.profile_center(href='/katakana_sets') See your katakana flashcard sets!
     else
-      h2 Log In or Sing Up
+      h1 Log In or Sing Up
       form(action='/login' method='POST')
         div
           label(for='username') Username

@@ -1,7 +1,9 @@
 extends ../layout
 
+block title 
+  title='KakuLearn | Edit Hiaragana Flashcard'
 block content
-  h2 Edit Flashcard
+  h1 Edit Flashcard
   form(action=`/flashcard/update/${flashcard.id}`, method="POST")
     label( for="romaji") Romaji:
     input(class="submition_form" type="text", id="romaji", name="romaji", value=flashcard.romaji)

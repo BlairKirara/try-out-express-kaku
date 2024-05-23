@@ -1,7 +1,8 @@
 doctype html
-html
+html(lang='en')
   head
-    title='Kaku Learn'
+    block title
+      title='KakuLearn'
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     link(rel='stylesheet', href='/stylesheets/style.css')
@@ -10,8 +11,7 @@ html
       header   
         .logo 
             .circle 
-            h1 
-                a(href='/about') KakuLearn          
+            p.logo-text KakuLearn          
         nav.nav-bar       
             ul.header-links
                 li

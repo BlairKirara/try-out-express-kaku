@@ -1,7 +1,8 @@
 extends layout
-
+block title 
+  title='KakuLearn | Quiz Scores'
 block content
-  h2 Your High Scores
+  h1 Your High Scores
   | &nbsp;
   if scores.length === 0
     p No scores available.

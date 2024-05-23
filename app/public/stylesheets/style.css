@@ -71,7 +71,7 @@ header {
 }
 
 .header-links li a:hover {
-    color: rgb(120, 192, 214);
+    color: #2B8097;
 }
 
 .logo {
@@ -148,7 +148,7 @@ img.origami2 {
     }
 
     p {
-        background-color: rgba(255, 255, 255, 0.5);
+        background-color: #ffffff80;
         padding: 20px;
     }
 
@@ -277,12 +277,14 @@ ul li {
     list-style-type: none;
 }
 
-h1 {
+.logo-text {
     margin: 0;
     padding: 0;
+    font-size: 40px;
+    font-weight: 700;
 }
 
-h2 {
+h1, h2 {
     text-decoration: underline red;
     font-size: 25px;
 }
@@ -296,27 +298,31 @@ h2 {
 .go_next {
     align-self: flex-end;
     padding: 5px 10px;
-    background-color: rgb(161, 212, 228);
+    background-color: #2B8097;
     border-radius: 10px;
     margin: 2px;
     border-style: none;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     font-size: 20px;
+    color: white;
+    font-weight: 700;
 }
 
 .go_next:hover {
-    background-color: aqua;
+    background-color: #368153;
 }
 
 .go_next_profile {
     padding: 5px 10px;
-    background-color: rgb(161, 212, 228);
+    background-color: #2B8097;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    color: white;
+    font-weight: 700;
 }
 
 .go_next_profile:hover {
-    background-color: aqua;
+    background-color: #368153;
 }
 
 .profile_center {
@@ -343,7 +349,7 @@ table {
 }
 
 th {
-    background: rgb(120, 192, 214);
+    background: #78c0d6;
     font-size: 20px;
     padding: 10px;
 }
@@ -362,7 +368,7 @@ td {
 }
 
 tbody tr:hover {
-    background: rgb(241, 191, 191);
+    background: #f1bfbf;
   }
 
 /* quiz display */
