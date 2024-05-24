@@ -83,6 +83,14 @@ header {
     border-radius: 20px;
 }
 
+.slogan {
+    margin-top: 5px; /* Adjust margin as needed */
+    font-style: italic; /* Make the slogan italic */
+    font-size: 16px; /* Adjust font size as needed */
+    color: #333; /* Adjust color as needed */
+}
+
+
 .circle {
     min-height: 50px;
     width: 50px;
@@ -108,6 +116,11 @@ img.origami2 {
     max-width: 250px;
     width: 100%;
 }
+
+.logo-img {
+    max-width: 100%;
+    height: auto;
+  }
 
 .rowspan_list {
     background-color: #f2f2f2;   
@@ -135,7 +148,7 @@ img.origami2 {
     background-color: rgb(37, 37, 37);
 }
 
-@media(max-width: 1115px) {
+@media(max-width: 1270px) {
 
     header {
         flex-direction: column; 
@@ -168,6 +181,8 @@ img.origami2 {
         background-color: #f3f3f1;
         margin: 0;
         padding: 20px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .quiz {
@@ -493,6 +508,16 @@ tbody tr:hover {
     .hamburger-menu span.bar.change:nth-child(3) {
         transform: rotate(45deg) translate(-5px, -6px);
     }
+
+    .hamburger-menu {
+        margin-left: 20px; /* Adjust as needed */
+      }
+    
+      /* Adjust the padding or margin of the logo to center it */
+      .logo {
+        margin-left: 0px;
+        padding-left: 0px; /* Adjust as needed */
+      }
 
 }
   
