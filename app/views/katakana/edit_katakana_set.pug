@@ -2,7 +2,16 @@ extends ../layout
 
 block title 
   title='KakuLearn | Edit Katakana Flashcards'
+
 block content
+  .breadcrumb
+      a(href='/') Homepage
+      span.separator › 
+      a(href='/profile') Profile
+      span.separator › 
+      a(href='/katakana_sets') Katakana Sets
+      span.separator.current-location › 
+      a.current-location(href='') Edit Set
   h1 Edit Set
   | &nbsp;
   if set.length === 0
@@ -22,6 +31,6 @@ block content
             td
               button.go_next(onclick=`deleteKatakanaFlashcard('${flashcard.id}', document.getElementById('row-${flashcard.id}'))`) Delete
               | &nbsp;
-              button.go_next(onclick=`editKatakanaFlashcard('${flashcard.id}')`) Edit
+              button.go_next(onclick=`editKatakanaFlashcard('${flashcard.id}', '${setId}')`) Edit
 
-    script(src="../js/katakana_converter.js")
+  script(src="../js/katakana_converter.js")

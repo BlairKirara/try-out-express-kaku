@@ -3,6 +3,10 @@ extends layout
 block title 
   title='KakuLearn | Katakana'
 block content
+  .breadcrumb
+    a(href='/') Homepage
+    span.separator.current-location › 
+    a.current-location(href='/katakana') Katakana
   h1 What is katakana?
   p Katakana is one of the two Japanese syllabic writing systems. Each of these systems provides a full list of sounds in the Japanese langugae. It consists of 46 characters and 25 diacritics. 
   p Katakana is most commonly used to write foreign words and names of countries. 

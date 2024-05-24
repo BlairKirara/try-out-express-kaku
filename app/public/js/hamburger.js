@@ -1,7 +1,7 @@
 const hamburger = document.querySelector(".hamburger-menu");
 const headerLinks = document.querySelector(".nav-bar");
-const pipeListItem = document.querySelector(".stick");
 const navLinks = document.querySelectorAll(".nav-bar a");
+const stickElements = document.querySelectorAll('.stick');
 
 hamburger.addEventListener("click", () => {
     toggleMenu();
@@ -17,8 +17,7 @@ window.addEventListener("scroll", () => {
 function toggleMenu() {
     hamburger.classList.toggle("active");
     headerLinks.classList.toggle("active");
-    pipeListItem.style.display = pipeListItem.style.display === 'none' ? '' : 'none';
-    
+
     // Toggle between hamburger and X
     const bars = document.querySelectorAll(".hamburger-menu span.bar");
     bars.forEach(bar => {
@@ -30,8 +29,7 @@ function toggleMenu() {
 function closeMenu() {
     hamburger.classList.remove("active");
     headerLinks.classList.remove("active");
-    pipeListItem.style.display = pipeListItem.style.display === 'none' ? '' : 'none';
-    
+
     // Reset the bars to hamburger
     const bars = document.querySelectorAll(".hamburger-menu span.bar");
     bars.forEach(bar => {
@@ -46,7 +44,7 @@ navLinks.forEach(link => {
             toggleMenu();
         }
     });
-    
+
     link.addEventListener("blur", (event) => {
         // Check if the newly focused element is still within the nav bar
         const newlyFocusedElement = event.relatedTarget;
@@ -55,3 +53,20 @@ navLinks.forEach(link => {
         }
     });
 });
+
+// Function to update visibility of stick elements
+function updateStickVisibility() {
+  stickElements.forEach(stickElement => {
+    if (window.innerWidth <= 900) {
+      stickElement.classList.add('hidden');
+    } else {
+      stickElement.classList.remove('hidden');
+    }
+  });
+}
+
+// Initial check
+updateStickVisibility();
+
+// Update on resize
+window.addEventListener('resize', updateStickVisibility);

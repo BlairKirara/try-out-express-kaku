@@ -229,7 +229,7 @@ const romajiToHiragana = {
     xhr.onload = function () {
       if (xhr.status === 200) {
         console.log('Flashcard deleted successfully');
-        row.remove();
+        row.remove(); // Remove the row from the table
         const outputSection = document.getElementById('output-section-success');
         outputSection.innerHTML = "<p>Flashcard deleted successfully!</p>";
       } else {
@@ -243,10 +243,12 @@ const romajiToHiragana = {
   }
   
   
+  
 
   function editFlashcard(flashcardId) {
     window.location.href = `/edit_hiragana_flashcard/${flashcardId}`;
   }
+  
 
   function resetQuiz(userId, level, rowId) {
     const xhr = new XMLHttpRequest();

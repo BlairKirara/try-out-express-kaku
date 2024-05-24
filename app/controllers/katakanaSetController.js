@@ -152,7 +152,13 @@ exports.editKatakanaFlashcard = async (req, res) => {
       return res.status(404).send('Flashcard not found');
     }
 
-    res.render('katakana/edit_katakana_flashcard', { flashcard, user: req.user });
+    // Find the set the flashcard belongs to
+    const set = await SetList.findByPk(flashcard.setId);
+    if (!set) {
+      return res.status(404).send('Set not found');
+    }
+
+    res.render('katakana/edit_katakana_flashcard', { flashcard, setNumber: set.number, user: req.user, setId: flashcard.setId });
   } catch (error) {
     console.error('Error editing flashcard:', error);
     res.status(500).json({ success: false, message: 'Server Error' });
@@ -169,17 +175,21 @@ exports.updateKatakanaFlashcard = async (req, res) => {
       return res.status(404).json({ success: false, message: 'Flashcard not found' });
     }
 
+    const setId = flashcard.setId; // Get the set ID associated with the flashcard
+
     flashcard.romaji = romaji;
     flashcard.katakana = katakana;
 
     await flashcard.save();
 
-    res.redirect('/katakana_sets');
+    // Redirect to the edit page of the set
+    res.redirect(`/edit_katakana_set/${setId}`);
   } catch (error) {
     console.error('Error updating flashcard:', error);
     res.status(500).json({ success: false, message: 'Server Error' });
   }
 };
+
 
 exports.practiceKatakanaSet = async (req, res) => {
   try {

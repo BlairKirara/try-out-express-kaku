@@ -3,6 +3,10 @@ extends ../layout
 block title 
   title='KakuLearn | Sign Up'
 block content
+  .breadcrumb
+      a(href='/') Homepage
+      span.separator.current-location › 
+      a.current-location(href='/signup') Sign Up
   h1 Sign Up
   form(method='post', action='')
     div

@@ -17,22 +17,27 @@ html(lang='en')
         nav.nav-bar       
             ul.header-links
                 li
-                    a(href='/') Home
+                    a(href='/') Homepage
+                li.stick.low-stick |
                 li
                     a(href='/hiragana') Hiragana
+                li.stick.low-stick |
                 li
                     a(href='/katakana') Katakana
+                li.stick.low-stick |
                 li
                     a(href='/radicals') Radicals
                 li.stick |         
                 if user
                     li
                         a(href='/profile') Profile
+                    li.stick.low-stick |
                     li
                         a(href='/logout') Log Out
                 else
                     li
                         a(href='/login') Log In
+                    li.stick.low-stick |
                     li
                         a(href='/signup') Sign Up
         .hamburger-menu

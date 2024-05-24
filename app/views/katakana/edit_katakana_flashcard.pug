@@ -3,12 +3,22 @@ extends ../layout
 block title 
   title='KakuLearn | Edit Katakana Flashcard'
 block content
+  .breadcrumb
+      a(href='/') Homepage
+      span.separator › 
+      a(href='/profile') Profile
+      span.separator › 
+      a(href='/katakana_sets') Katakana Sets
+      span.separator › 
+      a(href=`/edit_katakana_set/${setId}`) Edit Set
+      span.separator.current-location › 
+      a.current-location(href='') Edit Flashcard
   h1 Edit Flashcard
   form(action=`/katakana_flashcard/update/${flashcard.id}`, method="POST")
     label(for="romaji") Romaji:
-    input(class="submition_form" type="text", id="romaji", name="romaji", value=flashcard.romaji)
+    input(class="submition_form" type="text" id="romaji" name="romaji" value=flashcard.romaji)
     br
     label(for="katakana") Katakana:
-    input(class="submition_form" type="text", id="katakana", name="katakana", value=flashcard.katakana)
+    input(class="submition_form" type="text" id="katakana" name="katakana" value=flashcard.katakana)
     br
     button.go_next(type="submit") Save

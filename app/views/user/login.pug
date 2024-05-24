@@ -3,16 +3,20 @@ extends ../layout
 block title 
   title='KakuLearn | Log In'
 block content
+  .breadcrumb
+      a(href='/') Homepage
+      span.separator.current-location › 
+      a.current-location(href='/login') Log In
 
-    h1 Log In or Sing Up
-    form(action='/login' method='POST')
-      div
-        label(for='username') Username
-        input(class='submition_form', name='username' placeholder='username' type='text')
-      div
-        label(for='password') Password
-        input(class='submition_form', name='password' placeholder='password' type='password')
-      div
-        button.go_next(type='submit') Log In 
-        | &nbsp;
-        button.go_next(type='button', onclick="window.location.href='/signup'") Sign Up
+  h1 Log In or Sing Up
+  form(action='/login' method='POST')
+    div
+      label(for='username') Username
+      input(class='submition_form', name='username' placeholder='username' type='text')
+    div
+      label(for='password') Password
+      input(class='submition_form', name='password' placeholder='password' type='password')
+    div
+      button.go_next(type='submit') Log In 
+      | &nbsp;
+      button.go_next(type='button', onclick="window.location.href='/signup'") Sign Up

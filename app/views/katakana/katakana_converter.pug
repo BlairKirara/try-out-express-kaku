@@ -3,7 +3,12 @@ extends ../layout
 block title 
   title='KakuLearn | Romaji to Katakana Converter'
 block content
-  
+  .breadcrumb
+      a(href='/') Homepage
+      span.separator › 
+      a(href='/katakana') Katakana
+      span.separator.current-location › 
+      a.current-location(href='/katakana/converter') Katakana Converter   
   h1 Romaji to Katakana Converter
   
   #converter-box

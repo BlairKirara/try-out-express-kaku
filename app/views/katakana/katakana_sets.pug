@@ -3,7 +3,13 @@ extends ../layout
 block title 
   title='KakuLearn | Katakana Flashcard Sets'
 block content
-  h1 Your Katakana Sets
+  .breadcrumb
+          a(href='/') Homepage
+          span.separator › 
+          a(href='/profile') Profile
+          span.separator.current-location › 
+          a.current-location(href='/katakana_sets') Katakana Sets
+  h1 Katakana Sets
   | &nbsp;
   if sets.length === 0
     p No Katakana sets available.

@@ -3,6 +3,12 @@ extends ../layout
 block title 
   title='KakuLearn | Hiragana List'
 block content
+  .breadcrumb
+      a(href='/') Homepage
+      span.separator › 
+      a(href='/hiragana') Hiragana
+      span.separator.current-location › 
+      a.current-location(href='/hiragana/list') Hiragana List
   table.hiragana-table
     thead
       tr 

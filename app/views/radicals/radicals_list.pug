@@ -3,6 +3,12 @@ extends ../layout
 block title 
   title='KakuLearn | Radicals List'
 block content
+  .breadcrumb
+      a(href='/') Homepage
+      span.separator › 
+      a(href='/radicals') Radicals
+      span.separator.current-location › 
+      a.current-location(href='/radicals/list') Radicals List
   table.radicals-table.radicals-font
     thead
       tr

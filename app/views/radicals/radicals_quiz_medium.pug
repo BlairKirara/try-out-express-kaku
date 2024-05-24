@@ -3,6 +3,14 @@ extends ../layout
 block title 
   title='KakuLearn | Radicals Quiz Level Medium'
 block content
+    .breadcrumb
+        a(href='/') Homepage
+        span.separator › 
+        a(href='/radicals') Radicals
+        span.separator › 
+        a(href='/radicals/quiz_lvl') Radicals Quiz Levels
+        span.separator.current-location › 
+        a.current-location(href='/radicals/quiz_medium') Quiz Lvl 2
     .quiz
         h1 What is the meaning of this radical?
         .middle-quiz

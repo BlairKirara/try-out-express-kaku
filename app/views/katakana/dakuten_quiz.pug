@@ -3,6 +3,14 @@ extends ../layout
 block title 
   title='KakuLearn | Katakana Dakuten Quiz'
 block content
+    .breadcrumb
+        a(href='/') Homepage
+        span.separator › 
+        a(href='/katakana') Katakana
+        span.separator › 
+        a(href='/katakana/quiz_lvl') Katakana Quiz Levels
+        span.separator.current-location › 
+        a.current-location(href='/katakana/dakuten_quiz') Dakuten Quiz
     .quiz
         h1 How can you read these katakana characters?
         .middle-quiz

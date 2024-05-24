@@ -27,6 +27,7 @@ const initializeFlashcards = (set) => {
       const goBackButton = document.createElement('button');
       goBackButton.innerText = 'Go back to the flashcard sets list';
       goBackButton.type = 'button';
+      goBackButton.className = 'go_next';
       goBackButton.addEventListener('click', () => {
         window.location.href = "/hiragana_sets";
       });

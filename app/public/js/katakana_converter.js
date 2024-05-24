@@ -227,7 +227,7 @@ function deleteKatakanaSet(setId, row) {
     xhr.onload = function () {
       if (xhr.status === 200) {
         console.log('Flashcard deleted successfully');
-        row.remove();
+        row.remove(); // Remove the row from the table
         const outputSection = document.getElementById('output-section-success');
         outputSection.innerHTML = "<p>Flashcard deleted successfully!</p>";
       } else {
@@ -239,6 +239,7 @@ function deleteKatakanaSet(setId, row) {
     };
     xhr.send();
   }
+  
   
 
   function editKatakanaFlashcard(flashcardId) {

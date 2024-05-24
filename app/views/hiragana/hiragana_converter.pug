@@ -3,7 +3,12 @@ extends ../layout
 block title 
   title='KakuLearn | Romaji to Hiragana Converter'
 block content
-  
+  .breadcrumb
+      a(href='/') Homepage
+      span.separator › 
+      a(href='/hiragana') Hiragana
+      span.separator.current-location › 
+      a.current-location(href='/hiragana/converter') Hiragana Converter 
   h1 Romaji to Hiragana Converter
   
   #converter-box

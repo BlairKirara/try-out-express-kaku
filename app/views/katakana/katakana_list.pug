@@ -3,6 +3,12 @@ extends ../layout
 block title 
   title='KakuLearn | Katakana List'
 block content
+  .breadcrumb
+      a(href='/') Homepage
+      span.separator › 
+      a(href='/katakana') Katakana
+      span.separator.current-location › 
+      a.current-location(href='/katakana/list') Katakana List
   table.katakana-table
     thead
       tr 

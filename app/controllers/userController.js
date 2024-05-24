@@ -57,7 +57,7 @@ exports.postSignup = async (req, res, next) => {
 
     req.flash('success', 'You are now registered and can log in');
 
-    return res.render('user/signup', { successMessage: req.flash('success') });
+    return res.render('user/login', { successMessage: req.flash('success') });
   } catch (err) {
     return next(err);
   }
@@ -70,7 +70,7 @@ exports.logIn = (req, res, next) => {
     }
     if (!user) {
       req.flash('error', 'Invalid username or password!');
-      return res.render('', { message: req.flash('error') });
+      return res.render('user/login', { message: req.flash('error') });
     }
     req.logIn(user, (err) => {
       if (err) {

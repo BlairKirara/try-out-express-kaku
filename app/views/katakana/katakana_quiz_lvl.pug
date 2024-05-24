@@ -1,19 +1,25 @@
 extends ../layout
 
 block title 
-  title='KakuLearn | Choose Katakana Quiz Level'
+  title='KakuLearn | Katakana Quiz Levels'
 block content
-    h1 Lvl 1 - Katakana 
-    p Take this quiz to test your knowledge on the 46 basic katakana characters.
-    a.go_next(href='quiz') Quiz
-    h1 Lvl 2 - Dakuten and Handakuten
-    p Take this quiz to test your knowledge on the 25 diacritics of katakana characters.
-    a.go_next(href='dakuten_quiz') Quiz 
-    h1 Lvl 3 - Combinations
-    p Take this quiz to test your knowledge on hiragana combiantions such as キャ (kya) or ピャ (pya).
-    a.go_next(href='combinations_quiz') Quiz
-    h1 Lvl 4 - Final Test 
-    p The final test combines all the topics listed above. Are you up for the challange? Click the button below! 
-    a.go_next(href='final_test') Quiz
+  .breadcrumb
+      a(href='/') Homepage
+      span.separator › 
+      a(href='/katakana') Katakana
+      span.separator.current-location › 
+      a.current-location(href='/katakana/quiz_lvl') Katakana Quiz Levels
+  h1 Lvl 1 - Katakana 
+  p Take this quiz to test your knowledge on the 46 basic katakana characters.
+  a.go_next(href='quiz') Quiz
+  h1 Lvl 2 - Dakuten and Handakuten
+  p Take this quiz to test your knowledge on the 25 diacritics of katakana characters.
+  a.go_next(href='dakuten_quiz') Quiz 
+  h1 Lvl 3 - Combinations
+  p Take this quiz to test your knowledge on hiragana combiantions such as キャ (kya) or ピャ (pya).
+  a.go_next(href='combinations_quiz') Quiz
+  h1 Lvl 4 - Final Test 
+  p The final test combines all the topics listed above. Are you up for the challange? Click the button below! 
+  a.go_next(href='final_test') Quiz
 
     

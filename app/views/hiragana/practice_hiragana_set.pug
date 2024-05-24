@@ -3,6 +3,14 @@ extends ../layout
 block title 
   title='KakuLearn | Hiragana Flashcard Practice'
 block content
+  .breadcrumb
+      a(href='/') Homepage
+      span.separator › 
+      a(href='/profile') Profile
+      span.separator › 
+      a(href='/hiragana_sets') Hiragana Sets
+      span.separator.current-location › 
+      a.current-location(href='') Practice
   h1 Practice Set
   #flashcard-container
     p#hiragana-reading

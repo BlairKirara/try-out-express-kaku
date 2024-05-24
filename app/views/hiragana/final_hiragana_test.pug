@@ -3,6 +3,14 @@ extends ../layout
 block title 
   title='KakuLearn | Final Hiragana Test'
 block content
+    .breadcrumb
+        a(href='/') Homepage
+        span.separator › 
+        a(href='/hiragana') Hiragana
+        span.separator › 
+        a(href='/hiragana/quiz_lvl') Hiragana Quiz Levels
+        span.separator.current-location › 
+        a.current-location(href='/hiragana/final_test') Final Test
     .quiz
         h1 How can you read these hiragana characters?
         .middle-quiz

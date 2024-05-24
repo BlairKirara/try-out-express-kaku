@@ -2,7 +2,14 @@ extends ../layout
 
 block title 
   title='KakuLearn | History'
+
 block content
+  .breadcrumb
+    a(href='/') Homepage
+    span.separator.current-location › 
+    a.current-location(href='/history') History
+
   h1 History
   p Description...
   a.go_next(href='/') Go back
+

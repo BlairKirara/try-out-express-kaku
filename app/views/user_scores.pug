@@ -2,7 +2,13 @@ extends layout
 block title 
   title='KakuLearn | Quiz Scores'
 block content
-  h1 Your High Scores
+  .breadcrumb
+      a(href='/') Homepage
+      span.separator › 
+      a(href='/profile') Profile
+      span.separator.current-location › 
+      a.current-location(href='/scores') Quiz Scores
+  h1 Quiz Scores
   | &nbsp;
   if scores.length === 0
     p No scores available.

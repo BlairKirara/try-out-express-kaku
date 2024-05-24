@@ -171,12 +171,19 @@ exports.editFlashcard = async (req, res) => {
       return res.status(404).send('Flashcard not found');
     }
 
-    res.render('hiragana/edit_hiragana_flashcard', { flashcard, user: req.user });
+    // Find the set the flashcard belongs to
+    const set = await SetList.findByPk(flashcard.setId);
+    if (!set) {
+      return res.status(404).send('Set not found');
+    }
+
+    res.render('hiragana/edit_hiragana_flashcard', { flashcard, setNumber: set.number, user: req.user, setId: flashcard.setId });
   } catch (error) {
     console.error('Error editing flashcard:', error);
     res.status(500).json({ success: false, message: 'Server Error' });
   }
 };
+
 
 exports.updateFlashcard = async (req, res) => {
   try {
@@ -188,12 +195,15 @@ exports.updateFlashcard = async (req, res) => {
       return res.status(404).json({ success: false, message: 'Flashcard not found' });
     }
 
+    const setId = flashcard.setId; // Get the set ID associated with the flashcard
+
     flashcard.romaji = romaji;
     flashcard.hiragana = hiragana;
 
     await flashcard.save();
 
-    res.redirect('/hiragana_sets'); 
+    // Redirect to the edit page of the set
+    res.redirect(`/edit/${setId}`);
   } catch (error) {
     console.error('Error updating flashcard:', error);
     res.status(500).json({ success: false, message: 'Server Error' });
