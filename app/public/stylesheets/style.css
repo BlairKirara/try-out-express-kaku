@@ -54,7 +54,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 15px;
-    /* box-shadow: 0px 5px 5px grey; */
+ 
 }
 
 .header-links {
@@ -84,19 +84,10 @@ header {
 }
 
 .slogan {
-    margin-top: 5px; /* Adjust margin as needed */
-    font-style: italic; /* Make the slogan italic */
-    font-size: 16px; /* Adjust font size as needed */
-    color: #333; /* Adjust color as needed */
-}
-
-
-.circle {
-    min-height: 50px;
-    width: 50px;
-    background-color: #bb0000;
-    border-radius: 50%;
-    display: inline-block;
+    margin-top: 5px; 
+    font-style: italic;
+    font-size: 16px; 
+    color: #333; 
 }
 
 img.origami1 {
@@ -118,10 +109,14 @@ img.origami2 {
 }
 
 .logo-img {
-    max-width: 100%;
-    height: auto;
+    float: left;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    width: 125%;
+    max-width: 400px;
   }
-
+  
 .rowspan_list {
     background-color: #f2f2f2;   
 }
@@ -418,7 +413,7 @@ tbody tr:hover {
     
     .breadcrumb a {
         text-decoration: none;
-        color: #333; /* Breadcrumb link color */
+        color: #333; 
     }
     
     .breadcrumb a:hover {
@@ -427,12 +422,12 @@ tbody tr:hover {
     
     .breadcrumb .separator {
         margin: 0 10px;
-        color: #999; /* Separator color */
+        color: #999; 
     }
 
     .breadcrumb .current-location {
-        color: #333; /* Change color to highlight */
-        font-weight: bold; /* Optionally make it bold */
+        color: #333; 
+        font-weight: bold; 
     }
     
 
@@ -445,6 +440,9 @@ tbody tr:hover {
         display: none;
       }
       
+    .logo-img {
+        width: 105%;
+    }  
 
     .nav-bar {
         position: fixed;
@@ -510,13 +508,13 @@ tbody tr:hover {
     }
 
     .hamburger-menu {
-        margin-left: 20px; /* Adjust as needed */
+        margin-left: 20px; 
       }
     
-      /* Adjust the padding or margin of the logo to center it */
+   
       .logo {
         margin-left: 0px;
-        padding-left: 0px; /* Adjust as needed */
+        padding-left: 0px; 
       }
 
 }
