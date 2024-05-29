@@ -168,26 +168,21 @@ const romajiToKatakana = {
 function saveYourSet() {
   const setName = document.getElementById('set').value;
 
-  // Check if setName is empty
   if (!setName.trim()) {
-    // Create a new div element to contain the message
+
     const messageDiv = document.createElement('div');
     
-    // Create a new p element for the error message
     const errorMessage = document.createElement('p');
     errorMessage.className = 'output-error';
     errorMessage.textContent = 'Please provide a name for your set';
     
-    // Append the error message to the message div
     messageDiv.appendChild(errorMessage);
 
-    // Get the output section element
     const outputSection = document.getElementById('output-section');
     
-    // Prepend the message div before the existing content in the output section
     outputSection.insertBefore(messageDiv, outputSection.firstChild);
 
-    return; // Stop execution if setName is empty
+    return; 
   }
 
   const xhr = new XMLHttpRequest();
@@ -224,14 +219,12 @@ function deleteKatakanaSet(setId, row) {
   xhr.onload = function () {
     if (xhr.status === 200) {
       console.log('Set deleted successfully');
-      row.remove(); // Remove the row from the table
+      row.remove(); 
 
-      // Create a new p element
       const newP = document.createElement('p');
       newP.className = 'output-success';
       newP.textContent = 'Set deleted successfully!';
 
-      // Append the new p element to the output section
       const outputSection = document.getElementById('output-section-success');
       outputSection.appendChild(newP);
     } else {
@@ -257,14 +250,12 @@ function deleteKatakanaSet(setId, row) {
     xhr.onload = function () {
       if (xhr.status === 200) {
         console.log('Flashcard deleted successfully');
-        row.remove(); // Remove the row from the table
+        row.remove(); 
   
-        // Create a new p element
         const newP = document.createElement('p');
         newP.className = 'output-success';
         newP.textContent = 'Flashcard deleted successfully!';
   
-        // Append the new p element to the output section
         const outputSection = document.getElementById('output-section-success');
         outputSection.appendChild(newP);
       } else {

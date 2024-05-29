@@ -152,7 +152,6 @@ exports.editKatakanaFlashcard = async (req, res) => {
       return res.status(404).send('Flashcard not found');
     }
 
-    // Find the set the flashcard belongs to
     const set = await SetList.findByPk(flashcard.setId);
     if (!set) {
       return res.status(404).send('Set not found');
@@ -175,14 +174,13 @@ exports.updateKatakanaFlashcard = async (req, res) => {
       return res.status(404).json({ success: false, message: 'Flashcard not found' });
     }
 
-    const setId = flashcard.setId; // Get the set ID associated with the flashcard
+    const setId = flashcard.setId;
 
     flashcard.romaji = romaji;
     flashcard.katakana = katakana;
 
     await flashcard.save();
 
-    // Redirect to the edit page of the set
     res.redirect(`/edit_katakana_set/${setId}`);
   } catch (error) {
     console.error('Error updating flashcard:', error);

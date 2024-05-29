@@ -171,7 +171,6 @@ exports.editFlashcard = async (req, res) => {
       return res.status(404).send('Flashcard not found');
     }
 
-    // Find the set the flashcard belongs to
     const set = await SetList.findByPk(flashcard.setId);
     if (!set) {
       return res.status(404).send('Set not found');
@@ -195,14 +194,13 @@ exports.updateFlashcard = async (req, res) => {
       return res.status(404).json({ success: false, message: 'Flashcard not found' });
     }
 
-    const setId = flashcard.setId; // Get the set ID associated with the flashcard
+    const setId = flashcard.setId;
 
     flashcard.romaji = romaji;
     flashcard.hiragana = hiragana;
 
     await flashcard.save();
 
-    // Redirect to the edit page of the set
     res.redirect(`/edit/${setId}`);
   } catch (error) {
     console.error('Error updating flashcard:', error);
