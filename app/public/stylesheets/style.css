@@ -232,10 +232,28 @@ ul li {
     font-weight: 700;
 }
 
-h1, h2 {
+h1 {
     text-decoration: underline red;
     font-size: 25px;
+    margin-bottom: 0;
 }
+
+h2 {
+    text-decoration: underline red;
+    font-size: 23px;
+    margin-bottom: 0;
+}
+
+h3 {
+    font-size: 20px;
+    margin-bottom: 0;
+}
+
+p {
+    text-align: justify;
+}
+
+
 
 /* button view */
 
@@ -297,22 +315,20 @@ table {
 }
 
 th {
-    background: #78c0d6;
+    background: #2B8097;
     font-size: 20px;
     padding: 10px;
+    color: white
 }
 
-tr:nth-child(even){
-    background-color: #f2f2f2;
-}
-
-tr:nth-child(odd){
+tr {
     background-color: #ffffff;
 }
 
 td {
     font-size: 20px;
     padding: 10px;
+    border-bottom: 1px solid #ddd;
 }
 
 tbody tr:hover {
