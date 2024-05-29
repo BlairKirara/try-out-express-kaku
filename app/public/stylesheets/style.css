@@ -386,17 +386,6 @@ tbody tr:hover {
 
 /* messages */
 
-#output-section-success {
-    background-color: rgba(162, 214, 120, 0.5);
-    border-radius: 10px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    min-width: 250px; 
-    font-size: 15px;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
   .output-error {
     background-color: rgba(214, 120, 133, 0.5);
     border-radius: 10px; 

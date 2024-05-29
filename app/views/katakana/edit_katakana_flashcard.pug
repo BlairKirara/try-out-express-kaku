@@ -14,6 +14,7 @@ block content
       span.separator.current-location › 
       a.current-location(href='') Edit Flashcard
   h1 Edit Flashcard
+  | &nbsp;
   form(action=`/katakana_flashcard/update/${flashcard.id}`, method="POST")
     label(for="romaji") Romaji:
     input(class="submition_form" type="text" id="romaji" name="romaji" value=flashcard.romaji)
