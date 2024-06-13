@@ -1,56 +1,35 @@
 let hiragana = [
-    { Hiragana: "あ", Romaji: 'a' },
-    { Hiragana: "い", Romaji: 'i' },
-    { Hiragana: "う", Romaji: 'u' },
-    { Hiragana: "え", Romaji: 'e' },
-    { Hiragana: "お", Romaji: 'o' },
-    { Hiragana: "か", Romaji: 'ka' },
-    { Hiragana: "き", Romaji: 'ki' },
-    { Hiragana: "く", Romaji: 'ku' },
-    { Hiragana: "け", Romaji: 'ke' },
-    { Hiragana: "こ", Romaji: 'ko' },
-    { Hiragana: "さ", Romaji: 'sa' },
-    { Hiragana: "し", Romaji: 'shi' },
-    { Hiragana: "す", Romaji: 'su' },
-    { Hiragana: "せ", Romaji: 'se' },
-    { Hiragana: "そ", Romaji: 'so' },
-    { Hiragana: "た", Romaji: 'ta' },
-    { Hiragana: "ち", Romaji: 'chi' },
-    { Hiragana: "つ", Romaji: 'tsu' },
-    { Hiragana: "て", Romaji: 'te' },
-    { Hiragana: "と", Romaji: 'to' },
-    { Hiragana: "な", Romaji: 'na' },
-    { Hiragana: "に", Romaji: 'ni' },
-    { Hiragana: "ぬ", Romaji: 'nu' },
-    { Hiragana: "ね", Romaji: 'ne' },
-    { Hiragana: "の", Romaji: 'no' },
-    { Hiragana: "は", Romaji: 'ha' },
-    { Hiragana: "ひ", Romaji: 'hi' },
-    { Hiragana: "ふ", Romaji: 'fu' },
-    { Hiragana: "へ", Romaji: 'he' },
-    { Hiragana: "ほ", Romaji: 'ho' },
-    { Hiragana: "ま", Romaji: 'ma' },
-    { Hiragana: "み", Romaji: 'mi' },
-    { Hiragana: "む", Romaji: 'mu' },
-    { Hiragana: "め", Romaji: 'me' },
-    { Hiragana: "も", Romaji: 'mo' },
-    { Hiragana: "や", Romaji: 'ya' },
-    { Hiragana: "ゆ", Romaji: 'yu' },
-    { Hiragana: "よ", Romaji: 'yo' },
-    { Hiragana: "ら", Romaji: 'ra' },
-    { Hiragana: "り", Romaji: 'ri' },
-    { Hiragana: "る", Romaji: 'ru' },
-    { Hiragana: "れ", Romaji: 're' },
-    { Hiragana: "ろ", Romaji: 'ro' },
-    { Hiragana: "わ", Romaji: 'wa' },
-    { Hiragana: "を", Romaji: 'wo' },
-    { Hiragana: "ん", Romaji: 'n' }
+    { Hiragana: "が", Romaji: 'ga'},
+    { Hiragana: "ぎ", Romaji: 'gi'},
+    { Hiragana: "ぐ", Romaji: 'gu'},
+    { Hiragana: "げ", Romaji: 'ge'},
+    { Hiragana: "ご", Romaji: 'go'},
+    { Hiragana: "ざ", Romaji: 'za'},
+    { Hiragana: "じ", Romaji: 'ji'},
+    { Hiragana: "ず", Romaji: 'zu'},
+    { Hiragana: "ぜ", Romaji: 'ze'},
+    { Hiragana: "ぞ", Romaji: 'zo'},
+    { Hiragana: "だ", Romaji: 'da'},
+    { Hiragana: "ぢ", Romaji: 'ji'},
+    { Hiragana: "づ", Romaji: 'zu'}, 
+    { Hiragana: "で", Romaji: 'de'},
+    { Hiragana: "ど", Romaji: 'do'},
+    { Hiragana: "ば", Romaji: 'ba'},
+    { Hiragana: "び", Romaji: 'bi'},
+    { Hiragana: "ぶ", Romaji: 'bu'},
+    { Hiragana: "べ", Romaji: 'be'},
+    { Hiragana: "ぼ", Romaji: 'bo'},
+    { Hiragana: "ぱ", Romaji: 'pa'},
+    { Hiragana: "ぴ", Romaji: 'pi'},
+    { Hiragana: "ぷ", Romaji: 'pu'},
+    { Hiragana: "ぺ", Romaji: 'pe'},
+    { Hiragana: "ぽ", Romaji: 'po'}
   ];
   
   let randomCharacter;
   let questionCount = 0;
   let correctCount = 0;
-  let number_of_questions = 20;
+  let number_of_questions = 15;
   
   function getRandomCharacter() {
     randomCharacter = [];
@@ -65,7 +44,7 @@ let hiragana = [
   
   function displayQuestion() {
     questionCount++;
-    if (questionCount <= 20) {
+    if (questionCount <= number_of_questions) {
       getRandomCharacter();
       let question = '';
       randomCharacter.forEach((kata) => {
@@ -74,7 +53,7 @@ let hiragana = [
       document.getElementById('question').innerText = question;
       document.getElementById('answer').value = '';
       document.getElementById('questionNumber').innerText =
-        'Question ' + questionCount + ' of 20';
+        'Question ' + questionCount + ' of ' + number_of_questions;
     } else {
       showScore();
     }
@@ -120,11 +99,10 @@ let hiragana = [
     displayQuestion();
   }
   
-  
   function showScore() {
-      const lvl = 'Hiragana';
+      const lvl = 'Hiragana Dakuten';
       document.getElementById('question').innerText =
-        'Quiz finished! Your score: ' + correctCount + ' out of 20';
+        'Quiz finished! Your score: ' + correctCount + ' out of ' + number_of_questions;
       document.getElementById('question').style.fontSize = '30px';
       document.getElementById('go_back_to').innerText = 'Go back to:';
       document.getElementById('go_back_front').innerHTML =
@@ -135,13 +113,13 @@ let hiragana = [
       document.getElementById('answer').style.display = 'none';
       document.getElementById('result').style.display = 'none';
       document.getElementById('questionNumber').innerText = '';
-    
-      const percentage = ((correctCount / number_of_questions) * 100).toFixed(2);
 
+      const percentage = ((correctCount / number_of_questions) * 100).toFixed(2);
+    
       const scoreData = {
-          score: percentage,
-          lvl: lvl,
-        };
+        score: percentage,
+        lvl: lvl,
+      };
     
       const xhr = new XMLHttpRequest();
       xhr.open('POST', '/score', true);

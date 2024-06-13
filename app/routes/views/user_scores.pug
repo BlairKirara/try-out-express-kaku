@@ -1,0 +1,34 @@
+extends layout
+block title 
+  title='KakuLearn | Quiz Scores'
+block content
+  .breadcrumb
+      a(href='/') Homepage
+      span.separator › 
+      a(href='/profile') Profile
+      span.separator.current-location › 
+      a.current-location(href='/scores') Quiz Scores
+  h1 Quiz Scores
+  | &nbsp;
+  if scores.length === 0
+    p No scores available.
+  else
+    table
+      thead
+        tr
+          th Level
+          th Score
+          th Actions
+      tbody
+        - var highestScores = {};
+        each score in scores
+          - if (!highestScores[score.lvl] || highestScores[score.lvl].score < score.score)
+            - highestScores[score.lvl] = score;
+        each level in Object.values(highestScores)
+          tr(id=`row-${level.userId}-${level.lvl}`)
+            td= level.lvl
+            td= level.score + '%'
+            td
+              button.go_next(onclick=`resetQuiz('${level.userId}', '${level.lvl}', 'row-${level.userId}-${level.lvl}')`) Reset Progress
+
+  script(src="../js/hiragana_converter.js")

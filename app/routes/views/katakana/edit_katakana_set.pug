@@ -1,0 +1,36 @@
+extends ../layout
+
+block title 
+  title='KakuLearn | Edit Katakana Flashcards'
+
+block content
+  .breadcrumb
+      a(href='/') Homepage
+      span.separator › 
+      a(href='/profile') Profile
+      span.separator › 
+      a(href='/katakana_sets') Katakana Sets
+      span.separator.current-location › 
+      a.current-location(href='') Edit Set
+  h1 Edit Set
+  | &nbsp;
+  if set.length === 0
+    p No flashcards available for this set.
+  else
+    table
+      thead
+        tr
+          th Romaji
+          th Katakana
+          th Actions
+      tbody
+        each flashcard in set
+          tr(id=`row-${flashcard.id}`)
+            td= flashcard.romaji
+            td= flashcard.katakana
+            td
+              button.go_next(onclick=`deleteKatakanaFlashcard('${flashcard.id}', document.getElementById('row-${flashcard.id}'))`) Delete
+              | &nbsp;
+              button.go_next(onclick=`editKatakanaFlashcard('${flashcard.id}', '${setId}')`) Edit
+
+  script(src="../js/katakana_converter.js")

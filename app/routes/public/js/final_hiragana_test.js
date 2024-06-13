@@ -44,13 +44,71 @@ let hiragana = [
     { Hiragana: "ろ", Romaji: 'ro' },
     { Hiragana: "わ", Romaji: 'wa' },
     { Hiragana: "を", Romaji: 'wo' },
-    { Hiragana: "ん", Romaji: 'n' }
+    { Hiragana: "ん", Romaji: 'n' },
+    { Hiragana: "が", Romaji: 'ga'},
+    { Hiragana: "ぎ", Romaji: 'gi'},
+    { Hiragana: "ぐ", Romaji: 'gu'},
+    { Hiragana: "げ", Romaji: 'ge'},
+    { Hiragana: "ご", Romaji: 'go'},
+    { Hiragana: "ざ", Romaji: 'za'},
+    { Hiragana: "じ", Romaji: 'ji'},
+    { Hiragana: "ず", Romaji: 'zu'},
+    { Hiragana: "ぜ", Romaji: 'ze'},
+    { Hiragana: "ぞ", Romaji: 'zo'},
+    { Hiragana: "だ", Romaji: 'da'},
+    { Hiragana: "ぢ", Romaji: 'ji'},
+    { Hiragana: "づ", Romaji: 'zu'}, 
+    { Hiragana: "で", Romaji: 'de'},
+    { Hiragana: "ど", Romaji: 'do'},
+    { Hiragana: "ば", Romaji: 'ba'},
+    { Hiragana: "び", Romaji: 'bi'},
+    { Hiragana: "ぶ", Romaji: 'bu'},
+    { Hiragana: "べ", Romaji: 'be'},
+    { Hiragana: "ぼ", Romaji: 'bo'},
+    { Hiragana: "ぱ", Romaji: 'pa'},
+    { Hiragana: "ぴ", Romaji: 'pi'},
+    { Hiragana: "ぷ", Romaji: 'pu'},
+    { Hiragana: "ぺ", Romaji: 'pe'},
+    { Hiragana: "ぽ", Romaji: 'po'},    
+    { Hiragana: "きゃ", Romaji: 'kya'},
+    { Hiragana: "きゅ", Romaji: 'kyu'},
+    { Hiragana: "きょ", Romaji: 'kyo'},
+    { Hiragana: "ぎゃ", Romaji: 'gya'},
+    { Hiragana: "ぎゅ", Romaji: 'gyu'},
+    { Hiragana: "ぎょ", Romaji: 'gyo'},
+    { Hiragana: "しゃ", Romaji: 'sha'},
+    { Hiragana: "しゅ", Romaji: 'shu'},
+    { Hiragana: "しょ", Romaji: 'sho'},
+    { Hiragana: "じゃ", Romaji: 'ja'},
+    { Hiragana: "じゅ", Romaji: 'ju'},
+    { Hiragana: "じょ", Romaji: 'jo'},
+    { Hiragana: "ちゃ", Romaji: 'cha'},
+    { Hiragana: "ちゅ", Romaji: 'chu'},
+    { Hiragana: "ちょ", Romaji: 'cho'},
+    { Hiragana: "にゃ", Romaji: 'nya'},
+    { Hiragana: "にゅ", Romaji: 'nyu'},
+    { Hiragana: "にょ", Romaji: 'nyo'},
+    { Hiragana: "ひゃ", Romaji: 'hya'},
+    { Hiragana: "ひゅ", Romaji: 'hyu'},
+    { Hiragana: "ひょ", Romaji: 'hyo'},
+    { Hiragana: "びゃ", Romaji: 'bya'},
+    { Hiragana: "びゅ", Romaji: 'byu'},
+    { Hiragana: "びょ", Romaji: 'byo'},
+    { Hiragana: "ぴゃ", Romaji: 'pya'},
+    { Hiragana: "ぴゅ", Romaji: 'pyu'},
+    { Hiragana: "ぴょ", Romaji: 'pyo'},
+    { Hiragana: "みゃ", Romaji: 'mya'},
+    { Hiragana: "みゅ", Romaji: 'myu'},
+    { Hiragana: "みょ", Romaji: 'myo'},
+    { Hiragana: "りゃ", Romaji: 'rya'},
+    { Hiragana: "りゅ", Romaji: 'ryu'},
+    { Hiragana: "りょ", Romaji: 'ryo'}
   ];
   
   let randomCharacter;
   let questionCount = 0;
   let correctCount = 0;
-  let number_of_questions = 20;
+  let number_of_questions = 25;
   
   function getRandomCharacter() {
     randomCharacter = [];
@@ -65,7 +123,7 @@ let hiragana = [
   
   function displayQuestion() {
     questionCount++;
-    if (questionCount <= 20) {
+    if (questionCount <= number_of_questions) {
       getRandomCharacter();
       let question = '';
       randomCharacter.forEach((kata) => {
@@ -74,7 +132,7 @@ let hiragana = [
       document.getElementById('question').innerText = question;
       document.getElementById('answer').value = '';
       document.getElementById('questionNumber').innerText =
-        'Question ' + questionCount + ' of 20';
+        'Question ' + questionCount + ' of ' + number_of_questions;
     } else {
       showScore();
     }
@@ -120,11 +178,10 @@ let hiragana = [
     displayQuestion();
   }
   
-  
   function showScore() {
-      const lvl = 'Hiragana';
+      const lvl = 'Hiragana Final Test';
       document.getElementById('question').innerText =
-        'Quiz finished! Your score: ' + correctCount + ' out of 20';
+        'Quiz finished! Your score: ' + correctCount + ' out of ' + number_of_questions;
       document.getElementById('question').style.fontSize = '30px';
       document.getElementById('go_back_to').innerText = 'Go back to:';
       document.getElementById('go_back_front').innerHTML =
@@ -135,13 +192,13 @@ let hiragana = [
       document.getElementById('answer').style.display = 'none';
       document.getElementById('result').style.display = 'none';
       document.getElementById('questionNumber').innerText = '';
-    
-      const percentage = ((correctCount / number_of_questions) * 100).toFixed(2);
 
+      const percentage = ((correctCount / number_of_questions) * 100).toFixed(2);
+    
       const scoreData = {
-          score: percentage,
-          lvl: lvl,
-        };
+        score: percentage,
+        lvl: lvl,
+      };
     
       const xhr = new XMLHttpRequest();
       xhr.open('POST', '/score', true);

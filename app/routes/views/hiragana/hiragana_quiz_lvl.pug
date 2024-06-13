@@ -1,0 +1,23 @@
+extends ../layout
+
+block title 
+  title='KakuLearn | Hiragana Quiz Levels'
+block content
+  .breadcrumb
+      a(href='/') Homepage
+      span.separator › 
+      a(href='/hiragana') Hiragana
+      span.separator.current-location › 
+      a.current-location(href='/hiragana/quiz_lvl') Hiragana Quiz Levels
+  h1 Lvl 1 - Hiragana
+  p Take this quiz to test your knowledge on the 46 basic hiragana characters.
+  a.go_next(href='quiz') Quiz
+  h1 Lvl 2 - Dakuten and Handakuten
+  p Take this quiz to test your knowledge on the 25 diacritics of hiragana characters.
+  a.go_next(href='dakuten_quiz') Quiz 
+  h1 Lvl 3 - Combinations
+  p Take this quiz to test your knowledge on hiragana combiantions such as きゃ (kya) or ぴゃ (pya).
+  a.go_next(href='combinations_quiz') Quiz
+  h1 Lvl 4 - Final Test 
+  p The final test combines all the topics listed above. Are you up for the challange? Click the button below!
+  a.go_next(href='final_test') Quiz

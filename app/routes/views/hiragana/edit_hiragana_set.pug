@@ -1,0 +1,36 @@
+extends ../layout
+
+block title 
+  title='KakuLearn | Edit Hiragana Flashcards'
+
+block content
+  .breadcrumb
+      a(href='/') Homepage
+      span.separator › 
+      a(href='/profile') Profile
+      span.separator › 
+      a(href='/hiragana_sets') Hiragana Sets
+      span.separator.current-location › 
+      a.current-location(href='') Edit Set
+  h1 Edit Set
+  | &nbsp;
+  if set.length === 0
+    p No flashcards available for this set.
+  else
+    table
+      thead
+        tr
+          th Romaji
+          th Hiragana
+          th Actions
+      tbody
+        each flashcard in set
+          tr(id=`row-${flashcard.id}`)
+            td= flashcard.romaji
+            td= flashcard.hiragana
+            td
+              button.go_next(onclick=`deleteFlashcard('${flashcard.id}', document.getElementById('row-${flashcard.id}'))`) Delete
+              | &nbsp;
+              button.go_next(onclick=`editFlashcard('${flashcard.id}', '${setId}')`) Edit
+
+  script(src="../js/hiragana_converter.js")

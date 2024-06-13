@@ -1,0 +1,34 @@
+extends ../layout
+
+block title 
+  title='KakuLearn | Katakana Flashcard Practice'
+block content
+  .breadcrumb
+      a(href='/') Homepage
+      span.separator › 
+      a(href='/profile') Profile
+      span.separator › 
+      a(href='/katakana_sets') Katakana Sets
+      span.separator.current-location › 
+      a.current-location(href='') Practice
+  h1 Practice Set
+  #flashcard-container
+    p#katakana-reading
+    p#romaji-reading(style="display: none;")
+    button.go_next#reveal-romaji-button Reveal Romaji
+    button.go_next#next-flashcard-button Next Flashcard
+    button.go_next#go-back-button(type="button") Go back to the flashcard sets list
+
+  script(src="../js/katakana_flashcard.js")
+  script.
+    document.addEventListener('DOMContentLoaded', () => {
+      const flashcards = !{JSON.stringify(set)};
+      const flashcardFunctions = initializeFlashcards(flashcards);
+
+      document.getElementById('reveal-romaji-button').addEventListener('click', flashcardFunctions.revealRomaji);
+      document.getElementById('next-flashcard-button').addEventListener('click', flashcardFunctions.nextFlashcard);
+      
+      document.getElementById('go-back-button').addEventListener('click', () => {
+        window.location.href = "/katakana_sets"; 
+      });
+    });

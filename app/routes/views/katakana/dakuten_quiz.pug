@@ -1,0 +1,32 @@
+extends ../layout
+
+block title 
+  title='KakuLearn | Katakana Dakuten Quiz'
+block content
+    .breadcrumb
+        a(href='/') Homepage
+        span.separator › 
+        a(href='/katakana') Katakana
+        span.separator › 
+        a(href='/katakana/quiz_lvl') Katakana Quiz Levels
+        span.separator.current-location › 
+        a.current-location(href='/katakana/dakuten_quiz') Dakuten Quiz
+    .quiz
+        h1 How can you read these katakana characters?
+        | &nbsp;
+        .middle-quiz
+            #question
+            input(type='text', id='answer', placeholder='Type your answer')
+        .quiz-results
+            #questionNumber
+            #result
+            button.go_next#submit_answer(onclick='checkAnswer()') Submit
+        .correct-answer 
+            #correct_answer_display
+        .go_back
+            #go_back_to
+            #go_back_front.go
+            #go_back_katakana.go
+    
+    script(src='../js/dakuten_katakana_quiz.js')
+        

@@ -1,0 +1,33 @@
+extends ../layout
+
+block title 
+  title='KakuLearn | Katakana Flashcard Sets'
+block content
+  .breadcrumb
+          a(href='/') Homepage
+          span.separator › 
+          a(href='/profile') Profile
+          span.separator.current-location › 
+          a.current-location(href='/katakana_sets') Katakana Sets
+  h1 Katakana Sets
+  | &nbsp;
+  if sets.length === 0
+    p No Katakana sets available.
+  else
+    table
+      thead
+        tr
+          th Set Name
+          th Actions
+      tbody
+        each set in sets
+          tr(id=`row-${set.id}`)
+            td= set.name
+            td
+              button.go_next(onclick=`practiceKatakanaSet('${set.id}')`) Practice
+              | &nbsp;
+              button.go_next(onclick=`deleteKatakanaSet('${set.id}', document.getElementById('row-${set.id}'))`) Delete
+              | &nbsp;
+              button.go_next(onclick=`editKatakanaSet('${set.id}')`) Edit
+
+  script(src="../js/katakana_converter.js")

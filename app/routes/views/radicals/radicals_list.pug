@@ -1,0 +1,138 @@
+extends ../layout
+
+block title 
+  title='KakuLearn | Radicals List'
+block content
+  .breadcrumb
+      a(href='/') Homepage
+      span.separator › 
+      a(href='/radicals') Radicals
+      span.separator.current-location › 
+      a.current-location(href='/radicals/list') Radicals List
+  table.radicals-table.radicals-font
+    thead
+      tr
+        th
+        th Radical
+        th Reading
+        th Meaning
+    tbody
+      tr 
+        td(class="rowspan_list" rowspan="9") 1 stroke
+      each character, index in radicals.slice(0, 8)
+        tr
+          td= character.Radical
+          td= character.Reading
+          td= character.Meaning
+      tr 
+        td(class="rowspan_list" rowspan="29") 2 strokes
+      each character, index in radicals.slice(8, 36)
+        tr 
+          td= character.Radical
+          td= character.Reading
+          td= character.Meaning
+      tr 
+        td(class="rowspan_list" rowspan="56") 3 strokes
+      each character, index in radicals.slice(36, 91)
+        tr 
+          td= character.Radical
+          td= character.Reading
+          td= character.Meaning
+      tr 
+        td(class="rowspan_list" rowspan="54") 4 strokes
+      each character, index in radicals.slice(91, 144)
+        tr 
+          td= character.Radical
+          td= character.Reading
+          td= character.Meaning
+      tr 
+        td(class="rowspan_list" rowspan="41") 5 strokes
+      each character, index in radicals.slice(144, 184)
+        tr 
+          td= character.Radical
+          td= character.Reading
+          td= character.Meaning
+      tr 
+        td(class="rowspan_list" rowspan="41") 6 strokes
+      each character, index in radicals.slice(184, 224)
+        tr 
+          td= character.Radical
+          td= character.Reading
+          td= character.Meaning
+      tr 
+        td(class="rowspan_list" rowspan="36") 7 strokes
+      each character, index in radicals.slice(224, 259)
+        tr 
+          td= character.Radical
+          td= character.Reading
+          td= character.Meaning
+      tr 
+        td(class="rowspan_list" rowspan="15") 8 strokes
+      each character, index in radicals.slice(259, 273)
+        tr 
+          td= character.Radical
+          td= character.Reading
+          td= character.Meaning
+      tr 
+        td(class="rowspan_list" rowspan="12") 9 strokes
+      each character, index in radicals.slice(273, 284)
+        tr 
+          td= character.Radical
+          td= character.Reading
+          td= character.Meaning
+      tr 
+        td(class="rowspan_list" rowspan="12") 10 strokes
+      each character, index in radicals.slice(284, 295)
+        tr 
+          td= character.Radical
+          td= character.Reading
+          td= character.Meaning
+      tr 
+        td(class="rowspan_list" rowspan="12") 11 strokes
+      each character, index in radicals.slice(295, 306)
+        tr 
+          td= character.Radical
+          td= character.Reading
+          td= character.Meaning
+      tr 
+        td(class="rowspan_list" rowspan="6") 12 strokes
+      each character, index in radicals.slice(306, 311)
+        tr 
+          td= character.Radical
+          td= character.Reading
+          td= character.Meaning
+      tr 
+        td(class="rowspan_list" rowspan="5") 13 strokes
+      each character, index in radicals.slice(311, 315)
+        tr 
+          td= character.Radical
+          td= character.Reading
+          td= character.Meaning
+      tr 
+        td(class="rowspan_list" rowspan="3") 14 strokes
+      each character, index in radicals.slice(315, 317)
+        tr 
+          td= character.Radical
+          td= character.Reading
+          td= character.Meaning
+      tr 
+        td(class="rowspan_list" rowspan="2") 15 strokes
+      each character, index in radicals.slice(317, 318)
+        tr 
+          td= character.Radical
+          td= character.Reading
+          td= character.Meaning
+      tr 
+        td(class="rowspan_list" rowspan="3") 16 strokes
+      each character, index in radicals.slice(318, 320)
+        tr 
+          td= character.Radical
+          td= character.Reading
+          td= character.Meaning
+      tr 
+        td(class="rowspan_list" rowspan="2") 17 strokes
+      each character, index in radicals.slice(320, 321)
+        tr 
+          td= character.Radical
+          td= character.Reading
+          td= character.Meaning
