@@ -32,7 +32,7 @@ exports.getRadicalsList = async (req, res) => {
       { Radical: "⼉", Reading: "ひとあし", Meaning: "human legs" },
       { Radical: "⼊", Reading: "いる", Meaning: "to enter" },
       { Radical: "⼋", Reading: "はち", Meaning: "eight" },
-      { Radical: "", Reading: "はちがしら", Meaning: "eight" },
+      { Radical: "", Reading: "はちがしら", Meaning: "eight" },
       { Radical: "⼌", Reading: "けいがまえ", Meaning: "to enclose" },
       { Radical: "⼍", Reading: "わかんむり", Meaning: "cover, crown" },
       { Radical: "⼎", Reading: "にすい", Meaning: "ice" },

@@ -129,7 +129,7 @@ const romajiToKatakana = {
                 katakana += romajiToKatakana[char];
                 i++;
             } else if (romaji[i] === romaji[i + 1]) {
-                katakana += 'っ';
+                katakana += 'ッ';
                 i++;
             } else if (/[a-zA-Z]/.test(char)) {
                 katakana += char;
