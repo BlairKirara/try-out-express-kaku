@@ -189,6 +189,11 @@ const radicalsData = [
       showScore();
     }
   }
+
+  function getRandomMeaning() {
+    let meanings = radicalsData.filter(radical => radical.Meaning !== randomRadical.Meaning);
+    return meanings[Math.floor(Math.random() * meanings.length)];
+  }
   
   function checkAnswer(answer) {
     let userInput = answer.trim();
